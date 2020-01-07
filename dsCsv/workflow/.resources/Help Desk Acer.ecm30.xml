@@ -1,0 +1,1367 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>Help Desk Acer</processId>
+    </processDefinitionPK>
+    <processDescription>Help Desk Acer</processDescription>
+    <instruction> 	</instruction>
+    <active>true</active>
+    <publicProcess>true</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>TI</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;GestorHelpDesk&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>true</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>true</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Help Desk Acer</processId>
+      <version>28</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>8918</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>120</positionX>
+      <positionY>87</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>9</sequence>
+      </processStatePK>
+      <stateName>Valida a Solução</stateName>
+      <stateDescription>Valida a Solução</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>14400</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>14400</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>407</positionX>
+      <positionY>250</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>3600</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>3600</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>15</sequence>
+      </processStatePK>
+      <stateName>Analisa o Chamado</stateName>
+      <stateDescription>Analisa o Chamado</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName>sla</deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;usResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>14400</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>230</positionX>
+      <positionY>70</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>3600</allowanceManagerTime>
+      <frequenceManagerTime>86400</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>21</sequence>
+      </processStatePK>
+      <stateName>Check</stateName>
+      <stateDescription>Check</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>430</positionX>
+      <positionY>60</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>30</sequence>
+      </processStatePK>
+      <stateName>Check</stateName>
+      <stateDescription>Check</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>430</positionX>
+      <positionY>370</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>40</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>790</positionX>
+      <positionY>280</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>46</sequence>
+      </processStatePK>
+      <stateName>Finalização automatica</stateName>
+      <stateDescription>Finalização automatica</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>660</positionX>
+      <positionY>260</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>28</version>
+        <sequence>21</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;status&apos;) == &apos;aberto&apos;&#xd;
+</condition>
+      <destinationSequenceId>9</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;idSol&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>28</version>
+        <sequence>21</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;status&apos;) == &apos;transferir&apos;</condition>
+      <destinationSequenceId>15</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;usNovoResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>28</version>
+        <sequence>21</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;status&apos;) == &apos;notificar&apos;</condition>
+      <destinationSequenceId>15</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;usResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>28</version>
+        <sequence>30</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;us_resolvido&apos;) == &apos;sim&apos;</condition>
+      <destinationSequenceId>40</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>28</version>
+        <sequence>30</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;us_resolvido&apos;) == &apos;nao&apos;</condition>
+      <destinationSequenceId>15</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;usResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>28</version>
+        <sequence>30</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>40</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>17</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>21</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>18</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>21</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>29</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>15</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>31</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>30</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>32</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>30</initialStateSequence>
+      <finalStateSequence>15</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>34</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>21</initialStateSequence>
+      <finalStateSequence>15</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>30</initialStateSequence>
+      <finalStateSequence>40</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>45</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>30</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessFinish</eventId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessFinish(processId){&#xd;
+	if (hAPI.getCardValue(&quot;us_resolvido&quot;) != &quot;nao&quot;) {&#xd;
+		hAPI.setCardValue(&quot;us_resolvido&quot;, &quot;sim&quot;);&#xd;
+	}&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskSave</eventId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+	emailSolic = hAPI.getCardValue(&quot;email&quot;);	 &#xd;
+	&#xd;
+	log.info(&quot;Envia e-mail&quot;);&#xd;
+	log.info(&quot;Email solicitante: &quot; + emailSolic);&#xd;
+	 &#xd;
+	var removeVirgula = function(str){&#xd;
+		return str.replace(/,/g, &apos;&apos;).trim();&#xd;
+	}&#xd;
+	&#xd;
+	function getNomeUsuario(id){&#xd;
+		var c1 = DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, id, id, ConstraintType.MUST);&#xd;
+		var ds = DatasetFactory.getDataset(&quot;colleague&quot;, null, new Array(c1), null);&#xd;
+		return ds.getValue(0,&quot;colleagueName&quot;);&#xd;
+	}&#xd;
+	&#xd;
+	// VERIFICA SE CHAMADO FOI TRANSFERIDO PARA CARREGAR TEMPLATE DE EMAIL&#xd;
+	&#xd;
+	function checkTransf(){&#xd;
+		var transf = parseInt(hAPI.getCardValue(&apos;transferido&apos;));&#xd;
+		if (transf) {&#xd;
+			return true;&#xd;
+		} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function checkInicio(){&#xd;
+		if (hAPI.getCardValue(&apos;checkinicio&apos;) == &apos;1&apos;) {&#xd;
+			return true;&#xd;
+			} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function checkReopen(){&#xd;
+		if (hAPI.getCardValue(&apos;us_resolvidof&apos;) == &apos;sim&apos;) {&#xd;
+			return true;&#xd;
+			} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function checkResolvido(){&#xd;
+		var cam = hAPI.getCardValue(&apos;us_resolvido&apos;);&#xd;
+		if (cam != &apos;vazio&apos; &amp;&amp; cam != &apos;sim&apos;) {&#xd;
+			return true;&#xd;
+			} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function consultaDadosPaiFilho(fields){&#xd;
+		log.info(&apos;Consulta Dados Pai X Filho&apos;);&#xd;
+		var nrProcesso = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		var cardData = hAPI.getCardData(nrProcesso);&#xd;
+		var it = cardData.keySet().iterator();&#xd;
+		var listaFilho = new Array();&#xd;
+		var fieldTemp = fields[0];&#xd;
+		&#xd;
+		while (it.hasNext()) {&#xd;
+			var key = it.next();&#xd;
+			var campo = key.split(&quot;___&quot;);&#xd;
+			&#xd;
+			if (key.indexOf(&apos;___&apos;) &gt;= 0 &amp;&amp; campo[0] == fieldTemp) {&#xd;
+				var idx = campo[1];&#xd;
+				var row = new Object();&#xd;
+				&#xd;
+				for(var i=0; i&lt;fields.length; i++){&#xd;
+					var name = fields[i] + &quot;___&quot; + idx;&#xd;
+					row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};&#xd;
+				}&#xd;
+				listaFilho.push(row);&#xd;
+			}&#xd;
+		}&#xd;
+		return listaFilho;&#xd;
+	}&#xd;
+	&#xd;
+	var atvcampo = hAPI.getCardValue(&apos;atv&apos;);&#xd;
+	&#xd;
+	// QUANDO ABRE CHAMADO&#xd;
+	log.info(&quot;Próxima atividade: &quot; + nextSequenceId);&#xd;
+	log.info(&quot;Incial: &quot; + hAPI.getCardValue(&apos;checkinicio&apos;));&#xd;
+	log.info(&quot;Incial função: &quot; + checkInicio());&#xd;
+&#xd;
+	if(nextSequenceId == 15){&#xd;
+		log.info(&quot;Entrou na função &apos;nextSequenceId == 15&apos; &quot;);&#xd;
+		&#xd;
+		var solicitante = getValue(&quot;WKUser&quot;);&#xd;
+		log.info(&quot;Encontro solciitente: &quot; + solicitante);&#xd;
+&#xd;
+		var colaborador = getNomeUsuario(solicitante);&#xd;
+		log.info(&quot;Encontro colaborador: &quot; + colaborador);&#xd;
+&#xd;
+		var t_assunto = hAPI.getCardValue(&quot;assunto&quot;);&#xd;
+		log.info(&quot;Encontro t_assunto: &quot; + t_assunto);&#xd;
+		&#xd;
+		var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		log.info(&quot;Encontro numproc: &quot; + numproc);&#xd;
+		&#xd;
+		var assunto = &quot;A solicitação #&quot; + numproc + &quot; foi aberta - HelpDesk Acer&quot;;&#xd;
+		log.info(&quot;Encontro assunto: &quot; + assunto);&#xd;
+		&#xd;
+		var topico_ajuda = hAPI.getCardValue(&quot;usNomeTxt&quot;);&#xd;
+		log.info(&quot;Encontro topico_ajuda: &quot; + topico_ajuda);&#xd;
+		&#xd;
+		var processo = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		log.info(&quot;Encontro processo: &quot; + processo);&#xd;
+&#xd;
+		var campos = hAPI.getCardData(processo);&#xd;
+		log.info(&quot;Encontro campos: &quot; + campos);&#xd;
+&#xd;
+		log.info(&quot;Validou variáveis&quot;);&#xd;
+		&#xd;
+		try{&#xd;
+			log.info(&quot;Entrou no try&quot;);&#xd;
+&#xd;
+			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+			&#xd;
+			//Monta mapa com parâmetros do template&#xd;
+			var parametros = new java.util.HashMap();&#xd;
+			parametros.put(&quot;solicitante&quot;, colaborador);&#xd;
+			parametros.put(&quot;topico_ajuda&quot;, topico_ajuda);&#xd;
+			parametros.put(&quot;numsol&quot;, numproc);&#xd;
+			parametros.put(&quot;assunto&quot;, t_assunto);&#xd;
+			parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+			&#xd;
+			//Monta lista de destinatários&#xd;
+			var destinatarios = new java.util.ArrayList();&#xd;
+			&#xd;
+			// DESTINATARIOS EM CÓPIA&#xd;
+			var camposItem = new Array(&apos;campocc&apos;);&#xd;
+			var ccList = consultaDadosPaiFilho(camposItem);&#xd;
+			&#xd;
+			if (ccList.length &gt; 0) {&#xd;
+				log.info(&quot;Entrou no ccList&quot;);&#xd;
+				// ccindex = ccindex + 1;&#xd;
+				for(var i = 0; i &lt; ccList.length; i++){&#xd;
+					var cc = ccList[i];&#xd;
+					var campocc = cc[&apos;campocc&apos;].value;&#xd;
+					destinatarios.add(campocc);&#xd;
+				}&#xd;
+			}&#xd;
+&#xd;
+			destinatarios.add(solicitante);&#xd;
+			log.warn(&quot;Adicionados destinatários&quot;);&#xd;
+			&#xd;
+			parametros.put(&quot;subject&quot;, assunto);&#xd;
+			notifier.notify(&quot;admin&quot;, &quot;novochamado&quot;, parametros, destinatarios, &quot;text/html&quot;);&#xd;
+		&#xd;
+			log.info(&quot;E-mail enviado? Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + destinatarios);&#xd;
+			&#xd;
+			&#xd;
+			var e_analista = new java.util.ArrayList();&#xd;
+			var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
+			&#xd;
+			// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+			var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+			var chavesDS = new Array( grpCode );&#xd;
+			var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+			var idanalista = &apos;&apos;;&#xd;
+			var analista = &apos;&apos;;&#xd;
+			var tktAssunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+			var tktSolicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+			var incidente = hAPI.getCardValue(&apos;txt_incidente&apos;);&#xd;
+			var assunto_analista = &apos;Um Novo Ticket de &apos;+ topico_ajuda +&apos; Foi Aberto. [#&apos;+ numproc +&apos; - HelpDesk Acer]&apos;;&#xd;
+			var param_analista = new java.util.HashMap();&#xd;
+			param_analista.put(&quot;subject&quot;, assunto_analista);&#xd;
+			var crit = hAPI.getCardValue(&apos;critval&apos;);&#xd;
+			&#xd;
+			for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+				idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+				analista = getNomeUsuario(idanalista);&#xd;
+				param_analista.put(&quot;analista&quot;, analista);&#xd;
+				param_analista.put(&quot;numsol&quot;, numproc);&#xd;
+				param_analista.put(&quot;datachamado&quot;, tktData);&#xd;
+				param_analista.put(&quot;assunto&quot;, tktAssunto);&#xd;
+				param_analista.put(&quot;solicitante&quot;, tktSolicitante);&#xd;
+				param_analista.put(&quot;topicoajuda&quot;, topico_ajuda);&#xd;
+				param_analista.put(&quot;incidente&quot;, incidente);&#xd;
+				param_analista.put(&quot;criticidade&quot;, crit);&#xd;
+				&#xd;
+				e_analista.add( idanalista );&#xd;
+				log.info(&quot;[AVISO] Adicionou usuario: &quot; + dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;));&#xd;
+			}	&#xd;
+			&#xd;
+			notifier.notify(&quot;admin&quot;, &quot;an_novochamado&quot;, param_analista, e_analista, &quot;text/html&quot;);	&#xd;
+			log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + e_analista);&#xd;
+			&#xd;
+			//Envia e-mail&#xd;
+			log.info(&quot;O Fluig enviou o e-mail de abertura de chamado para o usuário&quot;);&#xd;
+		} &#xd;
+		catch(e){&#xd;
+			log.info(&quot;Entrou no catch&quot;);&#xd;
+			log.info(&quot;O Fluig não conseguiu enviar o e-mail de abertura de chamado para o usuário&quot;);&#xd;
+			log.info(e);&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+//	if (nextSequenceId == 15 &amp;&amp; checkTransf()) {&#xd;
+//		try{&#xd;
+//			var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+//			var assunto = &apos;Um chamado foi transferido para você. [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
+//			//Monta mapa com parâmetros do template&#xd;
+//			var parametros = new java.util.HashMap();&#xd;
+//			//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+//			parametros.put(&quot;subject&quot;, assunto);&#xd;
+//			&#xd;
+//			var e_analista = new java.util.ArrayList();&#xd;
+//			&#xd;
+//			// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+//			var field = hAPI.getCardValue(&quot;usNovoRespTxt&quot;);&#xd;
+//			var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+//			var chavesDS = new Array( grpCode );&#xd;
+//			var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+//			var idanalista = &apos;&apos;;&#xd;
+//			var analista = &apos;&apos;;&#xd;
+//			var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
+//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//			var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//			var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+//			&#xd;
+//			&#xd;
+//			for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+//				idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+//				analista = getNomeUsuario(idanalista);&#xd;
+//				parametros.put(&quot;analista&quot;, analista);&#xd;
+//				parametros.put(&quot;numsol&quot;, numproc);&#xd;
+//				parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
+//				parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+//				parametros.put(&quot;solicitante&quot;, tpcaj);&#xd;
+//				parametros.put(&quot;assunto&quot;, assunto);&#xd;
+//								&#xd;
+//				e_analista.add(idanalista);&#xd;
+//			}&#xd;
+//			&#xd;
+//			log.info(parametros);&#xd;
+//			&#xd;
+//			notifier.notify(&quot;admin&quot;, &quot;tkt_transferido&quot;, parametros, e_analista, &quot;text/html&quot;);	&#xd;
+//			log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + e_analista);&#xd;
+//			&#xd;
+//			&#xd;
+//			}catch(e){&#xd;
+//			log.info(&apos;CHAMADO TRANSFERIDO ERRO:&apos; + e);&#xd;
+//		}&#xd;
+//	}&#xd;
+//	&#xd;
+//	if (nextSequenceId == 15 &amp;&amp; checkResolvido()) {&#xd;
+//		try{&#xd;
+//			log.info(&quot;inicio interagiu&quot;)&#xd;
+//			var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+//			var assunto = &apos;O usuário interagiu no chamado. [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
+//			//Monta mapa com parâmetros do template&#xd;
+//			var parametros = new java.util.HashMap();&#xd;
+//			//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+//			parametros.put(&quot;subject&quot;, assunto);&#xd;
+//			&#xd;
+//			var e_analista = new java.util.ArrayList();&#xd;
+//			&#xd;
+//			// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+//			var processo = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+//			var campos = hAPI.getCardData(processo);&#xd;
+//			var paifilhoindex = parseInt(hAPI.getCardValue(&apos;pfindex&apos;));&#xd;
+//			&#xd;
+//			if (paifilhoindex &lt; 1) {&#xd;
+//				var ultimaresp = campos.get(&quot;resposta___1&quot;);&#xd;
+//				log.info(&apos;ultimaresp &apos;+ultimaresp);&#xd;
+//				var nomeultimaresp = campos.get(&quot;nomeRsp___1&quot;);&#xd;
+//				log.info(&apos;nomeultimaresp &apos;+nomeultimaresp);&#xd;
+//				var dataresp = campos.get(&quot;dataRsp___1&quot;);&#xd;
+//				log.info(&apos;dataresp &apos;+dataresp);&#xd;
+//				&#xd;
+//				} else {&#xd;
+//				var paifilhoindexprox = paifilhoindex + 1;&#xd;
+//				log.info(&apos;pfindexprox &apos;+paifilhoindexprox);&#xd;
+//				var ultimaresp = campos.get(&quot;resposta___&quot; + paifilhoindexprox);&#xd;
+//				log.info(&apos;ultimaresp &apos;+ultimaresp);&#xd;
+//				var nomeultimaresp = campos.get(&quot;nomeRsp___&quot; + paifilhoindexprox);&#xd;
+//				log.info(&apos;nomeultimaresp &apos;+nomeultimaresp);&#xd;
+//				var dataresp = campos.get(&quot;dataRsp___&quot; + paifilhoindexprox);&#xd;
+//				log.info(&apos;dataresp &apos;+dataresp);&#xd;
+//			}&#xd;
+//			&#xd;
+//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//			var tktSolicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//			&#xd;
+//			var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
+//			var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+//			var chavesDS = new Array( grpCode );&#xd;
+//			var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+//			var idanalista = &apos;&apos;;&#xd;
+//			var analista = &apos;&apos;;&#xd;
+//			var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
+//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//			var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//			var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+//			&#xd;
+//			&#xd;
+//			for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+//				idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+//				analista = getNomeUsuario(idanalista);&#xd;
+//				parametros.put(&quot;resposta&quot;, ultimaresp);&#xd;
+//				parametros.put(&quot;dataresp&quot;, dataresp);&#xd;
+//				parametros.put(&quot;nomersp&quot;, nomeultimaresp);&#xd;
+//				parametros.put(&quot;analista&quot;, analista);&#xd;
+//				parametros.put(&quot;numsol&quot;, numproc);&#xd;
+//				parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
+//				parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+//				parametros.put(&quot;solicitante&quot;, tktSolicitante);&#xd;
+//				parametros.put(&quot;assunto&quot;, assunto);&#xd;
+//				&#xd;
+//				e_analista.add(idanalista);&#xd;
+//				log.info(&quot;analista adicionado: &quot; + idanalista);&#xd;
+//				log.info(parametros);&#xd;
+//				&#xd;
+//			}	&#xd;
+//			&#xd;
+//			notifier.notify(&quot;admin&quot;, &quot;tkt_respondido&quot;, parametros, e_analista, &quot;text/html&quot;);&#xd;
+//			log.info(parametros);&#xd;
+//			log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + idanalista);&#xd;
+//			&#xd;
+//			&#xd;
+//			}catch(e){&#xd;
+//			log.info(&quot;O Fluig não conseguiu enviar o e-mail de abertura de chamado para o analista&quot;);&#xd;
+//			log.info(&apos;errozao:&apos;+e);&#xd;
+//		}&#xd;
+//	}&#xd;
+	&#xd;
+//	if (nextSequenceId == 15 &amp;&amp; checkReopen()) {&#xd;
+//		var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+//		var assunto = &apos;Um chamado foi reaberto! [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
+//		//Monta mapa com parâmetros do template&#xd;
+//		var parametros = new java.util.HashMap();&#xd;
+//		//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+//		parametros.put(&quot;subject&quot;, assunto);&#xd;
+//		&#xd;
+//		var e_analista = new java.util.ArrayList();&#xd;
+//		&#xd;
+//		// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+//		var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
+//		var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+//		var chavesDS = new Array( grpCode );&#xd;
+//		var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+//		var idanalista = &apos;&apos;;&#xd;
+//		var analista = &apos;&apos;;&#xd;
+//		var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
+//		var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//		var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//		var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+//		&#xd;
+//		&#xd;
+//		for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+//			idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+//			analista = getNomeUsuario(idanalista);&#xd;
+//			parametros.put(&quot;analista&quot;, analista);&#xd;
+//			parametros.put(&quot;numsol&quot;, numproc);&#xd;
+//			parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
+//			parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+//			parametros.put(&quot;solicitante&quot;, tpcaj);&#xd;
+//			parametros.put(&quot;assunto&quot;, assunto);&#xd;
+//			&#xd;
+//			e_analista.add();&#xd;
+//			&#xd;
+//		}	&#xd;
+//		notifier.notify(&quot;admin&quot;, &quot;tkt_reaberto&quot;, parametros, e_analista, &quot;text/html&quot;);	&#xd;
+//		log.info(parametros);&#xd;
+//		log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + idanalista);&#xd;
+//		&#xd;
+//	}&#xd;
+	&#xd;
+	// VALIDA A SOLUCAO &#xd;
+	if (nextSequenceId == 9) {&#xd;
+		var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		var assunto = &apos;Uma nova resposta foi adicionada ao chamado: #&apos;+ numproc +&apos; [HelpDesk ACER]&apos;;&#xd;
+		var parametros = new java.util.HashMap();&#xd;
+		var requisitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+		var idsol = hAPI.getCardValue(&apos;idSol&apos;);&#xd;
+		&#xd;
+		&#xd;
+		var destinatarios = new java.util.ArrayList();&#xd;
+		destinatarios.add(idsol.toString());	 &#xd;
+		&#xd;
+		&#xd;
+		var processo = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		var campos = hAPI.getCardData(processo);&#xd;
+		var paifilhoindex = parseInt(hAPI.getCardValue(&apos;pfindex&apos;));&#xd;
+		&#xd;
+		if (paifilhoindex &lt; 1) {&#xd;
+			var ultimaresp = campos.get(&quot;resposta___1&quot;);&#xd;
+			var nomeultimaresp = campos.get(&quot;nomeRsp___1&quot;);&#xd;
+			var dataresp = campos.get(&quot;dataRsp___1&quot;);&#xd;
+			} else {&#xd;
+			var paifilhoindexprox = paifilhoindex + 1;&#xd;
+			var ultimaresp = campos.get(&quot;resposta___&quot; + paifilhoindexprox);&#xd;
+			var nomeultimaresp = campos.get(&quot;nomeRsp___&quot; + paifilhoindexprox);&#xd;
+			var dataresp = campos.get(&quot;dataRsp___&quot; + paifilhoindexprox);&#xd;
+		}&#xd;
+		&#xd;
+		// DESTINATARIOS EM CÓPIA&#xd;
+		var camposItem = new Array(&apos;campocc&apos;);&#xd;
+		var ccList = consultaDadosPaiFilho(camposItem);&#xd;
+		&#xd;
+		if (ccList.length &gt; 0) {&#xd;
+			// ccindex = ccindex + 1;&#xd;
+			for(var i = 0; i &lt; ccList.length; i++){&#xd;
+				var cc = ccList[i];&#xd;
+				var campocc = cc[&apos;campocc&apos;].value;&#xd;
+				destinatarios.add(campocc);&#xd;
+			}&#xd;
+		}&#xd;
+		&#xd;
+		var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+		var tktAssunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+		var tktSolicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+		var login = hAPI.getCardValue(&apos;login&apos;);&#xd;
+		&#xd;
+		parametros.put(&quot;resposta&quot;, ultimaresp);&#xd;
+		parametros.put(&quot;dataresp&quot;, dataresp);&#xd;
+		parametros.put(&quot;nomersp&quot;, nomeultimaresp);&#xd;
+		parametros.put(&quot;numsol&quot;, numproc);&#xd;
+		parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+		parametros.put(&quot;assunto&quot;, tktAssunto);&#xd;
+		parametros.put(&quot;solicitante&quot;, tktSolicitante);&#xd;
+		&#xd;
+//		destinatarios.add(login);	 &#xd;
+		log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + login);&#xd;
+		&#xd;
+		parametros.put(&quot;subject&quot;, assunto);&#xd;
+		notifier.notify(&quot;admin&quot;, &quot;tkt_valida&quot;, parametros, destinatarios, &quot;text/html&quot;);&#xd;
+		&#xd;
+		log.info(parametros);&#xd;
+		log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + destinatarios);&#xd;
+		&#xd;
+	}&#xd;
+	&#xd;
+	if (nextSequenceId == 22) {&#xd;
+		var processo = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		var campos = hAPI.getCardData(processo);&#xd;
+		var paifilhoindex = parseInt(hAPI.getCardValue(&apos;pfindex&apos;));&#xd;
+		&#xd;
+		if (paifilhoindex &lt; 1) {&#xd;
+			var ultimaresp = campos.get(&quot;resposta___1&quot;);&#xd;
+			var nomeultimaresp = campos.get(&quot;nomeRsp___1&quot;);&#xd;
+			var dataresp = campos.get(&quot;dataRsp___1&quot;);&#xd;
+			} else {&#xd;
+			var paifilhoindexprox = paifilhoindex + 1;&#xd;
+			var ultimaresp = campos.get(&quot;resposta___&quot; + paifilhoindexprox);&#xd;
+			var nomeultimaresp = campos.get(&quot;nomeRsp___&quot; + paifilhoindexprox);&#xd;
+			var dataresp = campos.get(&quot;dataRsp___&quot; + paifilhoindexprox);&#xd;
+		}&#xd;
+		var assunto = &apos;O chamado #&apos;+ numproc +&apos; foi finalizado! [AVALIE O ATENDIMENTO - HelpDesk ACER]&apos;;&#xd;
+		var parametros = new java.util.HashMap();&#xd;
+		var requisitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+		var idsol = hAPI.getCardValue(&apos;idSol&apos;);&#xd;
+		&#xd;
+		&#xd;
+		var destinatarios = new java.util.ArrayList();&#xd;
+		destinatarios.add(idsol.toString());	 &#xd;
+		&#xd;
+		&#xd;
+		// DESTINATARIOS EM CÓPIA&#xd;
+		var camposItem = new Array(&apos;campocc&apos;);&#xd;
+		var ccList = consultaDadosPaiFilho(camposItem);&#xd;
+		&#xd;
+		if (ccList.length &gt; 0) {&#xd;
+			// ccindex = ccindex + 1;&#xd;
+			for(var i = 0; i &lt; ccList.length; i++){&#xd;
+				var cc = ccList[i];&#xd;
+				var campocc = cc[&apos;campocc&apos;].value;&#xd;
+				destinatarios.add(campocc);&#xd;
+			}&#xd;
+		}&#xd;
+		&#xd;
+		var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+		var tktAssunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+		var tktSolicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+		&#xd;
+		parametros.put(&quot;resposta&quot;, ultimaresp);&#xd;
+		parametros.put(&quot;dataresp&quot;, dataresp);&#xd;
+		parametros.put(&quot;nomersp&quot;, nomeultimaresp);&#xd;
+		parametros.put(&quot;subject&quot;, assunto);&#xd;
+		parametros.put(&quot;numsol&quot;, numproc);&#xd;
+		parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+		parametros.put(&quot;assunto&quot;, tktAssunto);&#xd;
+		parametros.put(&quot;solicitante&quot;, tktSolicitante);&#xd;
+		&#xd;
+		&#xd;
+		notifier.notify(&quot;admin&quot;, &quot;tkt_fechado&quot;, parametros, destinatarios, &quot;text/html&quot;);&#xd;
+		log.info(parametros);&#xd;
+		log.info(&quot;Scolicitação:&quot; + numproc  + &quot;Destinatários: &quot; + destinatarios);&#xd;
+	}&#xd;
+	&#xd;
+	if (nextSequenceId == 40 &amp;&amp; atvcampo == 9) {&#xd;
+		var usres = hAPI.getCardValue(&apos;us_resolvido&apos;);&#xd;
+		&#xd;
+		var processo = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;;&#xd;
+		var campos = hAPI.getCardData(processo);&#xd;
+		var paifilhoindex = parseInt(hAPI.getCardValue(&apos;pfindex&apos;));&#xd;
+		&#xd;
+		if (paifilhoindex &lt; 1) {&#xd;
+			var ultimaresp = campos.get(&quot;resposta___1&quot;);&#xd;
+			var nomeultimaresp = campos.get(&quot;nomeRsp___1&quot;);&#xd;
+			var dataresp = campos.get(&quot;dataRsp___1&quot;);&#xd;
+			} else {&#xd;
+			var paifilhoindexprox = paifilhoindex + 1;&#xd;
+			var ultimaresp = campos.get(&quot;resposta___&quot; + paifilhoindexprox);&#xd;
+			var nomeultimaresp = campos.get(&quot;nomeRsp___&quot; + paifilhoindexprox);&#xd;
+			var dataresp = campos.get(&quot;dataRsp___&quot; + paifilhoindexprox);&#xd;
+		}&#xd;
+		&#xd;
+		var assuntoemail = &apos;O usuário encerrou o chamado. [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
+		//Monta mapa com parâmetros do template&#xd;
+		var parametrosanalista = new java.util.HashMap();&#xd;
+		//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+		parametrosanalista.put(&quot;subject&quot;, assuntoemail);&#xd;
+		&#xd;
+		var e_analista = new java.util.ArrayList();&#xd;
+		&#xd;
+		// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+		var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
+		var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+		var chavesDS = new Array( grpCode );&#xd;
+		var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+		var idanalista = &apos;&apos;;&#xd;
+		var analista = &apos;&apos;;&#xd;
+		var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
+		var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+		var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+		var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+		&#xd;
+		for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+			idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+			analista = getNomeUsuario(idanalista);&#xd;
+			parametrosanalista.put(&quot;analistaf&quot;, analista);&#xd;
+			parametrosanalista.put(&quot;numsol&quot;, numproc);&#xd;
+			parametrosanalista.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
+			parametrosanalista.put(&quot;datachamado&quot;, tktData);&#xd;
+			parametrosanalista.put(&quot;solicitante&quot;, solicitante);&#xd;
+			parametrosanalista.put(&quot;assunto&quot;, assunto);&#xd;
+			parametrosanalista.put(&quot;resposta&quot;, ultimaresp);&#xd;
+			parametrosanalista.put(&quot;dataresp&quot;, dataresp);&#xd;
+			parametrosanalista.put(&quot;nomersp&quot;, nomeultimaresp);&#xd;
+			&#xd;
+			if (e_analista.contains(idanalista)) {&#xd;
+				continue;&#xd;
+			} else {				&#xd;
+				e_analista.add(idanalista);				&#xd;
+			}&#xd;
+			&#xd;
+		}&#xd;
+		&#xd;
+		notifier.notify(&quot;admin&quot;, &quot;tkt_respondidof&quot;, parametrosanalista, e_analista, &quot;text/html&quot;);	&#xd;
+		log.info(parametrosanalista);&#xd;
+		log.info(&quot;Analista - Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + e_analista);&#xd;
+	}&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeSendData</eventId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeSendData(customFields,customFacts){
+customFields[0] =hAPI.getCardValue(&quot;respNome&quot;);	
+customFields[1] =hAPI.getCardValue(&quot;usNomeTxt&quot;);
+customFields[2] =hAPI.getCardValue(&quot;data_Chamado&quot;);
+customFields[3] =hAPI.getCardValue(&quot;name&quot;);
+
+customFacts[0]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atHora&quot;));
+customFacts[1]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atMin&quot;));
+customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atDias&quot;));
+
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId){&#xd;
+//	var slas = [&#xd;
+//		{id: &quot;Normal&quot;, value: 48},&#xd;
+//		{id: &quot;Alta&quot;, value: 4},&#xd;
+//		{id: &quot;Crítica&quot;, value: 1}&#xd;
+//	];&#xd;
+//	log.info(&quot;Entrou Log === Gabs&quot;);&#xd;
+//	log.info(getValue(&quot;WKNumState&quot;));&#xd;
+//	log.info(getValue(&quot;WKNumState&quot;).toString());&#xd;
+//	if (getValue(&quot;WKNumState&quot;) == &quot;15&quot;) {&#xd;
+//		log.info(&quot;Entrou Ativ === Gabs&quot;);&#xd;
+//		var prioridade = hAPI.getCardValue(&quot;prioridade&quot;);&#xd;
+//		log.info(&quot;Prioridade =&gt; &quot; + prioridade);&#xd;
+//		for (var i = 0; i &lt; slas.length; i++) {&#xd;
+//			if (slas[i].id == prioridade) {&#xd;
+//				log.info(&quot;IFPrioridade =&gt; &quot; + slas[i].value);&#xd;
+//				var data = new Date();&#xd;
+//				var obj = hAPI.calculateDeadLineHours(data, 50000, slas[i].value, &quot;Default&quot;);&#xd;
+//			    var dt = obj[0];&#xd;
+//			    var segundos = obj[1];&#xd;
+//				hAPI.setDueDate(getValue(&quot;WKNumProces&quot;), 0, colleagueId, dt, segundos);&#xd;
+//			}&#xd;
+//		}&#xd;
+//	}&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>441</height>
+      <width>831</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Registro de Chamado</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>E4CAFF</color>
+      <height>220</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>HelpDesk</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>94C9C9</color>
+      <height>221</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>230</positionY>
+      <stateName>Solicitante</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>110</positionX>
+      <positionY>20</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <componGrafSequence>7</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Start</stateName>
+    </ProcessComponGraf>
+  </list>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>1</version>
+        <linkSequence>8</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>28</version>
+        <linkSequence>32</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>282</positionX>
+      <positionY>413</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>28</version>
+        <linkSequence>44</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>627</positionX>
+      <positionY>413</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>28</version>
+        <linkSequence>44</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>807</positionX>
+      <positionY>413</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>28</version>
+        <linkSequence>45</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>523</positionX>
+      <positionY>346</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>28</version>
+        <linkSequence>8</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>99</positionX>
+      <positionY>48</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <version>28</version>
+        <linkSequence>8</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>99</positionX>
+      <positionY>78</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>Help Desk Acer</processId>
+        <fieldId>assunto</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>assunto</fieldDescription>
+      <slotId>1</slotId>
+    </ProcessFormField>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

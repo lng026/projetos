@@ -1,0 +1,249 @@
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<input type="hidden" name="wkUserAtaul" id="wkUserAtaul" class="wkUserAtaul">
+			<input type="hidden" name="wkNumProces" id="wkNumProces" class="wkNumProces">
+			<input type="hidden" name="wkNumState" id="wkNumState" class="wkNumState">
+			<input type="hidden" name="wkNumId" id="wkNumId" class="wkNumId">
+			<div class="form-title text-center" id="form-title">
+				<h1><b>Solicitação Tactical Rebate</b></h1>
+				<div class='form-group text-center gtImpressao' id='gtImpressao'>
+					<label class="" style='font-style:bold;'>
+						<a href="impressao_viaCredito.html" target="_blank">Imprimir / Print</a>
+					</label>
+				</div>
+			</div>
+			<div id="form-header" class="header row">	
+				<div id="form-cliente" class="col-md-6 col-xs-12 ">
+					<div class="panel-heading ">
+						<h3 class="panel-title">
+							<b>Dados do Cliente</b>
+						</h3>
+					</div>
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label for="cliente">Cliente</label>
+							<div class="form-group ">
+								<div class="input-group ">
+									<input type="text" id="cliente" name="cliente" class="form-control cliente" value="">
+									<span class="input-group-btn fluigicon">
+										<button type="button" id="btCliente" class="btn btn-default" onclick="zoomCliente(this);">
+											<span class="fluigicon-search"></span>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>	
+					</div>		
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label for="pn_cli_razao">Razão Social</label>
+							
+							<!-- readonly="readonly" -->
+							<input type="hidden" class="form-control pn_cli" name="pn_cli" id="pn_cli">
+							<input type="text" class="form-control pn_cli_razao" name="pn_cli_razao" id="pn_cli_razao">
+							
+							
+						</div>
+					</div>
+		
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label for="pn_cli_endereco">Endereço</label>
+							<input type="text" name="pn_cli_endereco" id="pn_cli_endereco" value="" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="pn_cli_cnpj">CNPJ</label>
+							<input type="text" name="pn_cli_cnpj" id="pn_cli_cnpj" value="" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="pn_cli_municipio">Município</label>
+							<input type="text" name="pn_cli_municipio" id="pn_cli_municipio" value="" class="form-control">
+						</div>
+					</div>
+				</div>
+	<!-- cliente -->
+	
+				<div id="form-cliente" class="col-md-6 col-xs-12 row ">
+					<div class="panel-heading ">
+						<h3 class="panel-title">
+							<b>Dados da solicitação</b>
+						</h3>
+					</div>
+					
+					<div class="col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="pn_nRebate">Rebate nº</label>
+							<input type="text" name="pn_nRebate" id="pn_nRebate" value="" class="form-control" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12 aprovnamediv">
+						<div class="form-group">
+							<label for="pn_aprovDate">Aprovado Data:</label>
+							<input type="text" name="pn_aprovDate" id="pn_aprovDate" value="" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-6">
+						<div class="form-group">
+							<label for="pn_solicitante">Solicitante:</label>
+							<input type="hidden" name="pn_solcod" id="pn_solcod">
+							<input type="text" name="pn_solicitante" id="pn_solicitante" value="" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-6 aprovnamediv">
+						<div class="form-group">
+							<label for="pn_aprovador">Aprovador:</label>
+							<input type="hidden" name="pn_aprovcod" id="pn_aprovcod">
+							<input type="text" name="pn_aprovador" id="pn_aprovador" value="" class="form-control">
+						</div>
+					</div>
+					
+
+					</div>
+				</div>
+
+				<div class="panel" id="tipoVerba">
+
+					<div class="">
+						<div class="form-group row">
+							<div class="col-md-12">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>PartNumbers</b>
+									</h3>
+								</div>
+								<div class="table-responsive">
+									<div class="linhaPN">
+										<div class="col-md-4">
+											<label>Tipo de Verba</label>
+											<select class="form-control pn_tipoVerba" name="pn_tipoVerba" id="pn_tipoVerba" onchange="tipoVerbaChange(this);">
+												<option value="A">Ação de Sell IN</option>
+												<option value="B">Ação de Sell Out</option>
+												<option value="C">Ação de Marketing</option>
+												<option value="D">Anúncio, exposição, ação de Trade.</option>
+												<option value="E">Outros</option>
+											</select>
+										</div>
+										<div class="col-md-4 prodpartnumber">
+
+											<label>PartNumber</label>
+											<!-- <input class="form-control" name="pn_partNumber" id="pn_partNumber" type="text"/> -->
+
+											<div class="form-group">
+												<!-- <input type="text" name="pn_pro_cod"  id="pn_pro_cod" value="" class="form-control"> -->
+												<div class="form-group ">
+													<input type="hidden" id="pn_produto_cod" name="pn_produto_cod" value="">
+													<div class="input-group ">
+														<input type="text" id="pn_produto_desc" name="pn_produto_desc" class="form-control pn_pro" value="">
+														<span class="input-group-btn fluigicon">
+															<button type="button" id="btZoomProd" class="btn btn-default" onclick="zoomProdutoCod(this);">
+																<span class="fluigicon-search"></span>
+															</button>
+														</span>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+										<div class="col-md-4">
+											<label>Produto / Ação</label>
+											<div class="form-group">
+												<div class="form-group ">
+													<div class="input-group ">
+														<input class="form-control" name="pn_produtosAcao" id="pn_produtosAcao" type="text"/>
+														<span class="input-group-btn fluigicon">
+															<button type="button" id="btZoomProd" class="btn btn-default" onclick="zoomProdutoDesc(this);">
+																<span class="fluigicon-search"></span>
+															</button>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label>Descrição</label>
+											<input class="form-control" name="pn_descricao" id="pn_descricao" type="text"/>
+										</div>
+										<div class="col-md-2 ">
+											<label>Valor Unitário</label>
+											<input class="form-control" name="pn_preco" id="pn_preco" type="text" mask="#,##9.99" onchange="calcTotal(this);" />
+										</div>
+										<div class="col-md-2">
+											<label>Quantidade</label>
+											<input class="form-control pn_quant" name="pn_quant" id="pn_quant" type="text" mask="#" onchange="calcTotal(this);"/>
+										</div>
+										<div class="col-md-2">
+											<label>Valor Total</label>
+											<input class="form-control" name="pn_valor" id="pn_valor" type="text" mask="#,##9.99"/>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-12" id="obsDiv">
+						<div class="form-group">
+							<label for="observacoes">Observações</label>
+							<textarea class="form-control" name="observacoes" id="observacoes"></textarea>
+						</div>
+					</div>
+				</div>
+				<!-- aprovacao -->
+				<div id="aprovdiv" class="aprovdiv" >
+					<div class="col-md-12">
+						<input type="hidden" id="aprovacao" name="aprovacao" value="0">
+				
+						<legend>Aprovação</legend>
+						<div id="aprovGestorDiv" class=' row'>
+								<div class="col-md-3">
+									<label for="aprovGestor">Aprova Solicitação?</label>
+				
+									<div class='form-group'>
+										<select class="form-control" name="aprovGestor" id="aprovGestor">
+											<option value="sim">Aprovar</option>
+											<option value="nao">Reprovar</option>
+										</select>
+										<!-- <input type="radio" name="aprovGestor" id="aprovGestor_sim"  value="sim"/>
+											<label for="aprovGestor_sim">Sim</label><br>
+											<input type="radio" name="aprovGestor" id="aprovGestor_nao"  value="nao"/>
+											<label for="aprovGestor_nao">N&atilde;o</label><br> -->
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class='form-group' id='aprovGestorObsdiv'>
+										<label for="aprovGestorObs">Observações</label>
+										<textarea id="aprovGestorObs" class="form-control" name="aprovGestorObs"></textarea>
+										</br>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<!-- aprovacao -->
+		</form>
+		<div class="row"><br></div>
+	</div>
+</body>
+<script type="text/javascript" src="principal.js"></script>
+<script type="text/javascript" src="validate.js"></script>
+	<script>
+		FLUIGC.calendar('.date');
+	</script>
+</html>

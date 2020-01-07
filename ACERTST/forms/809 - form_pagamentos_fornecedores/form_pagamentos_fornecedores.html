@@ -1,0 +1,783 @@
+<html>
+<head>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="/webdesk/vcXMLRPC.js"></script>
+	<script language="javascript" type="text/javascript" src="prazos.js"></script>
+	<script language="javascript" type="text/javascript" src="buscanfes.js"></script>
+	<script language="javascript" type="text/javascript" src="custom.js"></script>
+	<script language="javascript" type="text/javascript" src="multiplasNatUtils.js"></script>
+	<script language="javascript" type="text/javascript" src="codigoBarras.js"></script>
+	<script type="text/javascript" charset="utf-8">
+
+
+	var textosAlertas = [];
+	var alert = 'i18n.translate("listaErro")';
+	var mensagemSld = 'i18n.translate("erroSaldo") ';
+	var mensagemSld21 = 'i18n.translate("erroSaldo21") ';
+	var mensagemSld22 = 'i18n.translate("erroSaldo22") ';
+	var mensagemSld3 = 'i18n.translate("erroSaldo3") ';
+	var saldoRateio_1 = 'i18n.translate("saldoRateio.1") ';
+	var saldoRateio_2 = 'i18n.translate("saldoRateio.2") ';
+	var saldoRateioErro = 'i18n.translate("saldoRateioErro") ';
+	textosAlertas['NmSolic']='i18n.translate("NmSolic")';
+	textosAlertas['cFilial']='i18n.translate("cFilial")';
+	// textosAlertas['cEmpresa']='i18n.translate("cEmpresa")';
+	textosAlertas['cCentroCusto']='i18n.translate("cCentroCusto")';
+	textosAlertas['MngrName']='i18n.translate("MngrName")';
+	textosAlertas['MngrAprov']='i18n.translate("MngrAprov")';
+	textosAlertas['cCodForn']='i18n.translate("CodForn")';
+	textosAlertas['cCodNatureza']='i18n.translate("cCodNatureza")';
+	textosAlertas['VencData']='i18n.translate("VencData")';
+	textosAlertas['TipoTitulo']='i18n.translate("TipoTitulo")';	
+	textosAlertas['EmissData']='i18n.translate("EmissData")';
+	textosAlertas['ValTitulo']='i18n.translate("ValTitulo")';
+	textosAlertas['WKsuperior']='i18n.translate("WKsuperior")';	
+	textosAlertas['obsPayment']='i18n.translate("obsPayment")';
+	textosAlertas['negativaGest']='i18n.translate("obsNotes")';
+	textosAlertas['negativaDir']='i18n.translate("obsNotes")';
+	textosAlertas['optTransaction']='i18n.translate("optTransaction")';
+	textosAlertas['rateioCC']='i18n.translate("rateioCC")';
+	textosAlertas['docFiscal']='i18n.translate("docFiscal")';
+	textosAlertas['docNumTit']='i18n.translate("docNumTit")';  
+	textosAlertas['docNfeTit']='i18n.translate("docNfeTit")';  
+	textosAlertas['docSerieTit']='i18n.translate("docSerieTit")';  
+	textosAlertas['negativaSupply']='i18n.translate("obsNotes")';
+	textosAlertas['aprovmngrSupply']='i18n.translate("MngrAprov")';
+	textosAlertas['fiscalAprov']='i18n.translate("MngrAprov")';
+	textosAlertas['dirAprov']='i18n.translate("MngrAprov")';
+	textosAlertas['negativaFiscal']='i18n.translate("obsNotes")';
+	textosAlertas['descContaOrc']='i18n.translate("descContaOrc")';
+	textosAlertas['docTipo']='i18n.translate("docTipo")';
+	var beforeSendValidate = function(numState, nextState) {
+		//VErifica se a forma de pagamento foi preenchida
+		if(numState == 43 && $("#cFormPagto").val().trim() == ""){
+			var formPagamento = calcFormPagamento();
+			$("#cFormPagto").val(formPagamento);
+			$("#descFormPagto").val(formPagamento + " Dias uteis");
+		}
+		var camposObrigatorios = new Array();
+		/* Limpa campos que estavam com erro da validação anterior */
+		$(".has-error").removeClass("has-error");
+
+		$(".has-free").each(
+			function() {
+				var tag = $(this).prop("tagName");
+				switch (tag) {
+				case "INPUT":
+					var tipo = $(this).prop("type");
+					if (tipo == "radio") {
+						var checado = $("[name='"+ $(this).prop("name") + "']:checked");
+						if(checado.length == 0){
+							if($(this).prop("name")=='docFiscal'){
+								if ($('#fiscalAprov_sim').is(':checked')) {
+									if(camposObrigatorios.indexOf($(this).prop("name")) < 0){
+										camposObrigatorios.push($(this).prop("name"));
+										$(this).closest(".radio").addClass("has-error");
+									}
+								}
+							}else if(camposObrigatorios.indexOf($(this).prop("name")) < 0){
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".radio").addClass("has-error");
+							}
+						}
+					} else if (tipo == "checkbox") {
+						if ($(this).checked == false) {
+							camposObrigatorios.push($(this).prop("name"));
+							$(this).closest(".form-group").addClass("has-error");
+						}
+					} else {
+						switch ($(this).prop("id")){
+						case 'TipoTitulo':
+							if ($('#fiscalAprov_sim').is(':checked')&&$(this).val() == "") {
+								if ($(this).val() == ""|| $(this).val() == 'mm/dd/yyyy'|| $(this).val() == 'dd/mm/aaaa'){
+									camposObrigatorios.push($(this).prop("name"));
+									$(this).closest(".form-group").addClass("has-error");
+								}
+							}
+						break;
+						case 'cCodNatureza':
+							if ($('#fiscalAprov_sim').is(':checked')&&$(this).val() == "") {
+								if ($(this).val() == ""|| $(this).val() == 'mm/dd/yyyy'|| $(this).val() == 'dd/mm/aaaa'){
+									camposObrigatorios.push($(this).prop("name"));
+									$(this).closest(".form-group").addClass("has-error");
+								}
+							}
+						break;
+						// case 'docNumTit':
+						// 	if ($('#fiscalAprov_sim').is(':checked')&&$(this).val() == "") {
+						// 		if ($(this).val() == ""|| $(this).val() == 'mm/dd/yyyy'|| $(this).val() == 'dd/mm/aaaa'){
+						// 			camposObrigatorios.push($(this).prop("name"));
+						// 			$(this).closest(".form-group").addClass("has-error");
+						// 		}
+						// 	}
+						// break;
+						case 'docNfeTit':
+							if($(this).val().length < 44){
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+							}
+						break;
+						default:
+							if ($(this).val() == ""|| $(this).val() == 'mm/dd/yyyy'|| $(this).val() == 'dd/mm/aaaa'){
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+							}
+						}
+						
+					}
+					break;
+				case "SELECT":
+					if ($(this).val() == "") {
+						camposObrigatorios.push($(this).prop("name"));
+						$(this).closest(".form-group").addClass("has-error");
+					}
+					break;
+				case "TEXTAREA":
+					switch ($(this).prop("id")){
+					case 'negativaSupply':
+						if ($('#aprovmngrSupply_nao').is(':checked')&&$(this).val() == "") {
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+						}
+					break;
+					case 'negativaGest':
+						if ($('#MngrAprov_nao').is(':checked')&&$(this).val() == "") {
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+						}
+					break;
+					case 'negativaDir':
+						if ($('#dirAprov_nao').is(':checked')&&$(this).val() == "") {
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+						}
+					break;
+
+					case 'negativaFiscal':
+						if ($('#fiscalAprov_nao').is(':checked')&&$(this).val() == "") {
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+						}
+						
+					break;
+					case 'negativapag':
+						if ($('#pagAprov_nao').is(':checked')&&$(this).val() == "") {
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+						}	
+					break;
+					default :
+						if ($(this).val() == "") {
+								camposObrigatorios.push($(this).prop("name"));
+								$(this).closest(".form-group").addClass("has-error");
+						}
+					}					
+				}
+			});
+		var txtErro ='';
+		if (camposObrigatorios.length > 0) {
+			txtErro = alert;
+			for ( var i = 0; i < camposObrigatorios.length; i++) {
+				if (textosAlertas[camposObrigatorios[i]] != '') {
+					txtErro += "\n" + textosAlertas[camposObrigatorios[i]];
+				}
+			}
+			
+		}
+		validarPreenchidos();
+		console.info('TESTE');	
+		//define datas prazo para atividades de aprovacao
+		var aprovDate = prazoAprovacao();
+		var finalDate = prazoFinalizar();
+		// apvPrazo, finPrazo
+		$("#apvPrazo").val(dateToString(aprovDate));
+		$("#finPrazo").val(dateToString(finalDate));
+
+		console.log($("#finPrazo").val());	
+		console.log($("#apvPrazo").val());	
+		//throw "teste";
+		 if(txtErro!=''){throw (txtErro);}
+
+	};
+	
+	
+	</script>	
+</head>
+<body>
+<div class="fluig-style-guide">
+<div class="container">
+<form name="form" role="form" id="form">
+<div class="row">	
+<div id="box-toggle">
+<div class="">
+    <div class="panel-body">
+    
+    
+    <center><h2>Solicita&ccedil;&atilde;o de Pagamentos</h2></br></center>  
+			<div class='form-group text-center' id='gtImpressao'>
+				<label  class="" style='font-style:bold;'><a href = "impressaoSemPO.html" target="_blank">Imprimir / Print</a></label>
+			</div>	
+   
+
+<div class="">
+<div class="panel-body">
+	<input type="hidden" name="campo_processo" id="campo_processo"value='' />
+	<input type="hidden" name="WKMode" id="WKMode" />
+	<input type="hidden" name="WKpapel" id="WKpapel"  />
+	<input type="hidden" name="WKtitulo" id="WKtitulo"  />
+	<input type="hidden" name="WKtipoOper" id="WKtipoOper"  />
+	<input type="hidden" name="execSN" id="execSN"  />
+	<input type="hidden" name="WKinformacoes" id="WKinformacoes"  /> 
+	<input type="hidden" name="NrSolic" id="NrSolic"  /> 
+	<input type="hidden" name="DtSolic" id="DtSolic"  /> 
+	<input type="hidden" name="dtClass" id="dtClass"  /> 
+	<input type="hidden" name="mensagemSaldo" id="mensagemSaldo"  />
+	<input type="hidden" name="codEmpresa" id="codEmpresa" />
+	<input type="hidden" name="codFilial" id="codFilial"   />
+	<input type="hidden" name="chaveInt" id="chaveInt"   />
+
+	<div class='col-xs-12 col-md-12 ' id='solicitante'>
+	<h3>Solicitante</h3>
+		
+		<div class='col-xs-12 col-md-6'>
+			<div class='form-group'>
+				<label for="NmSolic">Nome</label>
+				<input type="hidden" name="idSolic" id="idSolic"  />
+				<br><input type="text" name="NmSolic" id="NmSolic" class="form-control" readonly='readonly'/>
+			</div>
+		</div>
+		<!-- <div class='col-xs-12 col-md-6' >
+			<label for="Desc">Escolha a opera&ccedil;&atilde;o</label><br>
+			
+			<div class='form-group'>
+				<input type="radio" name="optTransaction" id="optTransaction_2"  value="2"/>
+				<label for="optTransaction_2">Facilities</label><br>
+				<input type="radio" name="optTransaction" id="optTransaction_3"  value="3"/>
+				<label for="optTransaction_3">RH</label><br>
+				<input type="radio" name="optTransaction" id="optTransaction_1"  value="1"/>
+				<label for="optTransaction_1">Demais &Aacute;reas</label><br>
+			</div>
+		</div> -->
+		<div id='detalhesSolicitacao'>
+			<div class='col-xs-12 col-md-12' >
+				<div class='form-group'>
+					<label >Especifique aqui o hist&oacute;rico desse pagamento</label>
+					<br><textarea id="obsPayment" name="obsPayment" class="form-control" rows="5" maxlength="2000"></textarea>
+				</div>
+			</div>
+			<div class='col-md-6 col-xs-12'>
+				<div class='form-group'>
+					<input type="hidden" name="apvPrazo" id="apvPrazo">
+					<input type="hidden" name="finPrazo" id="finPrazo">
+					<label for="VencData">Data de Vencimento</label>
+					<div class="col-md-12 col-xs-12 fs-no-padding">	
+						<input type="text" name="VencData" id="VencData" class="form-control" onblur="validaData(this);"/><br>
+					</div>
+					<div class="alert alert-danger" id='ErroVencData'>
+						<strong>i18n.translate("ahNao")!</strong> i18n.translate("erroData").
+					</div>
+				</div>	
+				<div class='form-group'>
+					<label for="EmissData">Data de Emiss&atilde;o</label>
+					<div class="col-md-12 col-xs-12 fs-no-padding">	
+						<input type="text" name="EmissData" id="EmissData" class="form-control" onblur="validaData(this);"/><br>
+					</div>
+					<div class="alert alert-danger" id='ErroEmissData'>
+						<strong>i18n.translate("ahNao")!</strong> i18n.translate("erroData").
+					</div>
+				</div>
+				<div class='form-group'>
+					<label for="ValLiqTitulo">Valor Líquido</label>
+					<br><input type="text" name="ValLiqTitulo" id="ValLiqTitulo" class="form-control maskValor" maxlength='15'/></br>
+				</div>	
+				<div class='form-group'>
+					<label for="ValTitulo">Valor Bruto</label>
+					<br><input type="text" name="ValTitulo" id="ValTitulo" class="form-control maskValor" maxlength='15'/></br>
+				</div>
+				<div class='form-group'>
+					<label for="cFormPagto">Forma de Pagamento</label>
+					<input type="hidden" name="cFormPagto" id="cFormPagto" />
+					<input type="text" name="descFormPagto" id="descFormPagto" class="form-control" readonly="readonly" />
+				</div>
+				<div class='form-group'>
+					<label for="cNatureza">Natureza</label>
+					<div class="col-md-11 col-xs-11 fs-no-padding">	
+						<div class='form-group'>
+							<input type="hidden" name="cNatureza" id="cNatureza" />
+							<input type="text" name="descNatureza" id="descNatureza" class="form-control" readonly="readonly" />
+						</div>
+					</div>
+					<div class="col-md-1 col-xs-1 fs-no-padding "id='BT_Natureza'>
+						<button class="btn btn-default fluigicon fluigicon-search fluigicon-xs zoom" type="button" id="btZoomNatureza" ></button>		
+					</div>
+				</div>
+
+				<div class='form-group' id="rateioCCDiv">
+					<label for="Desc">Rateio por Centro de Custo S/N?</label><br>
+					<input type="radio" name="rateioCC" id="rateioCC_sim"  value="sim"/>
+					<label for="rateioCC_sim">Sim</label><br>
+					<input type="radio" name="rateioCC" id="rateioCC_nao"  value="nao" />
+					<label for="rateioCC_nao">N&atilde;o</label><br>
+				</div>
+				<div class="alert alert-danger fs-no-padding" id='erroRateioCC'>
+					 i18n.translate("PreenchaInformacoes").
+				</div>
+			</div>
+			<div class='col-md-6 col-xs-12'>
+				<div class='row'>
+					<div class='col-md-12 col-xs-12'>
+						<label for="cCentroCusto">Centro de Custo</label>
+						<div class="col-md-11 col-xs-11 fs-no-padding">	
+							<div class='form-group'>
+								<input type="hidden" name="cCentroCusto" id="cCentroCusto"  />
+								<input type="text" name="descCentroCusto" id="descCentroCusto" class="form-control" readonly="readonly" />
+							</div>
+						</div>
+						<div class="col-md-1 col-xs-1 fs-no-padding "id='BT_CC'>
+							<button class="btn btn-default fluigicon fluigicon-search fluigicon-xs zoom" type="button" id="btZoomCC" ></button>		
+						</div>
+						<div class="alert alert-danger fs-no-padding" id='ErroCC'>
+							<strong>i18n.translate("ahNao")!</strong> i18n.translate("InformeEmpresa").
+						</div>
+					</div>								
+				</div>	
+				<div class='form-group'>
+					<label for="cCentroCusto">Conta Or&ccedil;amento</label>
+					<div class="col-md-11 col-xs-11 fs-no-padding">	
+						<div class='form-group'>
+							<input type="hidden" name="cContaOrc" id="cContaOrc" />
+							<input type="text" name="descContaOrc" id="descContaOrc" class="form-control" readonly="readonly" />
+						</div>
+					</div>
+					<div class="col-md-1 col-xs-1 fs-no-padding "id='BT_COrc'>
+						<button class="btn btn-default fluigicon fluigicon-search fluigicon-xs zoom" type="button" id="btZoomCOrc" ></button>		
+					</div>
+					<div class="alert alert-danger" id='ErroCOrc'>
+						<strong>i18n.translate("ahNao")!</strong> i18n.translate("InformeEmpresa").
+					</div>
+				</div>
+				<!-- <div class='form-group'>
+					<label for="aproverName">Aprovador</label>
+					<input type="hidden" name="WKsuperior" id="WKsuperior"  />
+					<input type="text" name="aproverName" id="aproverName" class="form-control" readonly='readonly'/>
+				</div> -->
+				<div class='form-group'>
+					<label for="CodForn">Fornecedor</label>
+					<input type="hidden" name="cCodForn" id="cCodForn"  />
+					<input type="hidden" name="cCgcForn" id="cCgcForn"  />
+					<input type="hidden" name="clojaForn" id="clojaForn"  />
+					<div class="col-md-11 col-xs-11 fs-no-padding">	
+						<div class='form-group'>
+							<input type="text" name="CodForn" id="CodForn" class="form-control"/>
+						</div>
+					</div>
+					<div class="col-md-1 col-xs-1 fs-no-padding "id='BT_Fornecedor'>
+						<button class="btn btn-default fluigicon fluigicon-search fluigicon-xs zoom" type="button" id="btZoomFornecedor" ></button>		
+					</div>
+					<div class="alert alert-danger" id='ErroForn'>
+						<strong>i18n.translate("ahNao")!</strong> i18n.translate("InformeEmpresa").
+					</div>
+				</div>
+				<div class='form-group'>
+					<label for="aproverName">Detalhes Fornecedor</label><br>
+					<input type="text" name="detailFornecedor" id="detailFornecedor" class="form-control" readonly="readonly"/>
+				</div>
+				
+			</div>	
+		</div>
+		<div class='col-xs-6 col-md-6' id="docNumTitDiv">
+			<div class='form-group'>
+				<label for="docNumTit">N&uacute;mero do Documento</label>
+				<input type="text" name="docNumTit" id="docNumTit" class="form-control" maxlength="9"/>		
+			</div>
+		</div>
+		<div class='col-xs-6 col-md-6' id="docBarCodeDiv">
+			<div class='form-group'>
+				<label for="docBarCode">Código de Barras</label>
+				<div class="input-group">
+				<input type="text" name="docBarLinha" id="docBarLinha" class="form-control"/>		
+				<span class="input-group-btn"><button class="btn btn-default"  onclick="f_barra();">ok</button></span>
+			</div>
+				<input type="hidden" name="docBarCode" id="docBarCode"/>		
+			</div>
+		</div>
+
+		<div class='col-xs-6 col-md-6'>
+			<label for="Desc">Tipo de Documento?</label><br>			
+			<div class='form-group' id="docTipoDiv">
+				<input type="radio" name="docTipo" id="docTipo_1"  value="TAX" />
+				<label for="docTipo_1">Fiscal</label><br>
+				<input type="radio" name="docTipo" id="docTipo_2"  value="PA" />
+				<label for="docTipo_2">Adiantamento</label><br>
+				<input type="radio" name="docTipo" id="docTipo_3"  value="DP" />
+				<label for="docTipo_3">Nota de Débito</label>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-6">	
+				<div class='alert alert-warning' id='lembrete'>
+					<p>Lembre-se de anexar a nota fiscal desse pagamento
+					<button type="button" id="btnComprov" class="btn btn-default" onclick="JSInterface.showCamera();"><span class="fluigicon fluigicon-paperclip"></span> Anexo</button>
+					</p>
+				</div>
+			</div>	
+				
+	</div>
+	<!--  NFEs -->
+	
+	<div class='col-md-12 col-xs-12 ' id='listaNFEs' style="display: none;">
+		<h3>NFE's </h3>
+		<div class='form-group'>	
+			<table id='adicionarLinha'>
+				<tr>
+					<td>
+						<!-- <button class="btn btn-default fluigicon fluigicon-plus-sign fluigicon-xs " 
+					type="button" id="btNovoNFE" onclick="addNFeTable();" ></button> -->
+					</td>
+					<!-- <td><button class="btn btn-default"type="button" id="btBuscanfe" onclick="buscaNfes();" >NFE's Fornecedor</button> -->
+					<td><button class="btn btn-default"type="button" id="BtZoomNfe">NFE's Fornecedor</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class='form-group'>
+			<table class="table" border="0" id="tableNFE"
+				tablename="tableNFE" noaddbutton="true" nodeletebutton="true"
+				deleteicon="lixeira.png">
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class='form-group'>
+								<div class='col-xs-12 col-md-1' >
+									<br>
+									<button class="btn btn-default fluigicon fluigicon-minus-sign fluigicon-xs " type="button" id="BTdelNfe" onclick="delNfeLinha(this);" ></button>
+								</div>
+								<div class='col-xs-12 col-md-5' >
+									<div class='form-group'>
+										<label for="docChNfe">Chave NFE</label>
+										<!-- <input type="hidden" name="docNNFE" id="docNNFE"/>			 -->
+										<input type="text" name="docChNfe" id="docChNfe" class="form-control" maxlength="44" mask="#"/>			
+									</div>
+								</div>
+								<div class='col-xs-12 col-md-2' >
+									<div class='form-group'>
+										<label for="docNNFE">Nota</label>
+										<input type="text" name="docNNFE" id="docNNFE" class="form-control" />			
+									</div>
+								</div>
+								<div class='col-xs-12 col-md-2' >
+									<div class='form-group'>
+										<label for="docSerieNfe">Série</label>
+										<input type="text" name="docSerieNfe" id="docSerieNfe" class="form-control" maxlength="3"/>			
+									</div>
+								</div>
+								<div class='col-xs-12 col-md-2' >
+									<div class='form-group'>
+										<label for="docValorNfe">Valor</label>
+										<input type="text" name="docValorNfe" id="docValorNfe" class="form-control maskValor docValorNfe" onfocusout="attValTotal();"/>			
+									</div>
+								</div>
+
+							</div>
+						</td>											
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	
+	</div>	
+			<!--  NFEs -->
+	
+	<!-- Rateio -->
+	<div class='col-md-12 col-xs-12 ' id='rateiosCentrodeCusto'>
+		<h3>Rateios </h3>
+		<div class='form-group'>	
+			<table id='adicionarLinha'>
+				<tr>
+					<td><button class="btn btn-default fluigicon fluigicon-plus-sign fluigicon-xs " 
+					type="button" id="btNovoRateioCentroCusto" ></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class='form-group'>
+			<table class="table" border="0" id="tableRateioCentroCusto"
+				tablename="tableRateioCentroCusto" noaddbutton="true"
+				deleteicon="lixeira.png">
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class='form-group'>
+								<div class='col-md-3 col-xs-3'>
+									<label for="cCentroCustoRat">Centro de Custo</label>
+									<div class="col-md-11 col-xs-11 fs-no-padding ">
+										<div class='form-group'>
+											<input type="text" name="cCentroCustoRat" id="cCentroCustoRat" class="form-control" readonly='readonly'/>
+										</div>	
+									</div>
+									<div class="col-md-1 col-xs-1 fs-no-padding esconde "id='BT_CCustoRateado'>
+										<button class="btn btn-default fluigicon fluigicon-search fluigicon-xs zoom btZoomRatCCusto" type="button" id="btZoomRatCCusto" ></button>		
+									</div>
+								</div>
+								<div class='col-md-3 col-xs-3'>
+									<label for="cConOrcRat">Conta Orçamento</label>
+									<div class="col-md-11 col-xs-11 fs-no-padding ">
+										<div class='form-group'>
+											<input type="text" name="cConOrcRat" id="cConOrcRat" class="form-control" readonly='readonly'/>
+										</div>	
+									</div>
+									<div class="col-md-1 col-xs-1 fs-no-padding esconde "id='BT_cConOrcRat'>
+										<button class="btn btn-default fluigicon fluigicon-search fluigicon-xs zoom BTcConOrcRat" type="button" id="BTcConOrcRat" onclick="zoomCOrcRat(this);" ></button>		
+									</div>
+								</div>
+								<div class='col-md-3 col-xs-3'>
+									<label for="valorNatureza">Valor</label>
+									<div class='form-group'>
+										<input type="text" name="valorCCusto" id="valorCCusto" class="desabilita form-control" />
+									</div>								
+								</div>
+								<div class='col-md-3 col-xs-3'>
+									<label for="percentualNatureza">Percentual</label>	
+									<div class='form-group'>
+										<input type="text" name="percentualCCusto" id="percentualCCusto" class="desabilita form-control"
+										maxlength='11'/>
+									</div>
+								</div>																
+							</div>
+						</td>											
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+			<!--  Rateios -->
+		<div class="modal" id="modalErroValorSomado" tabindex="-1" role="dialog" aria-labelledby="Title" aria-hidden="false">
+		  <div class="modal-dialog " role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Alerta / Alert</h4>
+			  </div>
+			  <div class="modal-body">
+			  
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			  </div>
+			</div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</div>
+
+	<div class='col-md-12 col-xs-12 ' id='supply'>
+	
+		<h3>Compras</h3>
+		<div class='col-md-6 col-xs-6'>
+			<div class='form-group'>
+				<label for="nomeSupply">Name</label>
+				<input type="hidden" name="idAnalistaSupply" id="idAnalistaSupply"  />
+				<br><input type="text" name="nomeSupply" id="nomeSupply" class="form-control" readonly='readonly'/></br>
+			</div>	
+		</div>
+		<div class='col-md-6 col-xs-6'>
+			<div class='col-md-6 col-xs-6'>
+					<label for="aprovmngrSupply">Aprova?</label>
+			</div>
+			<div class='col-md-6 col-xs-6'>
+				<div class='form-group'>
+					<input type="radio" name="aprovmngrSupply" id="aprovmngrSupply_sim"  value="sim"/>
+					<label for="aprovmngrSupply_sim">Sim</label><br>
+					<input type="radio" name="aprovmngrSupply" id="aprovmngrSupply_nao"  value="nao"/>
+					<label for="aprovmngrSupply_nao">N&atilde;o</label><br>
+				</div>
+			</div>
+			<div class='form-group' id='divnegativaSupply'>
+				<label for="negativaSupply">Observação</label>
+				<br><textarea id="negativaSupply"  class="form-control" name="negativaSupply" rows="2" maxlength="500"></textarea></br>
+			</div>
+		</div>
+	</div>	
+
+
+
+	<div class='col-md-12 col-xs-12 ' id='diretoria'>
+		<h3>Diretoria</h3>
+
+			<div class='col-md-6 col-xs-6'>
+					<div class='form-group'>
+						<label for="dirName">Name</label>
+						<input type="hidden" name="idDir" id="idDir"  />
+						<br><input type="text" name="dirName" id="dirName" class="form-control" readonly='readonly'/></br>
+					</div>	
+				</div>
+				<div class='col-md-6 col-xs-6'>
+					<div class='col-md-6 col-xs-6'>
+							<label for="dirAprov">Aprova?</label>
+					</div>
+					<div class='col-md-6 col-xs-6'>
+						<div class='form-group'>
+							<input type="radio" name="dirAprov" id="dirAprov_sim"  value="sim"/>
+							<label for="dirAprov_sim">Sim</label><br>
+							<input type="radio" name="dirAprov" id="dirAprov_nao"  value="nao"/>
+							<label for="dirAprov_nao">N&atilde;o</label><br>
+						</div>
+					</div>
+					<div class='form-group' id='divnegativaGest'>
+						<label for="negativaDir">Observação</label>
+						<br><textarea id="negativaDir"  class="form-control" name="negativaDir" rows="2" maxlength="500"></textarea></br>
+					</div>
+				</div>
+	</div>
+	<div class='col-md-12 col-xs-12 ' id='manager'>
+	<!--accordion  -->
+	<div class="panel-group" id="accordion" style="display: none;">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a class="collapse-icon" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+							Clique para visualizar os pagamentos anteriores	
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse">
+					<div class="panel-body">
+						<table id="tbPagAnt" class="tbPagAnt table table-striped">
+							<thead>
+								<tr>
+									<th>Solicitação</th>
+									<th>Data</th>
+									<th>Valor</th>
+								</tr>
+							</thead>
+							<tbody id="tbPABody">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--accordion  -->	
+	<h3>Gerente</h3>
+		<div class='col-md-6 col-xs-6'>
+			<div class='form-group'>
+				<label for="MngrName">Name</label>
+				<input type="hidden" name="idMngr" id="idMngr"  />
+				<br><input type="text" name="MngrName" id="MngrName" class="form-control" readonly='readonly'/></br>
+			</div>	
+		</div>
+		<div class='col-md-6 col-xs-6'>
+			<div class='col-md-6 col-xs-6'>
+					<label for="MngrAprov">Aprova?</label>
+			</div>
+			<div class='col-md-6 col-xs-6'>
+				<div class='form-group'>
+					<input type="radio" name="MngrAprov" id="MngrAprov_sim"  value="sim"/>
+					<label for="MngrAprov_sim">Sim</label><br>
+					<input type="radio" name="MngrAprov" id="MngrAprov_nao"  value="nao"/>
+					<label for="MngrAprov_nao">N&atilde;o</label><br>
+				</div>
+			</div>
+			<div class='form-group' id='divnegativaGest'>
+				<label for="negativaGest">Observação</label>
+				<br><textarea id="negativaGest"  class="form-control" name="negativaGest" rows="2" maxlength="500"></textarea></br>
+			</div>
+		</div>
+	</div>	
+	<div class='col-md-12 col-xs-12 ' id='financeiro'>
+		<h3>Fiscal</h3>
+		<div id='autorizacaoFiscal'>
+			<div class='col-md-6 col-xs-6'>
+				<div class='form-group'>
+					<label for="FiscalName">Name</label>
+					<input type="hidden" name="idAnFiscal" id="idAnFiscal"  />
+					<br><input type="text" name="FiscalName" id="FiscalName" class="form-control" readonly='readonly'/></br>
+				</div>	
+			</div>
+			<div class='col-md-6 col-xs-6'>
+				<div class='col-md-6 col-xs-6'>
+					<label for="fiscalAprov">Aprova?</label>
+				</div>
+				<div class='col-md-6 col-xs-6'>
+					<div class='form-group'>
+						<input type="radio" name="fiscalAprov" id="fiscalAprov_sim"  value="sim"/>
+						<label for="fiscalAprov_sim">Sim</label><br>
+						<input type="radio" name="fiscalAprov" id="fiscalAprov_nao"  value="nao"/>
+						<label for="fiscalAprov_nao">N&atilde;o</label><br>
+					</div>
+				</div>
+				<div class='form-group' id='divnegativaFiscal'>
+					<label for="negativaFiscal">Observação</label>
+					<br><textarea id="negativaFiscal"  class="form-control" name="negativaFiscal" rows="2" maxlength="500"></textarea></br>
+				</div>
+			</div>
+			
+		</div>
+		<!-- <div id='dadosFiscais'> -->
+		<!-- </div> -->
+	</div>
+	<div class='col-md-12 col-xs-12 ' id='pagamento'>
+		<h3>Financeiro</h3>
+		<div id='autorizacaopag'>
+			<div class='col-md-6 col-xs-6'>
+				<div class='form-group'>
+					<label for="pagName">Name</label>
+					<input type="hidden" name="idAnpag" id="idAnpag"  />
+					<br><input type="text" name="pagName" id="pagName" class="form-control" readonly='readonly'/></br>
+				</div>	
+			</div>
+			<div class='col-md-6 col-xs-6'>
+				<div class='col-md-6 col-xs-6'>
+					<label for="pagAprov">Aprova?</label>
+				</div>
+				<div class='col-md-6 col-xs-6'>
+					<div class='form-group'>
+						<input type="radio" name="pagAprov" id="pagAprov_sim"  value="sim"/>
+						<label for="pagAprov_sim">Sim</label><br>
+						<input type="radio" name="pagAprov" id="pagAprov_nao"  value="nao"/>
+						<label for="pagAprov_nao">N&atilde;o</label><br>
+					</div>
+				</div>
+				<div class='form-group' id='divnegativapag'>
+					<label for="negativapag">Observação</label>
+					<br><textarea id="negativapag"  class="form-control" name="negativapag" rows="2" maxlength="500"></textarea></br>
+				</div>
+			</div>
+			
+		</div>
+		<!-- <div id='dadosFiscais'> -->
+		<!-- </div> -->
+	</div>
+	<div class='col-md-12 col-xs-12 ' id='msgProtheus'>
+		<h3>Retorno Integração</h3>
+		<div class='form-group'>
+			<input type="hidden" name="cKey" id="cKey">
+			<br><textarea id="msgRetorno"  class="form-control" name="msgRetorno" rows="2" maxlength="500"></textarea></br>
+		</div>
+	</div>
+	
+</div>
+</div>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+
+</body>
+</html>

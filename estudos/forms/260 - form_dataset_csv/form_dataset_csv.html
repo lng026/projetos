@@ -1,0 +1,105 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<base href="/">
+</head>
+<body>
+
+<form name="form" role="form">
+	<div id="destinoReact"></div>
+		<div class="container">
+			<div class="row">
+				<label for="ds_name">Dataset Name</label>
+				<input type="text" name="ds_name" id="ds_name" class="form-control">
+      </div>
+      <div class="row">
+			
+          <div id="tableResult"></div>
+      </div>
+			<div class="row">
+					<button type="button" id="button" onclick="exportCSV();" class="btn btn-primary">exportCSV</button>
+					<div class="col-md-12" id="divRel">
+					</div>
+			</div>
+		</div>
+</form>
+
+<!-- Button trigger modal -->
+<button type="button"
+ class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		Launch demo modal
+	  </button>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id='myModal'>
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <h4 class="modal-title">Modal title</h4>
+			</div>
+			<div class="modal-body">
+					
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		  </div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	  </div><!-- /.modal -->
+</body>
+<!--
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script src="webdesk/vcXMLRPC.js"></script>
+<script type="text/javascript" src="View.js"></script>
+<script type="text/javascript" src="ResultView.js"></script>
+<script type="text/javascript" src="dataset.js"></script>
+<script type="text/javascript" src="DatasetModel.js"></script>
+<script type="text/javascript" src="DatasetSevice.js"></script>
+-->
+
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script src="webdesk/vcXMLRPC.js"></script>
+<script src="/erpModules/resources/js/runtime-es2015.js" type="module"></script>
+	<script src="/erpModules/resources/js/runtime-es5.js" nomodule defer></script>
+	<script src="/erpModules/resources/js/polyfills-es5.js" nomodule defer></script>
+	<script src="/erpModules/resources/js/polyfills-es2015.js" type="module"></script>
+	<script src="/erpModules/resources/js/styles-es2015.js" type="module"></script>
+	<script src="/erpModules/resources/js/styles-es5.js" nomodule defer></script>
+	<script src="/erpModules/resources/js/vendor-es2015.js" type="module"></script>
+	<script src="/erpModules/resources/js/vendor-es5.js" nomodule defer></script>
+	<script src="/erpModules/resources/js/main-es2015.js" type="module"></script>
+	<script src="/erpModules/resources/js/main-es5.js" nomodule defer></script></body>
+<script>
+function showModal(){
+
+  var meuModal = FLUIGC.modal({
+         title: 'Teste',
+         id: 'fluig-modal',
+         size:'large',
+		content:'<app-photo-form [variavel] = "teste"></app-photo-form>',
+         actions: [{
+             'label': 'Save',
+             'bind': 'data-open-modal',
+         },{
+             'label': 'Cancel',
+             'bind': 'data-open-modal',
+             'autoClose': true
+         }]
+     });
+}
+
+
+</script>
+
+
+
+
+</html>

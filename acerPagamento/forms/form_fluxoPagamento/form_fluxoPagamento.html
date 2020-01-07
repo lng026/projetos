@@ -1,0 +1,410 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="processProps.js"></script>
+	<script type="text/javascript" src="ProcessConfigs.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+	<script type="text/javascript" src="validate.js"></script>
+	<script type="text/javascript" src="integracoes.js"></script>
+	<script type="text/javascript" src="codigoBarras.js"></script>
+	<style>span.obg{
+			color: red;
+			font-family: 'Verdana' !important;
+		  }</style>
+</head>
+<body>
+<div class="fluig-style-guide">
+	<form name="form" role="form">
+		<!-- container-fluid -->
+		<div class="container-fluid">
+			<!-- titulo -->
+			<div class="text-center">
+				<h1>Solicitação de pagamento</h1>
+				<p>Preencha o corretamente</p>
+				<div id="alertCorrecao" class="alert alert-info" style="display:none;">
+					<span class="fluigicon fluigicon-info-sign fluigicon-md"></span>
+				
+					<br>
+					<strong>
+						A Solicitação teve aprovação negada e necessita de correções.
+					</strong>
+				</div>
+			</div>
+			<!-- titulo -->
+			<!-- formulario de dados -->
+			<!-- campos escondidos -->
+			<input type="hidden" name="numSolicitacao"  id="numSolicitacao" value="">
+			<input type="hidden" name="atvAtual"  id="atvAtual" value="">
+			<input type="hidden" name="userAtual"  id="userAtual" value="">
+			<input type="hidden" name="cDescricao"  id="cDescricao" value="">
+			<input type="hidden" name="nBolCodBar"  id="nBolCodBar" value="">
+			<input type="hidden" name="cchave"  id="cchave" value="">
+			<input type="hidden" name="cFormaPgto"  id="cFormaPgto" value="">
+			<!-- campos escondidos -->
+			<div id="dadosCliente" style="display:none;">
+				<legend>Dados da OS</legend>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="os">OS</label>
+						<input type="text" name="os"  id="os" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="nSerie">nº Série</label>
+						<input type="text" name="nSerie"  id="nSerie" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 prodpartnumber">
+
+					<label>PartNumber</label>
+					<!-- <input class="form-control" name="pn_partNumber" id="pn_partNumber" type="text"/> -->
+
+					<div class="form-group">
+						<!-- <input type="text" name="pn_pro_cod"  id="pn_pro_cod" value="" class="form-control"> -->
+						<div class="form-group ">
+							<div class="input-group ">
+								<input type="text" id="pn_produto" name="pn_produto" class="form-control pn_pro" value="">
+								<span class="input-group-btn fluigicon">
+									<button type="button" id="btZoomProd" class="btn btn-default" onclick="zoomProdutoCod(this);">
+										<span class="fluigicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<label>Produto</label>
+					<div class="form-group">
+						<div class="form-group ">
+							<div class="input-group ">
+								<input class="form-control" name="produto" id="produto" type="text"/>
+								<span class="input-group-btn fluigicon">
+									<button type="button" id="btZoomProd" class="btn btn-default" onclick="zoomProdutoDesc(this);">
+										<span class="fluigicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="produto">Produto</label>
+						<input type="text" name="produto"  id="produto" value="" class="form-control" >
+					</div>
+				</div> -->
+			
+				
+				<div class="col-md-12 col-xs-12">
+					<div class="form-group">
+						<label for="motivo">Motivo</label>
+						<textarea name="motivo" id="" cols="30" rows="5" class="form-control" ></textarea>
+						<!-- <input type="text" name="motivo"  id="motivo" value="" class="form-control"> -->
+					</div>
+				</div>
+				<legend>Dados do Cliente</legend>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="nome">Nome</label>
+						<input type="text" name="nome"  id="nome" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="cpfcnpj">CPF/CNPJ</label>
+						<input type="text" name="cpfcnpj"  id="cpfcnpj" value="" class="form-control" >
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="form-group">
+						<label for="endereco">Endereço</label>
+						<input type="text" name="endereco"  id="endereco" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12">
+					<div class="form-group">
+						<label for="numero">Número</label>
+						<input type="text" name="numero"  id="numero" value="" class="form-control" placeholder="00" mask="#">
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="form-group">
+						<label for="complemento">Complemento</label>
+						<input type="text" name="complemento"  id="complemento" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="form-group">
+						<label for="bairro">Bairro</label>
+						<input type="text" name="bairro"  id="bairro" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12">
+					<div class="form-group">
+						<label for="cep">CEP</label>
+						<input type="text" name="cep"  id="cep" value="" class="form-control" mask="00000-000" placeholder="00000-000">
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="form-group">
+						<label for="cidade">Cidade</label>
+						<input type="text" name="cidade"  id="cidade" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12">
+					<div class="form-group">
+						<label for="estado">Estado</label>
+						<input type="text" name="estado"  id="estado" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="ccontaFin">Conta Contábil - Fin</label>
+						<input type="text" name="ccontaFin"  id="ccontaFin" value="" class="form-control" placeholder="000000000" mask="000000000">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="ccontaSiga">Conta Contábil - Microsiga</label>
+						<input type="text" name="ccontaSiga"  id="ccontaSiga" value="" class="form-control" placeholder="000000000" mask="000000000">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="natureza">Natureza</label>
+						<input type="text" name="natureza"  id="natureza" value="" class="form-control" placeholder="000000000" mask="000000000">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="ccusto">Centro de custo</label>
+						<input type="text" name="ccusto"  id="ccusto" value="" class="form-control" placeholder="000000000" mask="000000000">
+					</div>
+				</div>
+				
+			</div>
+			<div class="clean row"></div>
+			<div id="dadosBancarios" style="display:none;">
+				<legend>Dados para Crédito</legend>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="favorecido">Favorecido</label>
+						<input type="text" name="favorecido"  id="favorecido" value="" class="form-control">
+					</div>
+				</div>	
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="cpfcnpjFav">CPF/CNPJ Favorecido</label>
+						<input type="text" name="cpfcnpjFav"  id="cpfcnpjFav" value="" class="form-control">
+					</div>
+				</div>	
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="banco">BANCO</label>
+						<input type="text" name="banco"  id="banco" value="" class="form-control">
+						<div class="form-group">
+							<!-- <input type="text" name="pn_pro_cod"  id="pn_pro_cod" value="" class="form-control"> -->
+							<div class="form-group ">
+								<div class="input-group ">
+									<input type="text" id="bancoDesc" name="bancoDesc" class="form-control bancoDesc" value="">
+									<span class="input-group-btn fluigicon">
+										<button type="button" id="btZoomBanco" class="btn btn-default" onclick="zoomBanco(this);">
+											<span class="fluigicon-search"></span>
+										</button>
+									</span>
+								</div>
+							</div>
+	
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="agencia">AGÊNCIA</label>
+						<input type="text" name="agencia"  id="agencia" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="contac">Conta Corrente</label>
+						<input type="text" name="contac"  id="contac" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="contap">Conta Poupança</label>
+						<input type="text" name="contap"  id="contap" value="" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="dtVencimento">Vencimento</label>
+						<input type="text" name="dtVencimento"  id="dtVencimento" value="" class="form-control" >
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<div class="form-group">
+						<label for="valor">Valor</label>
+						<input type="text" name="valor"  id="valor" value="" class="form-control" mask="#00.000.000.000.000,00" >
+					</div>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<!-- <div class="form-group">
+						<label for="nBoleto">Boleto</label>
+						<input type="text" name="nBoleto"  id="nBoleto" value="" class="form-control" >
+					</div> -->
+					<div class='form-group'>
+						<label for="nBoleto">Código de Barras</label>
+						<div class="input-group">
+						<input type="text" name="nBoleto" id="nBoleto" class="form-control"/>		
+						<span class="input-group-btn"><button class="btn btn-default"  onclick="f_barra();">ok</button></span>
+					</div>		
+					</div>
+				</div>
+			</div>
+		<!-- aprovacao -->
+		<div id="aprovTriagemdiv" class="row" style="display:none;">
+			<div class="col-md-12" >
+				 <legend>Aprovação Triagem</legend>
+					<div id="aprovTriagemDiv" class=' row'>
+					<div class="panel-body">
+						<div class="col-md-3">
+							<div class='form-group'>
+								<label for="aprovTriagem">Aprova solicitação?</label>
+								<select class="form-control" name="aprovTriagem" id="aprovTriagem">
+									<option value="1">Aprovar</option>
+									<option value="0">Reprovar</option>
+								</select>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class='form-group' id='aprovTriagemObsdiv'>
+							<label for="aprovTriagemObs">Observações</label>
+							<textarea id="aprovTriagemObs"  class="form-control" name="aprovTriagemObs"></textarea></br>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div id="aprovCorddiv" class="row" style="display:none;"> 
+				<div class="col-md-12" >
+					 <legend>Aprovação Cordenação</legend>
+						<div id="aprovCordDiv2" class=' row'>
+						<div class="panel-body">
+							<div class="col-md-3">
+								<div class='form-group'>
+									<label for="aprovCord">Aprova solicitação?</label>
+									<select class="form-control" name="aprovCord" id="aprovCord">
+										<option value="1">Aprovar</option>
+										<option value="0">Reprovar</option>
+									</select>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<div class='form-group' id='aprovCordObsdiv'>
+								<label for="aprovCordObs">Observações</label>
+								<textarea id="aprovCordObs"  class="form-control" name="aprovCordObs"></textarea></br>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		<div id="aprovDirdiv" class="row" style="display:none;">
+				<div class="col-md-12" >
+					 <legend>Aprovação Direção</legend>
+						<div id="aprovDirDiv" class=' row'>
+						<div class="panel-body">
+							<div class="col-md-3">
+								<div class='form-group'>
+									<label for="aprovDir">Aprova solicitação?</label>
+									<select class="form-control" name="aprovDir" id="aprovDir">
+										<option value="1">Aprovar</option>
+										<option value="0">Reprovar</option>
+									</select>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<div class='form-group' id='aprovDirObsdiv'>
+								<label for="aprovDirObs">Observações</label>
+								<textarea id="aprovDirObs"  class="form-control" name="aprovDirObs"></textarea></br>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		<!-- aprovacao -->
+		<!-- tableHistorico -->
+		<div id="historico">
+		<div id="tableHistorico" style="display: none;">
+			<table tablename="tbHistorico" id="tabela" class="table table-striped" noaddbutton="true" nodeletebutton="true">
+				<thead>
+					<tr>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="histLinha">
+						<td class="" >
+							<label for="">Usuário</label>
+							<input type="text" name="usuario" id="usuario" class="form-control usuario">
+						</td>
+						<td>
+							<label>Data</label>
+							<input type="text" name="dtHist" id="dtHist" class="form-control dtHist">
+						</td>
+						<td>
+							<label>Aprovação</label>
+							<input type="text" name="aprovHist" id="aprovHist" class="form-control aprovHist">
+						</td>
+						<td>
+							<label>Observações</label>
+							<input type="text" name="obsHist" id="obsHist" class="form-control obsHist">
+						</td>
+				</tr>
+				</tbody>
+				</table>
+			</div>
+			<div id="showHist" class="container" style="display: none;">
+				<legend>Histórico de aprovações</legend>
+				<div class="panel-body fs-sm-space clearfix">
+					<div class="media">
+						<div class="media-heading"  id='divHistorico'>
+							<!-- <div class="media-heading-text">
+								<h5>
+									<strong>
+										<span class="wrap-element-popover">Luan Gomes</span>
+									</strong>
+										<span>Aprovado</span>
+								</h5>
+								<h6>
+									02/10/2019 15:39:00
+								</h6>
+								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus enim at, adipisci, iste, distinctio quasi dolore minus voluptatibus beatae voluptates laborum possimus molestias architecto voluptatum sunt eum. Aliquid, labore ex.</p>
+							</div>
+							<hr> -->
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!-- tableHistorico -->
+			<!-- formulario de dados -->
+		</div>
+		<!-- container-fluid -->
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="dataset.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="container">
+					<input type="hidden" id="checkUsrDs" name="checkUsrDs">
+					<input type="hidden" id="solAprov" name="solAprov">
+					<h2 class="text-center">Atribuição de aprovador</h2>
+					<p class="text-center">Informe o usuário aprovador de solicitação</p>
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="col-md-6">
+									<label>Solicitante</label>
+									<select class="form-control" id="solicitante" name="solicitante"  
+										dataset="dsActiveColleague" 
+										datasetkey="colleaguePK.colleagueId" 
+										datasetvalue="colleagueName"></select>
+									<!-- <select class="form-control" id="solicitante" name="solicitante">
+										<option selected disabled>--- Selecione um solicitante ---</option>
+									</select> -->
+									<input type="hidden" id="descSolicitante" name="descSolicitante">
+								</div>
+								<div class="col-md-6">
+									<label>Aprovador</label>
+									<select class="form-control" id="aprovador" name="aprovador"  
+										dataset="dsActiveColleague" 
+										datasetkey="colleaguePK.colleagueId" 
+										datasetvalue="colleagueName"></select>
+
+									<!-- <select class="form-control" id="aprovador" name="aprovador">
+										<option selected disabled>--- Selecione um aprovador ---</option>
+									</select> -->
+									<input type="hidden" id="descAprovador" name="descAprovador">
+								</div>
+								<div class="col-md-6">
+									<label>Status</label>
+									<select class="form-control" id="status" name="status">
+										<option disabled>--- informe o status ---</option>
+										<option selected value="1">Ativo</option>
+										<option value="0">Desativado</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script>
+		$(document).ready(function(){
+			// if (FORM_MODE == 'VIEW') {
+		    //   	$("#solicitante").closest("div").append("<span class='form-control'>"+$("#descSolicitante").val()+"</span>");
+		    //   	$("#aprovador").closest("div").append("<span class='form-control'>"+$("#descAprovador").val()+"</span>");
+		    //   	$("#solicitante").hide();
+			// 	$("#aprovador").hide();
+		    //   	//$("#aprovador").append("<option value='"+$("#descSolicitante").val()+"'>"+$("#descSolicitante").val()+"</option>");
+		  	// }
+		});
+		var beforeSendValidate = function(numState, nextState){
+			console.log($("#solicitante>option:selected").text() + " - " + $("#aprovador>option:selected").text());
+			$('#solAprov').val($("#solicitante>option:selected").text() + " - " + $("#aprovador>option:selected").text());
+		}
+		
+		$("#solicitante").change(function(){
+			var solicitante = $("#solicitante>option:selected").val();
+			$("#descSolicitante").val($("#solicitante>option:selected").text());
+			if(FORM_MODE == 'ADD'){
+				console.log("Verifica se já existe um aprovador para o usuario");
+				var c1 = DatasetFactory.createConstraint('solicitante', solicitante, solicitante, ConstraintType.MUST);
+				var dataset = DatasetFactory.getDataset('dsCadastroAprovadores', null, new Array(c1), null);
+				if(dataset.values.length >= 1){
+					$("#checkUsrDs").val(1);
+				console.log("já existe um aprovador para o usuario");
+				}else{
+					$("#checkUsrDs").val(0);
+				}
+			}
+			
+		});
+
+		$("#aprovador").change(function(){
+			var solicitante = $("#aprovador>option:selected").val();
+			$("#descAprovador").val($("#aprovador>option:selected").text());
+
+			console.log($("#solicitante>option:selected").text() + " - " + $("#aprovador>option:selected").text());
+			$('#solAprov').val($("#solicitante>option:selected").text() + " - " + $("#aprovador>option:selected").text());
+		});
+		
+		
+	</script>
+</html>

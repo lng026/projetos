@@ -1,0 +1,402 @@
+<html>
+<head>
+	<!-- http://acertst.fluig.com -->
+	<meta charset="utf-8">
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<!-- <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="dataset.js"></script>
+	<script language="javascript" type="text/javascript" src="validaCPF.js"></script>
+	<script type="text/javascript" src="outros.js"></script>
+	<!-- <link type="text/css" rel="stylesheet" href="table.css"/> -->
+	<!-- <link type="text/css" rel="stylesheet" href="style.css"/> -->
+	<script type="text/javascript">
+
+		//Função para exibir calendário
+		setTimeout(	function(){
+		var mySimpleCalendar = FLUIGC.calendar('.calendario');
+	}, 1);
+
+	//Preenche campo de formulário
+	setTimeout(	function(){
+	var usuario = consultaUsuario($("#nickname").val());
+	var exibeusu = PreencheCampo(usuario,"colleagueName","#nome");
+	teste();
+	defineAprovador();
+}, 1);
+
+//Aparece campo envio de e-mail
+function apareceDestinatario(valor) {
+if(valor == 1){
+document.getElementById("destdiv").style.display = "block";
+}
+else {
+document.getElementById("destdiv").style.display = "none";
+}
+}
+
+
+
+
+
+function verificaDespesa(valor){
+var id = $(nome).attr('id');
+var array = id.split("");
+
+if (array.length == 12) {
+var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11];
+}
+else if (array.length == 13) {
+var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11]+array[12];
+}
+}
+
+function verificaConta(valor,nome) {
+var id = $(valor).attr('id');
+var array = id.split("");
+
+console.log(array);
+
+if (array.length == 12) {
+var conta = '#'+nome+array[08]+array[09]+array[10]+array[11];
+}
+if (array.length == 13) {
+var conta = '#'+nome+array[09]+array[10]+array[11]+array[12];
+}
+else if (array.length == 14) {
+var conta = '#'+nome+array[10]+array[11]+array[12]+array[13];
+}
+else if (array.length == 18) {
+var conta = '#'+nome+array[14]+array[15]+array[16]+array[17];
+}
+
+console.log("Conta:"+conta);
+
+return conta;
+}
+
+var viagem = 0;
+var quilometro = 0;
+var refeicao = 0;
+var pedagio = 0;
+var pequeno_valor = 0;
+var escritorio = 0;
+var correio = 0;
+var transporte = 0;
+var informatica = 0;
+var somacat = 0;
+
+var insereDolarReal = function (valor){
+$("#dolaroureal").empty();
+$("#dolaroureal").val(valor);
+}
+
+function coletaid(id, valor,descricao){
+console.log(id + ' - ' + valor);
+
+var i = indexFromId(id);
+	//"despctacontabil___"
+	//coloca codigo no campo conta contabil
+	$('#despctacontabil___'+i).val(valor);
+	$('#despctacontabil___'+i).attr("readonly","readonly");
+	//coloca descricao no campos descricao
+	$('#desptipo___'+i).val(descricao);
+
+	//314520024
+	//314020024
+
+	if (isKM(valor))  {
+	//var valorkm = verificaConta(nome,"despvalor");
+		//$('#despvalor___'+i).removeAttr("readonly");
+		$('#thValorKM').show();
+		$('#tdValorKM___'+i).show();
+		$('#despvalor___'+i).val('0.85');
+		$('#despvalorporkm___'+i).attr("mask","#");
+		$('#anexo___'+i+'___'+i).hide();
+		$('#anexo___'+i+'___'+i).parents('td').hide();
+
+			var inputs = $("[mask]");
+			MaskEvent.initMask(inputs);
+	}else if(isTaxa(valor)){
+		$('#anexo___'+i+'___'+i).hide();
+	}else{
+		//$('#thValorKM').hide();
+		$('#despvalor___'+i).val('');
+		$('#tdValorKM___'+i).hide();
+		$('#anexo___'+i+'___'+i).show();
+		$('#anexo___'+i+'___'+i).parents('td').show();
+		$('#despvalorporkm___'+i).attr("mask","#,##9.99");
+		aplicaMasks();
+		//var valorkm = verificaConta(nome,"despvalor");
+		$('#despvalor___'+i).attr("readonly","readonly");
+		$('#despvalor___'+i).addClass("disabled");
+		console.log('#despvalor___'+i);
+	}
+
+	if($('#despvalorporkm___'+i).val().trim() != ""){
+		$('#despvalorporkm___'+i).change();
+	}
+
+}
+function isTaxa(valor){
+	var contTaxaE =	['313020049', '314020049', '314520049', '315020049', '315420049', '315720049'];
+	var eTax = false;
+	for (var ik = 0; ik < contTaxaE.length; ik++) {
+		var c = contTaxaE[ik];
+		if (valor == c) {
+			eTax = true;
+		}
+	}
+	return eTax;
+}
+function isKM(valor){
+	var contasKM = ['314520024', '314020024', '315420024', '315020024', '315720024', '313020024'];
+	var eKM = false;
+	for (var ik = 0; ik < contasKM.length; ik++) {
+		var c = contasKM[ik];
+		if (valor == c) {
+			eKM = true;
+		}
+	}
+	return eKM;
+}
+
+
+var viagem = 0;
+
+function inserevalor(valor,campo){
+var totalresul = verificaConta(valor,campo);
+valor = $(valor).val();
+$(totalresul).empty();
+$(totalresul).val(semVirgulas(valor));
+}
+/*	valor =  0;
+	//$(campo).empty();
+	$(campo).val(valor);
+	console.log(campo);*/
+
+function inserevalor2(valor,campo){
+	valor = $(valor).val();
+	console.log(valor);
+	var val = 0;
+
+	$('.desptaxa').each(function(index, el ){
+		var elVal = $(el).val();
+		if(elVal != ''){
+		val += parseFloat(semVirgulas(elVal));
+		}
+	});
+	//$(campo).empty();
+	$(campo).val(val.toFixed(2));
+	console.log(campo);
+}
+
+</script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="container-fluid">
+				<!-- <div class="container"> -->
+					<div class="col-md-12">
+					
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<br>
+							<h1>Adiantamento de despesas de viagens internacionais</h1>
+						</div>
+
+
+					</div>
+						<!-- Aprovação -->
+						<div class="col-md-12" id="aprovdiv">
+							<fieldset>
+									<!-- Form Name -->
+								 <legend>Aprovação</legend>
+									<div id="aprovGestorDiv" class='panel panel-default row'>
+									<div class="panel-heading">Aprovação Gestor</div>
+									<div class="panel-body">
+										<div class="col-md-3">
+											<div class='form-group'>
+											<label for="aprovGestor">Aprovar solicitação?</label>
+											<select name="aprovGestor" id="aprovGestor" class="form-control" >
+												<option value="1">Sim</option>
+												<option value="0">Não</option>
+												<option value="2">Corrigir</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-9">
+										<div class='form-group' id='aprovGestorObsdiv'>
+											<label for="aprovGestorObs">Observações</label>
+											<textarea id="aprovGestorObs"  class="form-control" name="aprovGestorObs" rows="2" maxlength="500"></textarea></br>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div id="aprovGermanoDiv" class='panel panel-default row'>
+								<div class="panel-heading">Aprovação Germano</div>
+								<div class="panel-body">
+									<div class="col-md-3">
+										<div class='form-group'>
+										<label for="aprovGermano">Aprovar solicitação?</label>
+										<select name="aprovGermano" id="aprovGermano" class="form-control" >
+												<option value="1">Sim</option>
+												<option value="0">Não</option>
+												<option value="2">Corrigit</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-9">
+
+									<div class='form-group' id='aprovGermanoObs'>
+										<label for="aprovGermanoObs">Observações</label>
+										<textarea id="aprovGermanoObs"  class="form-control" name="aprovGermanoObs" rows="2" maxlength="500"></textarea></br>
+									</div>
+								</div>
+
+							</div>
+						</div>
+							</fieldset>
+						</div>
+						<!-- Aprovação -->
+
+						<!-- Informações do Funcionário -->
+						<div class="col-md-12  panel panel-default">
+							<div class="col-md-12 row">
+								<fieldset>
+
+									<!-- Form Name -->
+									<legend>Funcionário</legend>
+
+									<div class="form-group">
+										<div class="col-md-4 col-xs-12 form-group">
+											<label class="control-label" for="nome">Nome:</label>
+											<input id="nome" name="nome" type="text" placeholder="" class="obg nome form-control input-md">
+											<input id="nickname" name="nickname" type="hidden" placeholder="" class="form-control input-md">
+											<input type="hidden" name="despIndexes" id="despIndexes">
+											<input type="hidden" name="cchave" id="cchave">
+											<input type="hidden" name="cDataBaixa" id="cDataBaixa">
+											<input type="hidden" name="cAprovarRH" id="cAprovarRH" value="0">
+											<input type="hidden" name="aprovador" id="aprovador">
+											<input type="hidden" name="nValor" id="nValor">
+											<!-- Dados fixos vindos do dataset -->
+											<input type="hidden" name="valorMax" id="valorMax">
+											<input type="hidden" name="cnpjPag" id="cnpjPag">
+											<input type="hidden" name="natureza" id="natureza">
+											<input type="hidden" name="formPag" id="formPag">
+											<input type="hidden" name="prefixo" id="prefixo">
+
+										</div>
+
+										<div class="col-md-4 col-xs-12 form-group">
+											<label class="control-label" for="cpf">CPF:</label>
+											<input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md obg" mask="000.000.000-00">
+										</div>
+
+										<div class="col-md-4 col-xs-12 form-group">
+											<label class="control-label" for="departamento">Departamento:</label>
+											<input id="departamento" name="departamento" type="text" placeholder="" class="form-control input-md obg">
+										</div>
+
+									</fieldset>
+								</div>
+								<div class="col-md-12 row">
+									<fieldset>
+
+										<!-- Form Name -->
+										<legend>Dados para depósito</legend>
+
+										<!-- Text input-->
+										<div class="form-group">
+											<div class="col-md-3 col-xs-12">
+												<label class="control-label" for="banco">Banco:</label>
+												<input id="banco" name="banco" type="number" placeholder="" class="form-control input-md obg" >
+											</div>
+
+
+											<!-- Text input-->
+											<div class="col-md-3 col-xs-12">
+												<label class="control-label" for="agencia">Agência:</label>
+												<input id="agencia" name="agencia" type="number" placeholder="" class="form-control input-md obg">
+											</div>
+
+
+											<!-- Text input-->
+											<div class="col-md-3 col-xs-12">
+												<label class="control-label" for="conta">Conta:</label>
+												<input id="conta" name="conta" type="text" placeholder="" class="form-control input-md obg">
+											</div>
+
+											<div class="col-md-3 col-xs-12 form-group">
+												<label class="control-label" for="centro_custo">C. Custo:</label>
+												<input id="centro_custo" name="centro_custo" type="number" placeholder="" class="form-control input-md obg">
+											</div>
+										</div>
+									</fieldset>
+								</div>
+								<div class="col-md-12"><br></div>
+							</div>
+
+
+							<div class="col-md-12"><br></div>
+
+							<!-- Informações da despesa -->
+							<div class="col-md-12 panel panel-default">
+								<div class="col-md-12">
+									<fieldset>
+										<!-- Form Name -->
+										<legend>Adiantamento</legend>
+										<div class="row">
+											<div class="form-group col-md-4">
+												<label class="control-label" for="destino">Destino</label>
+												<input id="destino" name="destino" type="text" onchange="" placeholder="" class="form-control input-md">
+											</div>
+											<div class="form-group col-md-4">
+												<label class="control-label" for="dtPartida">Partida</label>
+												<input id="dtPartida" name="dtPartida" type="text" onchange="" placeholder="00/00/0000" class="form-control input-md">
+											</div>
+											<div class="form-group col-md-4">
+												<label class="control-label" for="dtRetorno">Retorno</label>
+												<input id="dtRetorno" name="dtRetorno" type="text" onchange="" placeholder="00/00/0000" class="form-control input-md">
+											</div>
+										
+										</div>
+										<div class="form-group">
+											<label class="control-label" for="finalidade">Finalidade</label>
+											<textarea class="form-control obg" id="finalidade" name="finalidade"></textarea>
+										</div>
+										<!-- Text input-->
+										<div class="form-group col-md-6 row">
+											<label class="control-label" for="valor">Valor  R$</label>
+											<input id="valor" name="valor" type="text" onchange="" placeholder="000.000,00" class="form-control input-md" mask="#00.000.000.000.000,00">
+										</div>
+									</fieldset>
+								</div>
+							</div>
+
+							<div id="target"></div>
+					
+
+					<div class="col-md-12">
+						<div id="retIntegrDiv" class='panel panel-default row' style="display:none;">
+						<div class="panel-heading">Retorno integração</div>
+						<div class="panel-body">
+						<textarea id="msgRetorno"  class="form-control" name="msgRetorno"></textarea>
+					</div>
+				</div>
+
+				</div>
+			</div>
+			<!-- </div> -->
+		</div>
+	</form>
+</div>
+</body>
+</html>

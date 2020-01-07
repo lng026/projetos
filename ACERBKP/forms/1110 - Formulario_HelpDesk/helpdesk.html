@@ -1,0 +1,86 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+	<div class="fluig-style-guide">
+
+		<form name="form" role="form">
+			<div class="container">
+
+				<h1 class="text-center">Abertura de Novo Chamado</h1>
+			
+				<div id="header" class="row">
+				<legend>Dados do Usuário</legend>
+				<div class="col-md-6">
+					<div class="form-group"> <!-- start Form-group -->
+						<label class="control-label" for="name" id="lbl_name">Nome</label>
+						<input type="text" class="form-control" name="name" id="name"> <!-- Campo nome solicitante -->
+					</div>   
+				</div>
+
+				<div class="col-md-6 col-xs-5">
+					<div class="form-group"> <!-- start Form-group -->
+						<label for="email" id="lbl_email">Email</label>
+						<input type="text" class="form-control" name="email" id="email"> <!-- Campo nome solicitante -->
+					</div>   
+				</div>
+
+				<div class="col-md-6 col-xs-5">
+					<div class="form-group">
+						<label for="tajuda" id="lbl_tajuda">Tópico de Ajuda:<span>*</span></label>
+					
+					<select class="form-control" id="tajuda" name="tajuda">
+						<option value="celular">Celular</option>
+						<option value="hardware">Hardware</option>
+						<option value="ecommerce">E-commerce</option>
+					</select>
+					</div>
+					</div>
+
+				<div class="col-md-6 col-xs-5">
+					<div class="form-group">
+						<label for="unidade" id="lbl_unidade" name="lbl_unidade">Unidade:<span>*</span></label>
+
+						<label class="checkbox-inline"><input type="radio" name="unidade" value="barueri" checked>
+						Barueri
+						</label>
+
+						<label class="checkbox-inline"><input type="radio" name="unidade" value="jundiai">
+						Jundiaí
+						</label>
+
+					</div>
+				
+				</div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="desc_incidente">Descreva o problema:<span>*</span></label>
+					<textarea class="form-control" id="desc_incidente" name="desc_incidente"></textarea>
+				</div>
+			</div>
+
+			<div class="col-md-1 fs-no-padding" id="BT_Banco">
+					<label>Anexo</label>
+					<button type="button" id="anexo" class="btn btn-default fluigicon fluigicon-paperclip anexo" onclick="setup(this);"></button>
+			</div>
+
+
+
+		</div> 
+		<!-- fim do header -->
+	</div>	
+
+
+	</form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<html>
+<head id="head">
+	<link type="text/css" rel="stylesheet" href="portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<!-- MD BOOTSTRAP -->
+
+<!-- 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.3/css/mdb.min.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/mdcompiled.css"/> -->
+
+
+
+<!--   <link rel="stylesheet" href="css/bootstrap-select.css">
+    <script src="js/bootstrap-select.js"></script> -->
+
+<!-- ratingstars -->
+
+	<link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="star-rating.js" type="text/javascript"></script>
+
+
+<script src="https://cdn.ckeditor.com/4.9.2/standard-all/ckeditor.js"></script>
+<script src="https://fortuitous-amperage.000webhostapp.com/ckfinder/ckfinder.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">	
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	<script type="text/javascript" script-name="coda" src="http://use.edgefonts.net/coda.js"></script>
+	<style type="text/css">
+		  .hidediv{
+     display:none;  
+  }
+
+  td{
+  	border-top: 0px !important;
+  }
+
+ 
+	</style>
+
+	
+
+</head>
+
+
+<body>
+	<div class="fluig-style-guide">
+
+		<form name="form" role="form">
+	
+
+
+	  <div id="ticketdata" name="ticketdata">
+
+			<h1 class="text-center">HelpDesk - Acer</h1>
+
+	    <div class="container">
+				
+			
+			<legend><p style="margin-left: 10px" id="txtDados" name="txtDados">Dados da Solicitação</p></legend>		
+				
+
+			<div class="row">
+
+				<div class="col-md-6 col-xs-5">
+					<div class="form-group"> <!-- start Form-group -->
+						<label class="control-label" for="name" id="lbl_name">Nome:</label>
+						<input type="text" class="form-control" name="name" id="name"> <!-- Campo nome solicitante -->
+					</div>   
+				</div>
+
+				<div class="col-md-6 col-xs-5">
+					<div class="form-group"> <!-- start Form-group -->
+						<label for="email" id="lbl_email">Email:</label>
+						<input type="text" class="form-control" name="email" id="email"> <!-- Campo nome solicitante -->
+					</div>   
+				</div>
+
+			</div>
+
+			</div>
+
+			<div class="container" style="margin-top: 25px;">
+			<div class="row">
+				<div class="col-md-6 col-xs-6">
+					<div class="form-group">
+						
+						<label for="topico_ajuda" id="lbl_tajuda">Tópico de Ajuda:<span>*</span></label>
+						<input value="" type="zoom" class="form-control" id="topico_ajuda" name="topico_ajuda"
+						data-zoom="{
+							'displayKey':'taNome',
+							'datasetId':'topicoAjuda',
+							'maximumSelectionLength':'1',
+							'placeholder':'Escolha o topico',
+							'fields':[
+								{
+								'field':'taNome',
+								'label':'Nome'
+								},{
+								'field':'taDescricao',
+								'label':'Descrição'
+								}
+							]
+						}">
+
+					</div>
+				</div>
+
+				<div class="col-xs-6">
+					<label for="unidade" id="lbl_unidade" name="lbl_unidade">Unidade:<span>* </span></label><br/>
+
+
+					<div class="btn-group" data-toggle="buttons">
+					<label class="">
+						<input type="radio" name="unidade" id="unidade" value="Barueri" autocomplete="off" checked>Barueri
+					</label>
+
+					<label class="">
+						<input type="radio" name="unidade" id="unidade" value="Jundiai" autocomplete="off">Jundiai
+					</label>
+
+					<label class="">
+						<input type="radio" name="unidade" id="unidade" value="Itajai" autocomplete="off">Itajai
+					</label>
+
+					</div>
+<!-- 					<div class="form-check">
+						<input class="form-check-input" type="radio" id="unidade" name="unidade" value="barueri" checked>
+						<label class="form-check-label">Barueri</label>
+					</div>
+
+					<div class="form-check">
+						<input class="form-check-input" type="radio" id="unidade" name="unidade" value="jundiai">
+						<label class="form-check-label">Jundiaí</label>
+					</div> -->
+					
+				</div>
+
+			</div>
+
+		<div class="row">
+			<!-- triagem -->
+
+			<div class="triagem" id="triagem">
+				<div class="col-xs-6">
+					<div class="form-group">
+						<label for="prioridade">Nível da Solicitação</label>
+						<select id="prioridade" name="prioridade" class="form-control">
+						  <optgroup label="Solicitações de melhoria">
+						    <option value="Baixa">Baixa - 120h</option>
+						  </optgroup>
+						  <optgroup label="AFETA o trabalho de uma pessoa">
+						    <option value="Normal">Normal - 48h</option>
+						  </optgroup>
+						  <optgroup label="PAROU o trabalho de uma pessoa">
+						    <option value="aAlta">Alta - 8h</option>
+						  </optgroup>
+						 <optgroup label="PAROU o trabalho de um grupo de pessoas">
+						    <option value="Critica">Crítica - 2h</option>
+						  </optgroup>
+						</select>
+
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<div class="form-group">
+						<label for="analista">Area Responsável</label>
+						<select id="areaResp" name="areaResp" class="form-control">
+							<option value="Pool:Role:supFluig">Fluig</option>
+							<option value="Pool:Role:supProtheus">Protheus</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<!-- triagem -->
+
+				<div class="col-xs-6">
+							<button style="margin-top: 25px;" onclick="addCC('tcampocc',this);" name="addcc" id="addcc" type="button" class="btn btn-rounded btn-amber"><i class="fa fa-th-list pr-2" aria-hidden="true"></i>Adicionar em Cópia (CC)</button>
+									<div class="form-field table-responsive" data-type="tabledetail"
+												data-show-properties="" data-field-name="tabledetail">
+										<table class="table" cellspacing="0" tablename="tcampocc"
+														noaddbutton=true nodeletebutton=true>
+											<thead>
+												<tr>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="trCC">
+													<td style="border-top: 0px !important;padding-left: 0px !important;">
+														<div class="row col-md-10">
+														<input class="form-control campocc" type="text" name="campocc" id="campocc" value="" placeholder="Digite o email...">
+														</div>
+														<div class="col-md-2" style="margin-top: 5px;">
+														<span><i class="fluigicon fluigicon-remove fluigicon-sm" onclick="Javascript:removeCC(this)" style="cursor:pointer"></i></span>
+														</div>
+
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="form-group">
+						<label class="control-label" for="assunto" id="lbl_assunto" name="lbl_assunto">Resumo do Problema<span>*</span></label><br/>
+						<input type="text" id="assunto" name="assunto" class="form-control" value="">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="desc_incidente">Descrição do chamado:<span>*</span></label>
+					<textarea id="txt_incidente" name="txt_incidente"></textarea>
+					<span class="help-block">Descreva detalhadamente o caso e evidencie os fatos com PRINT da tela.</span>
+				</div>
+			</div>
+
+			<div class="col-md-3" id="BT_Banco">
+
+				<label>Inserir Anexo</label>
+				<button type="button" id="anexo" class="btn btn-elegant fluigicon fluigicon-paperclip anexo" onclick="showCamera();"></button>
+
+				<script language="javascript">
+				       function showCamera() {
+				        JSInterface.showCamera('Nome do arquivo em anexo');
+				    }
+				</script>	
+
+			</div>
+		</div>
+		</div>
+		<!-- FIM DADOS DO USUARIO -->
+	
+</div>
+
+<!-- AVALIA CHAMADO -->
+
+
+
+<div id="view_chamado" name="view_chamado">
+		<br/>
+		<!-- INICIO DADOS CHAMADO -->
+
+<div class="container-fluid">
+		<div class="row content">
+
+
+<!-- AVALIA O CHAMADO -->
+		<div id="avalia" name="avalia" class="container hidediv" style="margin-bottom: 25px;">
+	
+		<label for="avalia" style="margin-top: 15px;" class="control-label">Avalie o atendimento:</label>
+		<input id="avaliacao" name="avaliacao" value="0" type="text" class="rating" data-min=0 data-max=5 data-step=1 data-size="xs" title="">
+
+		<div name="user_solucf" id="user_solucf" class="hidediv">
+					<legend style="margin-top: 20px;"><a href="#"><p class="txt_tit_nav" onclick="showAvalia();">Chamado ainda não resolvido?</p></a></legend>
+		
+		<div name="nresolvido" id="nresolvido" class="mg-bottom hidediv">
+
+		<div class="btn-group" data-toggle="buttons">
+		<div style="display: none;">
+		<input  class="form-check-input" type="radio" name="us_resolvidof" id="us_resolvidof" value="vazio" autocomplete="off" checked>
+		</div>
+
+		<label class="btn btn-default">
+		    <input type="radio" name="us_resolvidof" id="us_resolvidof" value="sim" autocomplete="off">Reabrir o chamado
+		  </label>
+		</div>
+
+		</div>
+
+		</div>
+
+		</div>
+
+<!-- fim avalia -->
+
+
+			<div class="col-xs-8">
+				<div class="page-header">
+				    <h1 id="txt_assunto"></h1>
+				</div>
+
+				<div class="panel panel-default">
+				    <div name="panelincidente" id="panelincidente" class="panel-body" style="height: auto;"></div>
+				</div>
+
+				<div id="divresp" name="divresp"></div>
+
+
+				<div id="addres" name="addres" class="form-group hidediv">
+								<button type="button" class="btn btn-default" name="inputAdicionar"
+									id="inputAdicionar" onclick="addResp('resposta',this);">Adicionar Resposta</button>
+				</div>
+				<div class="form-field table-responsive" data-type="tabledetail"
+				data-show-properties="" data-field-name="tabledetail">
+				<table class="table" cellspacing="0" tablename="resposta"
+					noaddbutton=true nodeletebutton=true>
+					<thead>
+						<tr class="tableHeadRow">
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="trResp">
+							<td class="col-xs-8">
+								<div class="md-form">
+							 	<label for="resposta">Digite uma Resposta...</label>
+							 	<textarea class="md-textarea form-control z-depth-1 resposta" rows="3" id="resposta" name="resposta" ></textarea>
+								<input class="nomeRsp" type="hidden" name="nomeRsp" id="nomeRsp" value="">
+								<input class="dataRsp" type="hidden" name="dataRsp" id="dataRsp" value="">
+								<input class="Rsp" type="hidden" name="Rsp" id="Rsp" value="">
+								<input class="loginresp" type="hidden" name="loginresp" id="loginresp" value="">
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+<div id="statusticket" name="statusticket" class="col-xs-12 navbg container-fluid hidediv">
+<br>
+<div class="row">
+<div class="col-md-6">
+	<div name="divanalista" id="divanalista" class="hidediv">
+					<legend> <p class="txt_tit_nav">Status do Ticket</p></legend>
+									<div id="acsupdiv" class="mg-bottom">
+
+		<div class="btn-group" data-toggle="buttons">
+		<div style="display: none;">
+		<input  class="form-check-input" type="radio" name="status" id="vazio" value="vazio" autocomplete="off" checked>
+		</div>
+
+		<label class="btn btn-default">
+		    <input onChange="showDiv(this);" class="form-check-input" type="radio" name="status" id="status" value="aberto" autocomplete="off">Aberto<i class="fa fa-commenting" aria-hidden="true"></i>
+		  </label>
+
+		  <label class="btn btn-default">
+		    <input onChange="showDiv(this);" class="form-check-input" type="radio" name="status" id="status" value="fechado" autocomplete="off">Fechado<i class="fa fa-times-circle" aria-hidden="true"></i>
+		  </label>
+
+		  <label class="btn btn-default">
+		    <input onChange="showDiv(this);" class="form-check-input" type="radio" name="status" id="status" value="transferir" autocomplete="off">Transferir <i class="fa fa-mail-forward" aria-hidden="true"></i>
+		  </label>
+
+		</div>
+
+
+		<div id="divtransfer" class="hidediv" style="margin-top: 10px; margin-bottom: 10px;">
+								<input value="" type="zoom" class="form-control" id="transResp" name="transResp"
+								data-zoom="{
+									'displayKey':'taResponavel',
+									'datasetId':'topicoAjuda',
+									'maximumSelectionLength':'1',
+									'placeholder':'Novo responsavel',
+									'fields':[
+										{
+										'field':'taNome',
+										'label':'Nome'
+										},{
+										'field':'taResponavel',
+										'label':'Responsável'
+										}
+									]
+								}">
+
+		</div>
+
+		</div>
+		</div>
+
+		<div name="user_soluc" id="user_soluc" class="container-fluid hidediv">
+					<legend> <p class="txt_tit_nav">Chamado Resolvido?</p></legend>
+									<div id="acsupdiv" class="mg-bottom">
+
+		<div class="btn-group" data-toggle="buttons">
+
+
+		<label class="btn btn-default">
+		    <input onchange="showRate();" class="form-check-input" type="radio" name="us_resolvido" id="us_resolvido" value="sim" autocomplete="off"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+		  </label>
+
+		  <label class="btn btn-default">
+		    <input onchange="hideRate();" class="form-check-input" type="radio" name="us_resolvido" id="us_resolvido" value="nao" autocomplete="off"><i class="fa fa-thumbs-down" aria-hidden="true"></i>
+		  </label>
+		</div>
+
+		</div>
+
+		</div>
+
+</div>
+
+<div class="col-md-6">
+	
+<div name="div_soluc" id="div_soluc" class="container-fluid hidediv">
+			<legend> <p class="txt_tit_nav">Chamado Resolvido?</p></legend>
+							<div id="acsupdiv" class="mg-bottom">
+
+<div class="btn-group" data-toggle="buttons">
+<div style="display: none;">
+<input  class="form-check-input" type="radio" name="resolvido" id="resolvido" value="vazio" autocomplete="off" checked>
+</div>
+
+<label class="btn btn-default">
+    <input class="form-check-input" type="radio" name="resolvido" id="resolvido" value="sim" autocomplete="off"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+  </label>
+
+  <label class="btn btn-default">
+    <input class="form-check-input" type="radio" name="resolvido" id="resolvido" value="nao" autocomplete="off"><i class="fa fa-thumbs-down" aria-hidden="true"></i>
+  </label>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+			
+
+			</div>
+
+			<div class="col-xs-4 sidenav">
+<br>
+			<legend> <p class="txt_tit_nav">Dados da Solicitação <span id="txt_numero" name="txt_numero" class="label label-info"></span></p></legend>
+
+
+				<p class="txt_desc_nav">Criado Em</p>
+				<p class="sidenav_txt" name="txt_criado" id="txt_criado"></p>
+				
+				<p class="txt_desc_nav">Por</p>
+				<p class="sidenav_txt" name="txt_por" id="txt_por"></p>
+				
+				<p class="txt_desc_nav">Tópico de Ajuda</p>
+				<p class="sidenav_txt" name="topicoajuda" id="topicoajuda"></p>
+				
+				<p class="txt_desc_nav">Nível de Criticidade</p>
+				<p class="sidenav_txt" name="nvchamado" id="nvchamado"></p>
+
+				<p class="txt_desc_nav">Equipe Atribuída</p>
+				<p class="sidenav_txt" name="txt_resp" id="txt_resp"></p>
+<div id="txt_dtat" name="txt_dtat" style="display: none;">
+				<p class="txt_desc_nav">Data de Atendimento</p>
+				<p class="sidenav_txt" name="txt_dtatend" id="txt_dtatend"></p>
+</div>
+<br>
+
+
+			</div>
+
+
+
+		</div>
+</div>
+
+				<!-- ID solicitante -->
+				<input type="hidden" name="idSol" id="idSol" value="">
+
+				<!-- RESPONSAVEL DO CHAMADO -->
+				<input type="hidden" name="analisaSla" id="analisaSla"> 
+				<input type="hidden" name="analisaResp" id="analisaResp"> 
+				<input type="hidden" name="usResp" id="usResp"> 
+				<input type="hidden" name="usRespTxt" id="usRespTxt" value="">
+
+				<!-- NOVO RESPONSAVEL (TRANSFERENCIA) -->
+				<input type="hidden" name="usNovoResp" id="usNovoResp">
+				<input type="hidden" name="usNovoRespTxt" id="usNovoRespTxt" value="">
+
+				<!-- Descrição do Tópico de Ajuda -->
+				<input type="hidden" name="usDescTxt" id="usDescTxt" value="">
+				<!-- Nome do Tópico de Ajuda -->
+				<input type="hidden" name="usNomeTxt" id="usNomeTxt" value="">
+				<!-- DATA ABERTURA DO CHAMADO (milisegundos) -->
+				<input type="hidden" name="dtChamTime" id="dtChamTime">
+				<!-- DATA ABERTURA DO CHAMADO (DD/MM/AAAA HH:mm) -->
+				<input type="hidden" name="data_Chamado" id="data_Chamado" value="">
+				<!-- DATA PARA PRIMEIRO ATENDIMENTO (milisegundos) -->
+				<input type="hidden" name="dtAtendTime" id="dtAtendTime">
+				<!-- DATA PARA PRIMEIRO ATENDIMENTO (hora/min/dias) -->
+				<input type="hidden" name="atHora" id="atHora" value="">
+				<input type="hidden" name="atMin" id="atMin" value="">
+				<input type="hidden" name="atDias" id="atDias" value="">
+
+				<!-- Data Encerramento do Chamado -->
+				<input type="hidden" name="dtFechTime" id="dtFechTime">
+
+
+				<!-- Nome do Analista que Está Respondendo no campo de 'Resposta' -->
+				<input type="hidden" name="RespNome" id="RespNome" value="">
+				<!-- Check Inicio formulário para validações -->
+				<input type="hidden" name="checkinicio" id="checkinicio" value="">
+				<!-- Nome Colaborador que abriu o chamado -->
+				<input type="hidden" name="nomec" id="nomec" value="">
+				<!-- Check de resposta no chamado para validação -->
+				<input type="hidden" name="checkResp" id="checkResp" value="">
+				<!-- Numero de campos pai filho -->
+				<input type="hidden" name="pfindex" id="pfindex" value="">
+				<!-- Numero de campos em copia -->
+				<input type="hidden" name="ccindex" id="ccindex" value="">
+				<!-- Conta numero de interações no chamado -->
+				<input type="hidden" name="contaResp" id="contaResp" value="0">
+
+				<!-- check chamado transferido -->
+				<input type="hidden" name="transferido" id="transferido" value="0">
+				<!-- login usuario -->
+				<input type="hidden" name="login" id="login" value="">
+				<!-- criticidade -->
+				<input type="hidden" name="critval" id="critval" value="">
+				<!-- atividade do processo -->
+				<input type="hidden" name="atv" id="atv" value="">
+
+	<script type="text/javascript" src="visresp.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+
+
+     	<div style="display: none;">
+		<input  class="form-check-input" type="radio" name="us_resolvido" id="us_resolvido" value="vazio" autocomplete="off" checked>
+		</div>
+
+
+	</div>
+
+
+	
+	</form>
+
+	<script type="text/javascript">
+
+	function showAvalia() {
+    div = document.getElementById('nresolvido');
+    div.style.display = "block";
+}
+	function showRate() {
+    div = document.getElementById('avalia');
+    div.style.display = "block";
+}
+	function hideRate() {
+    div = document.getElementById('avalia');
+    div.style.display = "none";
+}
+
+	</script>
+</div>
+</body>
+			   
+
+</html>

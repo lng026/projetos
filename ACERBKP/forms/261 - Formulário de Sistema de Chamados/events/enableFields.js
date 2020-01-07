@@ -1,0 +1,1 @@
+function enableFields(form) {		var activity = getValue('WKNumState');if (activity == 3 || activity == 0) {form.setEnabled('cham_res', false);}if (activity == 6) {form.setEnabled('cham_desc', false);}}

@@ -1,0 +1,713 @@
+<html>
+<head>
+	<!-- http://acertst.fluig.com -->
+	<meta charset="utf-8">
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<!-- <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="dataset.js"></script>
+	<script language="javascript" type="text/javascript" src="validaCPF.js"></script>
+	<script type="text/javascript" src="outros.js"></script>
+	<!-- <script type="text/javascript" src=".teste.js"></script> -->
+	<link type="text/css" rel="stylesheet" href="table.css"/>
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+	<script type="text/javascript">
+
+		//Função para exibir calendário
+		setTimeout(	function(){
+		var mySimpleCalendar = FLUIGC.calendar('.calendario');
+	}, 1);
+
+	//Preenche campo de formulário
+	setTimeout(	function(){
+	var usuario = consultaUsuario($("#nickname").val());
+	var exibeusu = PreencheCampo(usuario,"colleagueName","#nome");
+	teste();
+	defineAprovador();
+}, 1);
+
+//Aparece campo envio de e-mail
+function apareceDestinatario(valor) {
+if(valor == 1){
+document.getElementById("destdiv").style.display = "block";
+}
+else {
+document.getElementById("destdiv").style.display = "none";
+}
+}
+
+
+
+
+
+function verificaDespesa(valor){
+var id = $(nome).attr('id');
+var array = id.split("");
+
+if (array.length == 12) {
+var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11];
+}
+else if (array.length == 13) {
+var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11]+array[12];
+}
+}
+
+function verificaConta(valor,nome) {
+var id = $(valor).attr('id');
+var array = id.split("");
+
+console.log(array);
+
+if (array.length == 12) {
+var conta = '#'+nome+array[08]+array[09]+array[10]+array[11];
+}
+if (array.length == 13) {
+var conta = '#'+nome+array[09]+array[10]+array[11]+array[12];
+}
+else if (array.length == 14) {
+var conta = '#'+nome+array[10]+array[11]+array[12]+array[13];
+}
+else if (array.length == 18) {
+var conta = '#'+nome+array[14]+array[15]+array[16]+array[17];
+}
+
+console.log("Conta:"+conta);
+
+return conta;
+}
+
+var viagem = 0;
+var quilometro = 0;
+var refeicao = 0;
+var pedagio = 0;
+var pequeno_valor = 0;
+var escritorio = 0;
+var correio = 0;
+var transporte = 0;
+var informatica = 0;
+var somacat = 0;
+
+var insereDolarReal = function (valor){
+$("#dolaroureal").empty();
+$("#dolaroureal").val(valor);
+}
+
+function coletaid(id, valor,descricao){
+console.log(id + ' - ' + valor);
+
+var i = indexFromId(id);
+	//"despctacontabil___"
+	//coloca codigo no campo conta contabil
+	$('#despctacontabil___'+i).val(valor);
+	$('#despctacontabil___'+i).attr("readonly","readonly");
+	//coloca descricao no campos descricao
+	$('#desptipo___'+i).val(descricao);
+
+	//314520024
+	//314020024
+
+	if (isKM(valor))  {
+	//var valorkm = verificaConta(nome,"despvalor");
+		//$('#despvalor___'+i).removeAttr("readonly");
+		$('#thValorKM').show();
+		$('#tdValorKM___'+i).show();
+		$('#despvalor___'+i).val('0.85');
+		$('#despvalorporkm___'+i).attr("mask","#");
+		$('#anexo___'+i+'___'+i).hide();
+		$('#anexo___'+i+'___'+i).parents('td').hide();
+
+			var inputs = $("[mask]");
+			MaskEvent.initMask(inputs);
+	}else if(isTaxa(valor)){
+		$('#anexo___'+i+'___'+i).hide();
+	}else{
+		//$('#thValorKM').hide();
+		$('#despvalor___'+i).val('');
+		$('#tdValorKM___'+i).hide();
+		$('#anexo___'+i+'___'+i).show();
+		$('#anexo___'+i+'___'+i).parents('td').show();
+		$('#despvalorporkm___'+i).attr("mask","#,##9.99");
+		aplicaMasks();
+		//var valorkm = verificaConta(nome,"despvalor");
+		$('#despvalor___'+i).attr("readonly","readonly");
+		$('#despvalor___'+i).addClass("disabled");
+		console.log('#despvalor___'+i);
+	}
+
+	if($('#despvalorporkm___'+i).val().trim() != ""){
+		$('#despvalorporkm___'+i).change();
+	}
+
+}
+function isTaxa(valor){
+	var contTaxaE =	['313020049', '314020049', '314520049', '315020049', '315420049', '315720049'];
+	var eTax = false;
+	for (var ik = 0; ik < contTaxaE.length; ik++) {
+		var c = contTaxaE[ik];
+		if (valor == c) {
+			eTax = true;
+		}
+	}
+	return eTax;
+}
+function isKM(valor){
+	var contasKM = ['314520024', '314020024', '315420024', '315020024', '315720024', '313020024'];
+	var eKM = false;
+	for (var ik = 0; ik < contasKM.length; ik++) {
+		var c = contasKM[ik];
+		if (valor == c) {
+			eKM = true;
+		}
+	}
+	return eKM;
+}
+
+
+var viagem = 0;
+
+function inserevalor(valor,campo){
+var totalresul = verificaConta(valor,campo);
+valor = $(valor).val();
+$(totalresul).empty();
+$(totalresul).val(semVirgulas(valor));
+}
+/*	valor =  0;
+	//$(campo).empty();
+	$(campo).val(valor);
+	console.log(campo);*/
+
+function inserevalor2(valor,campo){
+	valor = $(valor).val();
+	console.log(valor);
+	var val = 0;
+
+	$('.desptaxa').each(function(index, el ){
+		var elVal = $(el).val();
+		if(elVal != ''){
+		val += parseFloat(semVirgulas(elVal));
+		}
+	});
+	//$(campo).empty();
+	$(campo).val(val.toFixed(2));
+	console.log(campo);
+}
+
+</script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="container-fluid">
+				<!-- <div class="container"> -->
+					<div class="col-md-12">
+					
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<br>
+							<h1>Relatórios de despesas</h1>
+						</div>
+
+
+						<!-- <button type="button" name="button" onclick="teste();" class="btn btn-primary">REST</button> -->
+
+						
+
+
+						<div class="col-md-12" id="div_informacoes">
+							
+						
+								
+								<div class="alert alert-info">
+									<span class="fluigicon fluigicon-info-sign fluigicon-md"></span>
+								
+<br>
+									<strong>O anexo do comprovante, deve ser feito na mesma linha da despesa adicionada, dentro do quadro de <a href="#despesas_legend">'<u>Despesas</u>'</a>.
+<br>
+<br>
+									As despesas de mesmo tipo e do mesmo cliente, podem ser inseridas em uma única linha com a soma total dos comprovantes. Os comprovantes devem estar em apenas um arquivo e anexado na mesma linha da despesa. <em>(Ex. de Caso: Duas despesas de Estacionamento referidas ao cliente 'Via Varejo')</em>
+<br>
+<br>
+									As despesas são pagas toda Quinta-Feira subsequente a aprovação. Caso não ocorra, a inclusão desse pagamento deve ser verificado com a tesouraria.
+									
+									<br><Br>
+									Em caso de erros no processo, um chamado no tópico de FLUIG deve ser aberto <a href="http://pahelpdesk.acer.com/br/" target="_blank"><u>AQUI</u></a>.
+									<br>
+									<br>
+									O prazo para o pagamento do reembolso é de 10 dias após a finalização deste processo.
+</strong>
+								</div>
+
+							</div>
+						</div>
+
+
+						<!-- Aprovacao RH  -->
+						<div id="aprovRHDiv" class='panel panel-default row'>
+							<div class="panel-heading">Aprovação RH</div>
+							<div class="panel-body">
+								<div class="col-md-3">
+									<label for="aprovRH">Aprovar solicitação?</label>
+									<div class='form-group'>
+										<input type="radio" name="aprovRH" id="aprovRH_sim"  value="sim"/>
+										<label for="aprovRH_sim">Sim</label><br>
+										<input type="radio" name="aprovRH" id="aprovRH_nao"  value="nao"/>
+										<label for="aprovRH_nao">N&atilde;o</label><br>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class='form-group' id='aprovRHObs'>
+										<label for="aprovRHObs">Observações</label>
+										<textarea id="aprovRHObs"  class="form-control" name="aprovRHObs" rows="2" maxlength="500"></textarea></br>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Aprovacao RH  -->
+						<!-- Aprovação -->
+						<div class="col-md-12" id="aprovdiv">
+							<fieldset>
+								<input type="hidden" id="aprovacao" name="aprovacao" value="0">
+								<!-- Form Name -->
+								 <legend>Aprovação</legend>
+									<div id="aprovGestorDiv" class='panel panel-default row'>
+									<div class="panel-heading">Aprovação Gestor</div>
+									<div class="panel-body">
+										<div class="col-md-3">
+											<label for="aprovGestor">Aprovar solicitação?</label>
+
+										<div class='form-group'>
+											<input type="radio" name="aprovGestor" id="aprovGestor_sim"  value="sim"/>
+											<label for="aprovGestor_sim">Sim</label><br>
+											<input type="radio" name="aprovGestor" id="aprovGestor_nao"  value="nao"/>
+											<label for="aprovGestor_nao">N&atilde;o</label><br>
+											<input type="radio" name="aprovGestor" id="aprovGestor_corrigir"  value="corrigir"/>
+											<label for="aprovGestor_corrigir">Corrigir</label><br>
+										</div>
+									</div>
+									<div class="col-md-9">
+
+										<div class='form-group' id='aprovGestorObsdiv'>
+											<label for="aprovGestorObs">Observações</label>
+											<textarea id="aprovGestorObs"  class="form-control" name="aprovGestorObs" rows="2" maxlength="500"></textarea></br>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div id="aprovGermanoDiv" class='panel panel-default row'>
+								<div class="panel-heading">Aprovação Germano</div>
+								<div class="panel-body">
+									<div class="col-md-3">
+										<label for="aprovGermano">Aprovar solicitação?</label>
+
+									<div class='form-group'>
+										<input type="radio" name="aprovGermano" id="aprovGermano_sim"  value="sim"/>
+										<label for="aprovGermano_sim">Sim</label><br>
+										<input type="radio" name="aprovGermano" id="aprovGermano_nao"  value="nao"/>
+										<label for="aprovGermano_nao">N&atilde;o</label><br>
+									</div>
+								</div>
+								<div class="col-md-9">
+
+									<div class='form-group' id='aprovGermanoObs'>
+										<label for="aprovGermanoObs">Observações</label>
+										<textarea id="aprovGermanoObs"  class="form-control" name="aprovGermanoObs" rows="2" maxlength="500"></textarea></br>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+							</fieldset>
+
+						</div>
+
+						<!-- Informações do Funcionário -->
+						<div class="col-md-12  panel panel-default">
+							<div class="col-md-12 row">
+								<fieldset>
+
+									<!-- Form Name -->
+									<legend>Funcionário</legend>
+
+									<div class="form-group">
+										<div class="col-md-4 col-xs-12 form-group">
+											<label class="control-label" for="nome">Nome:</label>
+											<input id="nome" name="nome" type="text" placeholder="" class="obg nome form-control input-md">
+											<input id="nickname" name="nickname" type="hidden" placeholder="" class="form-control input-md">
+											<input type="hidden" name="despIndexes" id="despIndexes">
+											<input type="hidden" name="cchave" id="cchave">
+											<input type="hidden" name="cDataBaixa" id="cDataBaixa">
+											<input type="hidden" name="cAprovarRH" id="cAprovarRH" value="0">
+											<input type="hidden" name="aprovador" id="aprovador">
+										</div>
+
+										<div class="col-md-4 col-xs-12 form-group">
+											<label class="control-label" for="cpf">CPF:</label>
+											<input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md obg" mask="000.000.000-00">
+										</div>
+
+										<div class="col-md-4 col-xs-12 form-group">
+											<label class="control-label" for="departamento">Departamento:</label>
+											<input id="departamento" name="departamento" type="text" placeholder="" class="form-control input-md obg">
+										</div>
+
+									</fieldset>
+								</div>
+								<div class="col-md-12 row">
+									<fieldset>
+
+										<!-- Form Name -->
+										<legend>Dados para depósito</legend>
+
+										<!-- Text input-->
+										<div class="form-group">
+											<div class="col-md-3 col-xs-12">
+												<label class="control-label" for="banco">Banco:</label>
+												<input id="banco" name="banco" type="number" placeholder="" class="form-control input-md obg" >
+											</div>
+
+
+											<!-- Text input-->
+											<div class="col-md-3 col-xs-12">
+												<label class="control-label" for="agencia">Agência:</label>
+												<input id="agencia" name="agencia" type="number" placeholder="" class="form-control input-md obg">
+											</div>
+
+
+											<!-- Text input-->
+											<div class="col-md-3 col-xs-12">
+												<label class="control-label" for="conta">Conta:</label>
+												<input id="conta" name="conta" type="text" placeholder="" class="form-control input-md obg">
+											</div>
+
+											<div class="col-md-3 col-xs-12 form-group">
+												<label class="control-label" for="centro_custo">C. Custo:</label>
+												<input id="centro_custo" name="centro_custo" type="number" placeholder="" class="form-control input-md obg">
+											</div>
+										</div>
+									</fieldset>
+								</div>
+								<div class="col-md-12"><br></div>
+							</div>
+
+
+							<div class="col-md-12"><br></div>
+
+							<!-- Informações da despesa -->
+							<div class="col-md-12 panel panel-default">
+								<div class="col-md-8">
+									<fieldset>
+										<!-- Form Name -->
+										<legend>Finalidade do Reembolso</legend>
+										<div class="form-group">
+											<label class="control-label" for="finalidade"></label>
+											<textarea class="form-control obg" id="finalidade" name="finalidade"></textarea>
+										</div>
+									</fieldset>
+								</div>
+								<div class="col-md-4">
+									<fieldset>
+										<legend>Valor do Adiantamento</legend>
+										<!-- Text input-->
+										<div class="form-group col-md-12 col-xs-12">
+											<label class="col-md-4 control-label" for="reais">R$</label>
+											<div class="col-md-4">
+												<input id="reais" name="reais" type="text" onchange="insereDolarReal(this.value)" placeholder="" class="form-control input-md" mask="#,##9.99">
+											</div>
+										</div>
+
+										<!-- Text input-->
+										<div class="form-group col-md-12 col-xs-12">
+											<label class="col-md-4 control-label" for="dolares">US$</label>
+											<div class="col-md-4">
+												<input id="dolares" name="dolares" type="text" onchange="insereDolarReal(this.value)" placeholder="" class="form-control input-md" mask="#,##9.99">
+											</div>
+										</div>
+
+
+									</fieldset>
+								</div>
+							</div>
+
+							<div id="target"></div>
+
+
+							<!-- Inserção da despesa -->
+							<div class="col-md-12 panel panel-default" style="padding-bottom: 10px">
+								<fieldset>
+									<legend id="despesas_legend">Despesas</legend>
+									<table tablename="tbdespesas" id="tabela" class="table table-striped" noaddbutton="true" nodeletebutton="true">
+										<thead>
+											<tr>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="linha">
+												<td class="" >
+													<label for="">Remove</label>
+													<button class="btn btn-default fluigicon fluigicon-minus-sign delItem"  onclick="delDesp(this)">
+														<!-- <i class=" fluigicon-md " style="cursor:pointer"></i> -->
+													</button>
+												</td>
+												<td>
+													<label>Data</label>
+													<input type="text" name="despdata" id="despdata" class="form-control despdata">
+												</td>
+												<td>
+												<!--<select name="desptipo" id="desptipo" class="despesa form-control" onchange="coletaid(this);" dataset="tipoDespesa" datasetkey="codigo" datasetvalue="descricao"></select>
+												-->
+													<!-- readonly="readonly" -->
+												<!-- <label>Despesa</label>
+												<div class="form-group">
+													<input
+													    type="zoom"
+													    id = "desptipo"
+													    name="desptipo"
+													    data-zoom="{
+													        'displayKey':'descricao',
+																	'maximumSelectionLength' : '1',
+													        'datasetId':'tipoDespesa',
+													        'placeholder':'Escolha a despesa',
+													        'fields':[
+													            {
+													               'field':'codigo',
+													               'label':'Codigo'
+													            },{
+													              'field':'	descricao',
+													              'label':'Descricao',
+													              'standard':'true'
+													            }
+													        ]
+													     }"
+													/>
+													</div> -->
+										<!--<select name="desptipo" id="desptipo" class="despesa form-control" onchange="coletaid(this);" dataset="tipoDespesa" datasetkey="codigo" datasetvalue="descricao"></select>
+										-->
+										<label>Despesa</label>
+										<div class="input-group">
+											<!-- readonly="readonly" -->
+											<input type="text" name="desptipo" id="desptipo" class="form-control desptipo despesa" readonly="readonly" >
+											<span class="input-group-btn">
+													<button class="btn btn-default fluigicon fluigicon-search  zoom btnZoom" onclick="zoomDesp(this)"; type="button" id="btZoomDespesa"></button>
+
+												</span>
+											</div>
+												</td>
+
+										<td>
+											<label>Cta. Contábil</label>
+											<input type="text" class="contabil form-control despctacontabil" name="despctacontabil" id="despctacontabil">
+										</td>
+										<td colspan="2" style="min-width: 200px;">
+											<div class="form-group">
+												<!-- readonly="readonly" -->
+												<label>Cliente</label>
+												<input type="hidden" class="form-control despcliente" name="despcliente" id="despcliente">
+
+												<input
+													    type="zoom"
+													    id = "despclientedesc"
+													    name="despclientedesc"
+													    data-zoom="{
+													        'displayKey':'CNOME',
+													        'datasetId':'dsCliente',
+													        'placeholder':'Escolha o CLIENTE',
+													        'fields':[
+													          {
+													              'field':'CNOME',
+													              'label':'Nome',
+													              'standard':'true'
+													            },{
+													              'field':'CCGC',
+													              'label':'CNPJ'
+																},{ 'field':'CCODIGO', 
+																'label':'Codigo' }
+													        ]
+													     }"
+													/>
+											</div>
+
+										</td>
+										<td>
+											<label>Justificativa</label>
+											<input type="text" class="form-control desjustificativa" name="desjustificativa" id="desjustificativa">
+										</td>
+										<td>
+											<label id="rskm">Valor</label>
+
+											<input type="text" class="form-control maskValor despvalorporkm" name="despvalorporkm" id="despvalorporkm" onchange="calcValDesp(this);" mask="#,##9.99">
+										</td>
+										<td style="display:none" id="tdValorKM">
+											<label id="labelValorKM">Valor p. KM</label>
+											<input type="text" class="form-control maskValor despvalor" name="despvalor" id="despvalor" " readonly="readonly"  value="0.85" mask="#,##9.99">
+											<!-- onchange="multiplicaCampo(this,'despvalorporkm','desptotal');somatoriaFunc('.ttresul','#total2');somaComMenosDolar('.valor','#total1','#dolaroureal');somatoriaFunc('.valor','#total3');somaPorDespesa('.ttresul','.contabil'); -->
+										</td>
+										<td>
+											<label>Câmbio</label>
+											<input type="text" class="form-control maskValor desptaxa" name="desptaxa" id="desptaxa" onchange="calcValDesp(this);"  mask="#,##9.99">
+										</td>
+										<td>
+											<label>Total R$</label>
+											<input type="text" class="form-control ttresul maskValor desptotal valor" name="desptotal" id="desptotal" mask="#,##9.99" readonly onchange="calcTotalGeral()">
+										</td>
+										<td id="tdAnexo">
+											<input type="hidden" class="form-control despComprovName" name="despComprovName" id="despComprovName">
+											<div class="col-md-1 fs-no-padding "id='BT_Banco'>
+												<label id="anexo">Anexo</label>
+												<button type="button" id="despComprov" class="btn btn-default fluigicon fluigicon-paperclip  despComprov" onclick="descComprovClick(this);"></button>
+											</div>
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+						<button type="button" class="btn btn-primary" data-toggle="button" onclick="addDisp('tbdespesas');">Adicionar despesa</button>
+					</div>
+					<!-- subtotal -->
+
+					<div class="col-md-12 panel panel-default">
+						<legend>Sub total</legend>
+						<p id="total3olde"></p>
+						<input type="hidden" name="total3" class="form-control maskValor" id="total3"  mask="#,##9.99">
+
+						<div class="col-md-6 col-xs-6" style="display: none;">
+							<input type="text" name="dolaroureal" class="form-control maskValor" id="dolaroureal"  mask="#,##9.99">
+							<label><font color="red">(-)</font>Adiantamento R$/US$: </label>
+						</div>
+
+					<!-- 	<div class="col-md-6 col-xs-6">
+
+							<label>Taxa de Compra: </label>
+							<input type="text" name="taxa2" id="taxa2" class="form-control taxa maskValor"  mask="#,##9.99">
+						</div> -->
+
+						<!-- <div class="col-md-6">
+
+							<label>
+								<font color="red">(-)</font>Hotel/ Passagem /Aluguel de carros (Lançar somente os valores faturados):
+							</label>
+							<input type="text" name="taxa1" id="taxa1" class="taxa form-control maskValor"  mask="#,##9.99">
+						</div> -->
+
+						<div class="col-md-6 col-xs-6">
+
+							<label>Total Geral:</label>
+
+							<input type="text" name="total1" class="form-control maskValor" id="total1"  mask="#,##9.99" readonly>
+						</div>
+						<div class="col-md-6 col-xs-6">
+							<label>
+								Reembolso
+							</label>
+							<input type="text" class="form-control maskValor" name="total2" id="total2"  mask="#,##9.99" readonly>
+						</div>
+
+
+								<div class="col-md-12"><br></div>
+								</div>
+
+					<!-- Resumo das despesas -->
+					<!-- <div class="col-md-12 panel panel-default ">
+						<legend>Resumo de Despesas</legend>
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<thead>
+									<tr>
+										<th>Despesas de viagens</th>
+										<th>Reembolso de Km</th>
+										<th>Lanches e refeições</th>
+										<th>Estacionamento e pedágio</th>
+										<th>Bens e pequeno valor</th>
+										<th>Material de escritório</th>
+										<th>Correio</th>
+										<th>Transportes de passageiros</th>
+										<th>Material de informática</th>
+										<th></th>
+										<th></th>
+										<th>Total R$</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>314.02.0023</td>
+										<td>314.02.0024</td>
+										<td>314.02.0025</td>
+										<td>314.02.0026</td>
+										<td>314.02.0028</td>
+										<td>314.02.0031</td>
+										<td>314.02.0034</td>
+										<td>314.02.0021</td>
+										<td>314.02.0032</td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+
+										<td>
+											<input type="text" name="viagem" id="viagem" class="form-control" readonly="readonly">
+										</td>
+										<td>
+											<input type="text" name="quilometro" id="quilometro" class="form-control" readonly="readonly">
+										</td>
+										<td>
+											<input id="refeicao" type="text" name="refeicao" class="form-control" readonly="readonly">
+										</td>
+										<td>
+											<input name="pedagio" id="pedagio" type="text" class="form-control" readonly="readonly">
+										</td>
+										<td>
+											<input type="text" class="form-control" name="pequeno_valor" id="pequeno_valor"readonly="readonly">
+										</td>
+										<td>
+											<input type="text" name="escritorio" id="escritorio" class="form-control" readonly="readonly">
+										</td>
+										<td>
+											<input type="text" name="correio" id="correio" class="form-control" readonly="readonly">
+										</td>
+										<td>
+											<input type="text" id="tranporte" name="trasporte" class="form-control"  readonly="readonly">
+										</td>
+										<td>
+											<input type="text" name="informatica" class="form-control" id="informatica" readonly="readonly">
+										</td>
+										<td></td>
+										<td></td>
+										<td>
+											<input type="text" name="totalcat" class="form-control maskValor" id="totalcat" readonly="readonly">
+										</td>
+
+									</tr>
+
+
+								</tbody>
+
+							</table>
+						</div>
+					<div class="col-md-12"><br></div>
+					</div> -->
+
+					<div class="col-md-12">
+						<div id="retIntegrDiv" class='panel panel-default row' style="display:none;">
+						<div class="panel-heading">Retorno integração</div>
+						<div class="panel-body">
+						<textarea id="msgRetorno"  class="form-control" name="msgRetorno"></textarea>
+					</div>
+				</div>
+
+				</div>
+			</div>
+			<!-- </div> -->
+		</div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>gestao_usuarios</processId>
+    </processDefinitionPK>
+    <processDescription>Gestão de usuarios</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Desenvolvimento</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Gestão de usuarios</processId>
+      <version>2</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>248</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>150</positionX>
+      <positionY>82</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <sequence>9</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>360</positionX>
+      <positionY>82</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskSave</eventId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+	 try {&#xd;
+		 var company = getValue(&quot;WKCompany&quot;);&#xd;
+	log.info(&apos;integracao: cadastro de usuario&apos;); &#xd;
+	//instancia servicos de integracao&#xd;
+	 var pre = &apos;com.totvs.technology.ecm.foundation.ws&apos;;&#xd;
+	 var caminho = pre + &apos;.ECMColleagueServiceService&apos;;&#xd;
+	 var Service = ServiceManager.getService(&apos;ECMColleagueService&apos;);&#xd;
+	 var serviceHelper = Service.getBean();&#xd;
+//	 var serviceLocator = serviceHelper.instantiate(caminho);&#xd;
+//	 var serviceLocator = serviceLocator.getWSFLUIGSOAP();&#xd;
+	 var serviceLocator = serviceHelper.instantiate(caminho);&#xd;
+	 var sv = serviceLocator = serviceLocator.getColleagueServicePort();&#xd;
+	 var objFac = serviceHelper.instantiate(pre+&quot;.ObjectFactory&quot;);&#xd;
+	 var colArray = objFac.createColleagueDtoArray();&#xd;
+	&#xd;
+	 &#xd;
+	 var camposItem = new Array(&apos;GUactive&apos;,&apos;GUcolleagueName&apos;,&apos;GUcolleagueId&apos;,&apos;GUmail&apos;,&apos;GUadminUser&apos;,&apos;GUemailHtml&apos;,&apos;GUgroupId&apos;,&apos;GUlogin&apos;,&apos;GUpasswd&apos;);&#xd;
+	 var camposCustom = new Array(&apos;CustomTelefone&apos;,&quot;CustomArea&quot;,&quot;CustomCargo&quot;,&quot;CustomCPF&quot;,&quot;CustomCentroCusto&quot;,&quot;CustomGestor&quot;,&quot;CustomDiretoria&quot;,&quot;CustomNegocio&quot;,&quot;CustomCliente&quot;,&quot;CustomDataAdmissao&quot;,&quot;custom1&quot;,&quot;custom2&quot;,&quot;custom3&quot;,&quot;custom4&quot;,&quot;custom5&quot;,&quot;statusReturn&quot;);&#xd;
+	  var dadosItensForm = consultaDadosPaiFilho(camposItem);&#xd;
+	  &#xd;
+	  //monta lista de colleagues a partir de campos customs&#xd;
+	  for (var i = 0; i &lt; dadosItensForm.length; i++) {&#xd;
+		var dadoAtual = dadosItensForm[i];&#xd;
+		var colDto = objColleague(dadoAtual, objFac,company);&#xd;
+		 colArray.getItem().add(colDto);&#xd;
+	}&#xd;
+	 var response = sv.createColleague(&quot;luan.gomes@fitgestao.com.br&quot;,&quot;@FluigF1t&quot;,company,colArray);&#xd;
+	 log.info(&quot;Retorno createColleague: &quot; + response);&#xd;
+	 } catch(error) { &#xd;
+		log.error(error);&#xd;
+		throw error;&#xd;
+	 }&#xd;
+}&#xd;
+&#xd;
+function objColleague(dado,objFac,company){&#xd;
+	 var colDto = objFac.createColleagueDto();&#xd;
+//	 (&apos;GUactive&apos;,&apos;GUcolleagueName&apos;,&apos;GUcolleagueId&apos;,&apos;GUmail&apos;,&apos;GUadminUser&apos;,&apos;GUemailHtml&apos;,&apos;GUgroupId&apos;,&apos;GUlogin&apos;,&apos;GUpasswd&apos;);&#xd;
+//	 dado[&apos;nomeCampo&apos;].value&#xd;
+	 colDto.setActive(getBool(dado[&apos;GUactive&apos;].value) );&#xd;
+	 colDto.setAdminUser(getBool(dado[&apos;GUadminUser&apos;].value));&#xd;
+	 colDto.setColleagueId(dado[&apos;GUcolleagueId&apos;].value);&#xd;
+	 colDto.setColleagueName(dado[&apos;GUcolleagueName&apos;].value);&#xd;
+	 colDto.setCompanyId(company);&#xd;
+	 colDto.setDefaultLanguage(&apos;pt_BR&apos;);&#xd;
+	 colDto.setDialectId(&apos;pt_BR&apos;);&#xd;
+	 colDto.setEmailHtml(getBool(dado[&apos;GUemailHtml&apos;].value));&#xd;
+	 colDto.setGedUser(true);&#xd;
+	 colDto.setLogin(dado[&apos;GUlogin&apos;].value);&#xd;
+	 colDto.setMail(dado[&apos;GUmail&apos;].value);&#xd;
+	 colDto.setMenuConfig(0);&#xd;
+	 colDto.setPasswd(dado[&apos;GUpasswd&apos;].value);&#xd;
+	 colDto.setGroupId(dado[&apos;GUgroupId&apos;].value);&#xd;
+	 colDto.setRowId(0);&#xd;
+	 return colDto;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function consultaDadosPaiFilho(fields){&#xd;
+	  log.info(&apos;Consulta Dados Pai X Filho&apos;);&#xd;
+	  var nrProcesso = getValue(&quot;WKNumProces&quot;);&#xd;
+	  var cardData   = hAPI.getCardData(nrProcesso);&#xd;
+	  var it         = cardData.keySet().iterator();&#xd;
+	  var listaFilho = new Array();&#xd;
+	  var fieldTemp  = fields[0];&#xd;
+&#xd;
+	  while (it.hasNext()) {&#xd;
+		var key = it.next();&#xd;
+		var campo = key.split(&quot;___&quot;);&#xd;
+&#xd;
+		if (key.indexOf(&apos;___&apos;) &gt;= 0 &amp;&amp; campo[0] == fieldTemp) {&#xd;
+		  var idx = campo[1];&#xd;
+		  var row = new Object();&#xd;
+&#xd;
+		  for(var i=0; i&lt;fields.length; i++){&#xd;
+			var name = fields[i] + &quot;___&quot; + idx;&#xd;
+			row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};&#xd;
+		  }&#xd;
+		  listaFilho.push(row);&#xd;
+		}&#xd;
+	  }&#xd;
+	  return listaFilho;&#xd;
+	}&#xd;
+&#xd;
+	function semCaractere(valor, c){&#xd;
+		while(valor.indexOf(c) &gt;= 0){&#xd;
+			valor = valor.replace(c,&apos;&apos;);&#xd;
+		}&#xd;
+		return valor;&#xd;
+	}&#xd;
+	function getErpdate(dt){&#xd;
+		var d = dt.split(&apos;/&apos;);&#xd;
+		var c = d.reverse();&#xd;
+		var a = c.join(&apos;&apos;);&#xd;
+		var b = semCaractere(a,&apos;,&apos;);&#xd;
+		return b;&#xd;
+	 }&#xd;
+	&#xd;
+	function getBool(val){&#xd;
+		return val.toLowerCase() == &apos;true&apos; || val.toLowerCase() == &apos;1&apos; || val.toLowerCase() == &apos;sim&apos;;&#xd;
+		&#xd;
+	}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>290</height>
+      <width>831</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Pool</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>145</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>Reporter</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>C0C0C0</color>
+      <height>145</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>155</positionY>
+      <stateName>Assignee</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>210</positionX>
+      <positionY>20</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <componGrafSequence>7</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Start</stateName>
+    </ProcessComponGraf>
+  </list>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>1</version>
+        <linkSequence>8</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>gestao_usuarios</processId>
+        <version>2</version>
+        <linkSequence>8</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>167</positionX>
+      <positionY>48</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

@@ -1,0 +1,2351 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>acerPagamentosFornecedores</processId>
+    </processDefinitionPK>
+    <processDescription>Pagamentos de Fornecedores</processDescription>
+    <instruction>		</instruction>
+    <active>true</active>
+    <publicProcess>true</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Financeiro</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Pagamentos de Fornecedores</processId>
+      <version>4</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>4900</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>60</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;solPagamentosFornecedores&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>90</positionX>
+      <positionY>44</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>60</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Aprovar Solicitação</stateName>
+      <stateDescription>Aprovar Solicitação</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;aprovPagamentosFornecedores&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>520</positionX>
+      <positionY>123</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>60</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>26</sequence>
+      </processStatePK>
+      <stateName>Insere Titulo</stateName>
+      <stateDescription>Insere Titulo</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>60</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>790</positionX>
+      <positionY>425</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>60</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>32</sequence>
+      </processStatePK>
+      <stateName>Verificar Negativa</stateName>
+      <stateDescription>Verificar Negativa</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1070</positionX>
+      <positionY>24</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>60</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>43</sequence>
+      </processStatePK>
+      <stateName>Classificar Lançamento</stateName>
+      <stateDescription>Classificar Lançamento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;classLancamentos&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>60</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>60</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>920</positionX>
+      <positionY>229</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>60</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>60</allowanceManagerTime>
+      <frequenceManagerTime>60</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>60</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>60</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>60</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>64</sequence>
+      </processStatePK>
+      <stateName>Verificar</stateName>
+      <stateDescription>Verificar</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;integraProblem&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1060</positionX>
+      <positionY>420</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>77</sequence>
+      </processStatePK>
+      <stateName>Realizar pagamento</stateName>
+      <stateDescription>Realizar pagamento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;realizaPagmentos&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1280</positionX>
+      <positionY>323</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>91</sequence>
+      </processStatePK>
+      <stateName>Aprovar Marketing</stateName>
+      <stateDescription>Aprovar Marketing</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;aprovPargFornMKT&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>230</positionX>
+      <positionY>124</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>27</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>870</positionX>
+      <positionY>465</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>26</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>73</sequence>
+      </processStatePK>
+      <stateName>Aguardando Classificacao</stateName>
+      <stateDescription>Aguardando Classificacao</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1102</positionX>
+      <positionY>344</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>35</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>0</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>80</sequence>
+      </processStatePK>
+      <stateName>Aguardando baixa</stateName>
+      <stateDescription>Aguardando baixa</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1650</positionX>
+      <positionY>244</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>35</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>0</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>14</sequence>
+      </processStatePK>
+      <stateName>Incluiu?</stateName>
+      <stateDescription>Incluiu?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>1390</positionX>
+      <positionY>400</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>30</sequence>
+      </processStatePK>
+      <stateName>S/N</stateName>
+      <stateDescription>S/N</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>723</positionX>
+      <positionY>114</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>47</sequence>
+      </processStatePK>
+      <stateName>Fiscal?</stateName>
+      <stateDescription>Fiscal?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>1090</positionX>
+      <positionY>220</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>85</sequence>
+      </processStatePK>
+      <stateName>s/n</stateName>
+      <stateDescription>s/n</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>1430</positionX>
+      <positionY>216</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>89</sequence>
+      </processStatePK>
+      <stateName>MKT</stateName>
+      <stateDescription>MKT</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>77</positionX>
+      <positionY>116</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>93</sequence>
+      </processStatePK>
+      <stateName>S/N</stateName>
+      <stateDescription>S/N</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>390</positionX>
+      <positionY>116</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>82</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1650</positionX>
+      <positionY>427</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>14</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cKey&apos;)!=&apos;&apos;</condition>
+      <destinationSequenceId>82</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>4</version>
+        <sequence>14</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>64</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>30</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;MngrAprov&apos;)==&apos;sim&apos; &amp;&amp;&#xd;
+hAPI.getCardValue(&apos;docTipo&apos;)==&apos;TAX&apos;</condition>
+      <destinationSequenceId>43</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>4</version>
+        <sequence>30</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;MngrAprov&apos;)==&apos;sim&apos; &amp;&amp;&#xd;
+hAPI.getCardValue(&apos;docTipo&apos;)!=&apos;TAX&apos;</condition>
+      <destinationSequenceId>26</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>4</version>
+        <sequence>30</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>32</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>47</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;fiscalAprov&apos;)==&apos;nao&apos;</condition>
+      <destinationSequenceId>32</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>4</version>
+        <sequence>47</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;fiscalAprov&apos;)==&apos;sim&apos;</condition>
+      <destinationSequenceId>73</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>85</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;pagAprov&apos;)==&apos;nao&apos;</condition>
+      <destinationSequenceId>43</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>4</version>
+        <sequence>85</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;pagAprov&apos;)==&apos;sim&apos;</condition>
+      <destinationSequenceId>80</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>89</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cCentroCusto&apos;)==&apos;337&apos;</condition>
+      <destinationSequenceId>91</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>4</version>
+        <sequence>89</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cCentroCusto&apos;)!=&apos;337&apos;</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>93</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;dirAprov&apos;)==&apos;sim&apos; </condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>4</version>
+        <sequence>93</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;dirAprov&apos;)!=&apos;sim&apos; </condition>
+      <destinationSequenceId>4</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>23</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>26</initialStateSequence>
+      <finalStateSequence>14</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>31</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>30</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>33</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>30</initialStateSequence>
+      <finalStateSequence>32</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>42</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>27</initialStateSequence>
+      <finalStateSequence>64</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>48</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>43</initialStateSequence>
+      <finalStateSequence>47</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>59</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>47</initialStateSequence>
+      <finalStateSequence>32</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>65</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>14</initialStateSequence>
+      <finalStateSequence>64</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>66</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>64</initialStateSequence>
+      <finalStateSequence>26</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>72</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>30</initialStateSequence>
+      <finalStateSequence>26</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>74</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>47</initialStateSequence>
+      <finalStateSequence>73</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>76</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>30</initialStateSequence>
+      <finalStateSequence>43</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>78</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>73</initialStateSequence>
+      <finalStateSequence>77</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>83</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>80</initialStateSequence>
+      <finalStateSequence>82</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>84</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>14</initialStateSequence>
+      <finalStateSequence>82</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>86</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>85</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>87</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>85</initialStateSequence>
+      <finalStateSequence>43</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>88</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>85</initialStateSequence>
+      <finalStateSequence>80</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>90</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>89</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>92</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>89</initialStateSequence>
+      <finalStateSequence>91</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>94</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>91</initialStateSequence>
+      <finalStateSequence>93</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>95</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>93</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>97</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>89</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>98</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>32</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <linkSequence>99</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>93</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask26</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask26(attempt, message) {
+	log.info(&quot;++++++++++++++++++++++++++++++++ INICIO DE INTEGRACAO DE TITULO ++++++++++++++++++++++++++&quot;);
+	var COD_Solicicitante = hAPI.getCardValue(&apos;idSolic&apos;);
+	var COD_solicitacao = hAPI.getCardValue(&apos;NrSolic&apos;);
+	// var WK_Aprovador = hAPI.getCardValue(&apos;WKsuperior&apos;);
+	var emp = hAPI.getCardValue(&apos;codEmpresa&apos;);
+	var filial  = hAPI.getCardValue(&apos;codFilial&apos;);
+	var natureza  = hAPI.getCardValue(&apos;cNatureza&apos;);
+	var forn   = hAPI.getCardValue(&apos;cCodForn&apos;);
+	var fornLoja   = hAPI.getCardValue(&apos;clojaForn&apos;);
+	var fornCgc = hAPI.getCardValue(&apos;cCgcForn&apos;);
+	var vencData = hAPI.getCardValue(&apos;VencData&apos;).trim();
+	var valorLiq  = hAPI.getCardValue(&apos;ValLiqTitulo&apos;);
+	var valorBruto  = hAPI.getCardValue(&apos;ValTitulo&apos;);
+		valorLiq  = valorLiq.replace(&apos;R$&apos;,&apos;&apos;).replace(&apos;,&apos;,&apos;&apos;).replace(&apos;,&apos;,&apos;&apos;).replace(&apos;,&apos;,&apos;&apos;).replace(&apos;,&apos;,&apos;&apos;);
+		log.info(&quot;Valor: &quot; + valorLiq);
+		
+	var cFormPagto = hAPI.getCardValue(&apos;cFormPagto&apos;);
+	
+	
+	var cc = hAPI.getCardValue(&apos;cCentroCusto&apos;);
+	var emissData = hAPI.getCardValue(&apos;EmissData&apos;).trim();
+	// var CF_USER   = WK_Aprovador.toUpperCase();
+	var chist   = &quot;Fluig - &quot;+ COD_solicitacao;
+	var CF_CODTIT = &apos;&apos;;/*Codigo do titulo da PA, deve ser informado somente no reembolso de despesas*/
+
+	var tipoDoc= hAPI.getCardValue(&apos;docTipo&apos;);
+	var CF_NUMTIT = hAPI.getCardValue(&apos;docNumTit&apos;);
+	var cContaOrc = hAPI.getCardValue(&apos;cContaOrc&apos;);
+	// var CF_CCD 	  = CF_CCUSTO;
+	var msgXML = &apos;&apos;;
+
+	var NOME_SERVICO = &quot;WSFLUIG&quot;;
+	var pre = &quot;br.com.totvs.agptec._10222&quot;;
+	var CAMINHO_SERVICO = pre+&quot;.WSFLUIG&quot;;
+	var despCaminho = pre+&quot;.DESPESA&quot;;
+	var despiTemCaminho = pre+&quot;.DESPESAITEM&quot;;
+	var aoDespItemStr = pre+&quot;.ARRAYOFDESPESAITEM&quot;;
+
+		try{
+			var servico = ServiceManager.getServiceInstance(NOME_SERVICO);
+			log.info(&quot;Servico: &quot; + servico);
+			var instancia = servico.instantiate(CAMINHO_SERVICO);
+			log.info(&quot;Instancia: &quot; + instancia);
+			var ws = instancia.getWSFLUIGSOAP();
+			log.info(&apos;WS: &apos;+ws);
+			//cria despesaitem com dados do rateio
+			var oDespesa = servico.instantiate(despCaminho);
+			/*monta cabe�alho do padr�o do titulo*/
+			oDespesa.setCCGC(fornCgc);
+			oDespesa.setCDATAEMISSAO(trataData(emissData));
+			oDespesa.setCFORMAPGTO(cFormPagto);
+			oDespesa.setCHISTORICO(chist);
+			oDespesa.setCID(COD_solicitacao);
+			oDespesa.setCNATUREZA(natureza);
+			oDespesa.setCPREFIXO(&quot;FLU&quot;);
+			oDespesa.setCTIPO(tipoDoc);
+			log.info(&quot;oDespesa: &quot; + oDespesa);
+			//verifica rateio
+			if(hAPI.getCardValue(&apos;rateioCC&apos;)==&apos;sim&apos;){
+				var listaRatCusto  = consultaDadosPaiFilho([&apos;cCentroCustoRat&apos;,&apos;valorCCusto&apos;,&apos;cConOrcRat&apos;,&apos;percentualCCusto&apos;]);
+				var AODesp = servico.instantiate(aoDespItemStr);
+				/*Adiciona lista ao objeto de array de Centro de custos*/
+				for(x in listaRatCusto ) {
+					/*Define lista objeto de centros de custos*/
+					var rat = listaRatCusto[x];
+					var despRat = nDespItem(rat,servico);
+					AODesp.getDESPESAITEM().add(despRat);
+					// oDespesa.getADESPESAITENS().add();
+				}
+				oDespesa.setADESPESAITENS(AODesp);
+			}else{
+				//monta objeto de despesa unica com header do form
+				var uDesp = servico.instantiate(despiTemCaminho);
+				var AODesp = servico.instantiate(aoDespItemStr);
+				uDesp.setCCENTROCUSTO(cc);
+				uDesp.setCCONTACONTABIL(cContaOrc);
+				uDesp.setCDATA(trataData(vencData));
+				uDesp.setCJUSTIFICATIVA(&quot;Pagamento Fornecedor Fluig&quot;);
+				uDesp.setCNOMECLIENTE(&quot;-&quot;);
+				uDesp.setNTXCAMBIO(0);
+				uDesp.setNVALOR(valorLiq);
+				AODesp.getDESPESAITEM().add(uDesp);
+				oDespesa.setADESPESAITENS(AODesp);
+			}
+			log.info(&quot;oDespesa: &quot; + oDespesa);
+
+
+
+
+			//insere no webservice
+			var retDesp = ws.gravacontaspagar(oDespesa);
+			var cKey = retDesp.getCCHAVE();
+			var cErro = retDesp.getCERRO();
+			var cMsg = retDesp.getCMSG();
+
+			//verificar respostahAPI.setTaskComments(&quot;admin&quot;, COD_solicitacao, 0, msgRetTitulo.toString());
+
+			var msgErro = &quot;Ocorreu um erro Inserir o titulo -&gt; &quot;;
+			msgErro+= &quot; cKey: &quot; + cKey;
+			msgErro+= &quot; - cErro: &quot; + cErro;
+			msgErro+= &quot; - cMsg: &quot; + cMsg;
+			log.info(&apos;Retorno erro: &apos;+msgErro);
+			// tratar retorno
+			if(cErro.trim() == &quot;N&quot; &amp;&amp; cKey.trim() != &quot;&quot;){
+				//sucesso
+				hAPI.setCardValue(&quot;cKey&quot;,cKey);
+				log.info(&quot;task comment adicionado&quot;);
+				var msgSuccess = &quot;Inserido com sucesso.&quot;;
+				msgSuccess += &quot;Chave - &quot; + cKey;
+				hAPI.setCardValue(&quot;msgRetorno&quot;,msgSuccess);
+				hAPI.setTaskComments(&quot;admin&quot;, COD_solicitacao, 0, msgSuccess);
+			}else{
+				var msgErro = &quot;Ocorreu um erro Inserir o titulo -&gt; &quot;;
+				msgErro+= &quot; cKey: &quot; + cKey;
+				msgErro+= &quot; - cErro: &quot; + cErro;
+				msgErro+= &quot; - cMsg: &quot; + cMsg;
+				hAPI.setCardValue(&quot;msgRetorno&quot;,msgErro);
+				throw msgErro;
+			}
+			//hAPI.setTaskComments(WK_Aprovador, COD_solicitacao, 0, msgErro);
+		}
+		catch(e){
+			var msgErro = &quot;Ocorreu um erro Inserir o titulo -&gt; &quot; + e;
+			log.info(&apos;Retorno erro: &apos;+msgErro);
+			//hAPI.setTaskComments(WK_Aprovador, COD_solicitacao, 0, msgErro);
+			hAPI.setTaskComments(&quot;admin&quot;, COD_solicitacao, 0, msgErro);
+			throw msgErro;
+		}
+
+	function consultaDadosPaiFilho(fields){
+		log.info(&apos;Consulta Dados Pai X Filho&apos;);
+		var nrProcesso = getValue(&quot;WKNumProces&quot;);
+		var cardData   = hAPI.getCardData(nrProcesso);
+		var it         = cardData.keySet().iterator();
+		var listaFilho = new Array();
+		var fieldTemp  = fields[0];
+
+		while (it.hasNext()) {
+			var key = it.next();
+			var campo = key.split(&quot;___&quot;);
+
+			if (key.indexOf(&apos;___&apos;) &gt;= 0 &amp;&amp; campo[0] == fieldTemp) {
+				var idx = campo[1];
+				var row = new Object();
+				for(var i=0; i&lt;fields.length; i++){
+					var name = fields[i] + &quot;___&quot; + idx;
+					row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};
+				}
+				listaFilho.push(row);
+			}
+		}
+		return listaFilho;
+	}
+	
+	//retorna item de despesa de acordo com linha do rateio
+	function nDespItem(r,s){
+		//intancia de objeto
+		var p = &quot;_223._60._94._187._12547&quot;;
+		var i = p+&quot;.DESPESAITEM&quot;;
+		var objDesp = s.instantiate(i);
+		//&apos;cCentroCustoRat&apos;,&apos;valorCCusto&apos;,&apos;cConOrcRat&apos;,&apos;percentualCCusto&apos;
+		if(r){
+			objDesp.setCCENTROCUSTO(r.cCentroCustoRat.value);
+			objDesp.setCCONTACONTABIL(r.cConOrcRat.value);
+			objDesp.setNVALOR(r.valorCCusto.value);
+			objDesp.setCDATA(dtAtualProtheus());
+			objDesp.setCJUSTIFICATIVA(&quot;Pagamento Fornecedor Fluig&quot;);
+			objDesp.setCNOMECLIENTE(&quot;-&quot;);
+			objDesp.setNTXCAMBIO(0);
+		}
+		return objDesp;
+	}
+
+	function trataData(dBase){
+		return dBase.split(&apos;/&apos;).reverse().join(&apos;&apos;);
+	}
+
+	function dtAtualProtheus(){
+		var hj = new Date();
+		return trataData(dateToString(hj));
+	}
+
+	function dateToString(dt){
+		return &quot;&quot;+addZero(dt.getDate())+&quot;/&quot;+addZero(dt.getMonth()+1)+&quot;/&quot;+dt.getFullYear();
+	}
+	
+	function addZero(n){
+		var nn;
+		if(n &lt; 10){
+			nn = &quot;0&quot;+ n.toString();
+		}else{
+			nn = &quot;&quot;+ n.toString();
+	
+		}
+		return nn;
+	}
+
+
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>intermediateconditional80</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function intermediateconditional80() {	//monta lista de nfes que ira consultar
+	var aNFE  = consultaDadosPaiFilho([&apos;docChNfe&apos;,&apos;docSerieNfe&apos;,&apos;docValorNfe&apos;,&apos;docNNFE&apos;]);
+	var ret = true;
+	for(x in aNFE ) {
+		var oNFe = aNFE[x];
+		var dsNfe = getStatusNFE(oNFe.docChNfe.value);
+		//este dataset retorna sempre uma unica linha
+		var st = dsNfe.getValue(0, &apos;STATUS&apos;);
+		var msg = dsNfe.getValue(0, &apos;MENSAGEM&apos;);
+		if(st.trim() != &quot;&quot; &amp;&amp; st != &quot;02&quot; ){
+			ret = false;
+			break;
+		}
+	}
+	return ret;
+}
+
+function getStatusNFE(cChave){
+	// //busca valores do form
+	// var cDoc = 			hAPI.getCardValue(&quot;docNumTit&quot;);
+	// var cSerie = 		hAPI.getCardValue(&quot;docSerieTit&quot;);
+	// var cChave = 		hAPI.getCardValue(&quot;docNfeTit&quot;);
+	// var cCodForn = 		hAPI.getCardValue(&quot;cCodForn&quot;);
+	// var cLojaForn = 	hAPI.getCardValue(&quot;clojaForn&quot;);
+	//cria parametros para passar para o dataset
+	// var c1 = DatasetFactory.createConstraint(&apos;NNDOCUMENTO&apos;, cDoc, cDoc, ConstraintType.MUST);
+	// var c2 = DatasetFactory.createConstraint(&apos;CSERIENOTA&apos;, cSerie, cSerie, ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint(&apos;CCHAVENFE&apos;, cChave, cChave, ConstraintType.MUST);
+	// var c4 = DatasetFactory.createConstraint(&apos;CCODFORNECEDOR&apos;,cCodForn,cCodForn, ConstraintType.MUST);
+	// var c5 = DatasetFactory.createConstraint(&apos;CLOJAFORNECEDOR&apos;, cLojaForn, cLojaForn, ConstraintType.MUST);
+
+	var cs = new Array(c3);
+	//busca dataset usando parametros
+	var dsNfe = DatasetFactory.getDataset(&apos;acerNFEntrada&apos;, null, cs , null);
+	return dsNfe;
+}
+
+function consultaDadosPaiFilho(fields){
+	log.info(&apos;Consulta Dados Pai X Filho&apos;);
+	var nrProcesso = getValue(&quot;WKNumProces&quot;);
+	var cardData   = hAPI.getCardData(nrProcesso);
+	var it         = cardData.keySet().iterator();
+	var listaFilho = new Array();
+	var fieldTemp  = fields[0];
+
+	while (it.hasNext()) {
+		var key = it.next();
+		var campo = key.split(&quot;___&quot;);
+
+		if (key.indexOf(&apos;___&apos;) &gt;= 0 &amp;&amp; campo[0] == fieldTemp) {
+			var idx = campo[1];
+			var row = new Object();
+			for(var i=0; i&lt;fields.length; i++){
+				var name = fields[i] + &quot;___&quot; + idx;
+				row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};
+			}
+			listaFilho.push(row);
+		}
+	}
+	return listaFilho;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeTaskSave</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeTaskSave(colleagueId, nextSequenceId, userList) {&#xd;
+	var completedTask = (getValue(&quot;WKCompletTask&quot;)==&quot;true&quot;);&#xd;
+	if(nextSequenceId==89&amp;&amp;completedTask){&#xd;
+		var attachments = hAPI.listAttachments();&#xd;
+	    var hasAttachment = false;&#xd;
+	    if(attachments.size()&gt;0){&#xd;
+	    	hasAttachment = true;&#xd;
+	    }	&#xd;
+	    if (!hasAttachment) {&#xd;
+	        throw i18n.translate(&quot;erroAnexos&quot;);&#xd;
+	    }&#xd;
+	}&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>intermediateconditional76</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function intermediateconditional76() {
+	//busca valores do form
+	var cDoc = 			hAPI.getCardValue(&quot;docNumTit&quot;);
+	var cSerie = 		hAPI.getCardValue(&quot;docSerieTit&quot;);
+	var cChave = 		hAPI.getCardValue(&quot;docNfeTit&quot;);
+	var cCodForn = 		hAPI.getCardValue(&quot;cCodForn&quot;);
+	var cLojaForn = 	hAPI.getCardValue(&quot;clojaForn&quot;);
+	//cria parametros para passar para o dataset
+	var c1 = DatasetFactory.createConstraint(&apos;NNDOCUMENTO&apos;, cDoc, cDoc, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint(&apos;CSERIENOTA&apos;, cSerie, cSerie, ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint(&apos;CCHAVENFE&apos;, cChave, cChave, ConstraintType.MUST);
+	var c4 = DatasetFactory.createConstraint(&apos;CCODFORNECEDOR&apos;,cCodForn,cCodForn, ConstraintType.MUST);
+	var c5 = DatasetFactory.createConstraint(&apos;CLOJAFORNECEDOR&apos;, cLojaForn, cLojaForn, ConstraintType.MUST);
+
+	var cs = new Array(c1,c2,c3,c4,c5);
+	//busca dataset usando parametros
+	var dsNfe = DatasetFactory.getDataset(&apos;acerNFEntrada&apos;, null, cs , null);
+	//este dataset retorna sempre uma unica linha
+	var st = dsNfe.getValue(0, &apos;STATUS&apos;);
+	var msg = dsNfe.getValue(0, &apos;MENSAGEM&apos;);
+	var ret = false;
+	
+	if(st == &quot;01&quot;){
+		ret =true;
+	}
+	return ret;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>ENG_LITERALS</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>process.description=Pagamentos de Fornecedores
+process.category=Financeiro
+process.instructions=		
+process.version.instructions=
+1.name=Pagamentos 
+2.name=Solicitante
+3.name=Aprovador
+4.name=Início
+4.instructions=
+5.name=Aprovar Solicitação
+5.instructions=
+6.name=
+6.flow=
+6.return=
+7.name=Preenche o Formulário
+14.name=Incluiu?
+16.name=Fim
+16.instructions=Atividade final do processo
+17.name=
+17.flow=
+17.return=
+18.name=Verificar Integração
+18.instructions=
+19.name=
+19.flow=
+19.return=
+21.name=
+21.flow=
+21.return=
+23.name=
+23.flow=
+23.return=
+24.name=
+24.flow=
+24.return=
+25.name=
+25.flow=
+25.return=
+26.name=Insere Titulo
+28.name=
+28.flow=
+28.return=
+29.name=Fluig
+30.name=S/N
+31.name=
+31.flow=
+31.return=
+32.name=Verificar Negativa
+32.instructions=
+33.name=
+33.flow=
+33.return=
+34.name=Fim
+34.instructions=Atividade final do processo
+35.name=
+35.flow=
+35.return=
+36.name=Contas a Pagar
+37.name=Verificar Anexos
+37.instructions=
+38.name=
+38.flow=
+38.return=
+erroAnexos=ATTACH ONE DOCUMENT FIRST</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>ESP_LITERALS</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>process.description=Pagamentos de Fornecedores
+process.category=Desenvolvedor Fluig
+process.instructions=		
+process.version.instructions=
+1.name=Pagamentos 
+2.name=Solicitante
+3.name=Aprovador
+4.name=Início
+4.instructions=
+5.name=Aprovar Solicitação
+5.instructions=
+6.name=
+6.flow=
+6.return=
+7.name=Preenche o Formulário
+14.name=Incluiu?
+16.name=Fim
+16.instructions=Atividade final do processo
+17.name=
+17.flow=
+17.return=
+18.name=Verificar Integração
+18.instructions=
+19.name=
+19.flow=
+19.return=
+21.name=
+21.flow=
+21.return=
+23.name=
+23.flow=
+23.return=
+24.name=
+24.flow=
+24.return=
+25.name=
+25.flow=
+25.return=
+26.name=Insere Titulo
+28.name=
+28.flow=
+28.return=
+29.name=Fluig
+30.name=S/N
+31.name=
+31.flow=
+31.return=
+32.name=Verificar Negativa
+32.instructions=
+33.name=
+33.flow=
+33.return=
+34.name=Fim
+34.instructions=Atividade final do processo
+35.name=
+35.flow=
+35.return=
+36.name=Contas a Pagar
+37.name=Verificar Anexos
+37.instructions=
+38.name=
+38.flow=
+38.return=
+erroAnexos=ANEXE UM DOCUMENTO ANTES</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>intermediateconditional79</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function intermediateconditional79() {
+	return true;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>intermediateconditional72</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function intermediateconditional72() {
+
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>POR_LITERALS</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>process.description=Pagamentos de Fornecedores
+process.category=Financeiro
+process.instructions=		
+process.version.instructions=
+1.name=Pagamentos 
+2.name=Solicitante
+3.name=Aprovador
+4.name=Início
+4.instructions=
+5.name=Aprovar Solicitação
+5.instructions=
+6.name=
+6.flow=
+6.return=
+7.name=Preenche o Formulário
+14.name=Incluiu?
+16.name=Fim
+16.instructions=Atividade final do processo
+17.name=
+17.flow=
+17.return=
+18.name=Verificar Integração
+18.instructions=
+19.name=
+19.flow=
+19.return=
+21.name=
+21.flow=
+21.return=
+23.name=
+23.flow=
+23.return=
+24.name=
+24.flow=
+24.return=
+25.name=
+25.flow=
+25.return=
+26.name=Insere Titulo
+28.name=
+28.flow=
+28.return=
+29.name=Fluig
+30.name=S/N
+31.name=
+31.flow=
+31.return=
+32.name=Verificar Negativa
+32.instructions=
+33.name=
+33.flow=
+33.return=
+34.name=Fim
+34.instructions=Atividade final do processo
+35.name=
+35.flow=
+35.return=
+36.name=Contas a Pagar
+37.name=Verificar Anexos
+37.instructions=
+38.name=
+38.flow=
+38.return=
+erroAnexos=ANEXE UM DOCUMENTO ANTES</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>intermediateconditional73</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function intermediateconditional73() {
+	//monta lista de nfes que ira consultar
+	var aNFE  = consultaDadosPaiFilho([&apos;docChNfe&apos;,&apos;docSerieNfe&apos;,&apos;docValorNfe&apos;,&apos;docNNFE&apos;]);
+	var ret = true;
+	for(x in aNFE ) {
+		var oNFe = aNFE[x];
+		var dsNfe = getStatusNFE(oNFe.docChNfe.value);
+		//este dataset retorna sempre uma unica linha
+		var st = dsNfe.getValue(0, &apos;STATUS&apos;);
+		var msg = dsNfe.getValue(0, &apos;MENSAGEM&apos;);
+		if(st.trim() != &quot;&quot; &amp;&amp; st != &quot;01&quot; ){
+			ret = false;
+			break;
+		}
+	}
+	return ret;
+}
+
+function getStatusNFE(cChave){
+	// //busca valores do form
+	// var cDoc = 			hAPI.getCardValue(&quot;docNumTit&quot;);
+	// var cSerie = 		hAPI.getCardValue(&quot;docSerieTit&quot;);
+	// var cChave = 		hAPI.getCardValue(&quot;docNfeTit&quot;);
+	// var cCodForn = 		hAPI.getCardValue(&quot;cCodForn&quot;);
+	// var cLojaForn = 	hAPI.getCardValue(&quot;clojaForn&quot;);
+	//cria parametros para passar para o dataset
+	// var c1 = DatasetFactory.createConstraint(&apos;NNDOCUMENTO&apos;, cDoc, cDoc, ConstraintType.MUST);
+	// var c2 = DatasetFactory.createConstraint(&apos;CSERIENOTA&apos;, cSerie, cSerie, ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint(&apos;CCHAVENFE&apos;, cChave, cChave, ConstraintType.MUST);
+	// var c4 = DatasetFactory.createConstraint(&apos;CCODFORNECEDOR&apos;,cCodForn,cCodForn, ConstraintType.MUST);
+	// var c5 = DatasetFactory.createConstraint(&apos;CLOJAFORNECEDOR&apos;, cLojaForn, cLojaForn, ConstraintType.MUST);
+
+	var cs = new Array(c3);
+	//busca dataset usando parametros
+	var dsNfe = DatasetFactory.getDataset(&apos;acerNFEntrada&apos;, null, cs , null);
+	return dsNfe;
+}
+
+function consultaDadosPaiFilho(fields){
+	log.info(&apos;Consulta Dados Pai X Filho&apos;);
+	var nrProcesso = getValue(&quot;WKNumProces&quot;);
+	var cardData   = hAPI.getCardData(nrProcesso);
+	var it         = cardData.keySet().iterator();
+	var listaFilho = new Array();
+	var fieldTemp  = fields[0];
+
+	while (it.hasNext()) {
+		var key = it.next();
+		var campo = key.split(&quot;___&quot;);
+
+		if (key.indexOf(&apos;___&apos;) &gt;= 0 &amp;&amp; campo[0] == fieldTemp) {
+			var idx = campo[1];
+			var row = new Object();
+			for(var i=0; i&lt;fields.length; i++){
+				var name = fields[i] + &quot;___&quot; + idx;
+				row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};
+			}
+			listaFilho.push(row);
+		}
+	}
+	return listaFilho;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId){&#xd;
+	&#xd;
+	var nP = getValue(&apos;WKNumProces&apos;);&#xd;
+	var col = colleagueId; //&quot;admin&quot;;&#xd;
+	var atv = getValue(&apos;WKCurrentState&apos;);&#xd;
+	//define prazo da atividade de aprovacao&#xd;
+	if(atv == 5){&#xd;
+		var apvDate = hAPI.getCardValue(&quot;apvPrazo&quot;);&#xd;
+		var dtPz = dateFromString(apvDate);&#xd;
+		var hrPz = (24*60*60) - 1; //23:59:59&#xd;
+		hAPI.setDueDate(nP, 0, col, dtPz, hrPz);&#xd;
+	}&#xd;
+	//define prazo da atividade de finalizar lancamento&#xd;
+	if(atv == 43){&#xd;
+		var finDate = hAPI.getCardValue(&quot;finPrazo&quot;);&#xd;
+		var dtPz = dateFromString(finDate);&#xd;
+		var hrPz = (24*60*60) - 1; //23:59:59&#xd;
+		hAPI.setDueDate(nP, 0, col, dtPz, hrPz);&#xd;
+	}&#xd;
+&#xd;
+}&#xd;
+&#xd;
+function dateFromString(dtString){&#xd;
+    var aDt = dtString.split(&quot;/&quot;);&#xd;
+    var nDt = new Date();&#xd;
+    nDt.setDate(aDt[0]);&#xd;
+    nDt.setMonth(parseInt(aDt[1]) - 1);&#xd;
+    nDt.setFullYear(aDt[2]);&#xd;
+    return nDt;&#xd;
+}&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>500</height>
+      <width>1751</width>
+      <positionX>0</positionX>
+      <positionY>10</positionY>
+      <stateName>Pagamentos </stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>100</height>
+      <width>1721</width>
+      <positionX>30</positionX>
+      <positionY>10</positionY>
+      <stateName>Solicitante</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>C0C0C0</color>
+      <height>100</height>
+      <width>1721</width>
+      <positionX>30</positionX>
+      <positionY>110</positionY>
+      <stateName>Aprovador</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>adc9ac</color>
+      <height>100</height>
+      <width>1721</width>
+      <positionX>30</positionX>
+      <positionY>410</positionY>
+      <stateName>Fluig</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>100</height>
+      <width>1721</width>
+      <positionX>30</positionX>
+      <positionY>310</positionY>
+      <stateName>Contas a Pagar</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>d0daae</color>
+      <height>100</height>
+      <width>1721</width>
+      <positionX>30</positionX>
+      <positionY>210</positionY>
+      <stateName>Fiscal</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>23</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>838</positionX>
+      <positionY>496</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>23</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>1140</positionX>
+      <positionY>496</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>23</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>1338</positionX>
+      <positionY>496</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>33</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1122</positionX>
+      <positionY>159</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>72</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>753</positionX>
+      <positionY>453</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>76</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>753</positionX>
+      <positionY>266</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>86</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1459</positionX>
+      <positionY>360</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>87</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1458</positionX>
+      <positionY>180</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>87</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>970</positionX>
+      <positionY>180</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>97</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>107</positionX>
+      <positionY>268</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>97</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>572</positionX>
+      <positionY>268</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>98</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>573</positionX>
+      <positionY>62</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <linkSequence>99</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>421</positionX>
+      <positionY>61</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <stateSequence>73</stateSequence>
+        <triggerSequence>0</triggerSequence>
+      </processStateTriggerPK>
+      <runType>0</runType>
+      <type>3</type>
+      <value>acerPagamentosFornecedores.intermediateconditional73.js</value>
+      <timeTrigger>0:0:0</timeTrigger>
+      <frequencia>01</frequencia>
+    </ProcessStateTrigger>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>acerPagamentosFornecedores</processId>
+        <version>4</version>
+        <stateSequence>80</stateSequence>
+        <triggerSequence>1</triggerSequence>
+      </processStateTriggerPK>
+      <runType>0</runType>
+      <type>3</type>
+      <value>acerPagamentosFornecedores.intermediateconditional80.js</value>
+      <timeTrigger>0:0:0</timeTrigger>
+      <frequencia>01</frequencia>
+    </ProcessStateTrigger>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>acerPagamentosFornecedores</processId>
+      <version>1</version>
+      <sequence>26</sequence>
+      <attempts>5</attempts>
+      <sucessFullMessage>Integração executada com sucesso</sucessFullMessage>
+      <serviceName>WSFLUIG</serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

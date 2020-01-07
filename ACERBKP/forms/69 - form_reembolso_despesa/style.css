@@ -1,0 +1,6 @@
+.shadowText{
+					text-shadow: 1px 1px 0 rgba(255,255,255,0.2) !important;
+}
+.shadowBox{
+					box-shadow: 0 2px 6px 0 rgba(0,0,0,0.35) !important;
+}

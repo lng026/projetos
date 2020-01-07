@@ -1,0 +1,486 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="http://acertst.fluig.com/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="http://acertst.fluig.com/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="http://acertst.fluig.com/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://acertst.fluig.com/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="http://acertst.fluig.com/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../vcXMLRPC.js"></script>
+	<script type="text/javascript" src="./js/dataset.js"></script>
+	<script type="text/javascript" src="./js/outros.js"></script>
+	<script type="text/javascript">
+		
+		//Função para exibir calendário
+		setTimeout(	function(){		
+		var mySimpleCalendar = FLUIGC.calendar('.calendario');
+	}, 1);
+
+	//Preenche campo de formulário
+	setTimeout(	function(){		
+	var usuario = consultaUsuario($("#nickname").val());			
+	var exibeusu = PreencheCampo(usuario,"colleagueName","#nome");
+}, 1);		
+
+//Aparece campo envio de e-mail
+function apareceDestinatario(valor) {
+if(valor == 1){
+document.getElementById("destdiv").style.display = "block";
+}
+else {
+document.getElementById("destdiv").style.display = "none";
+}
+}
+
+
+
+
+function verificaDespesa(valor){
+var id = $(nome).attr('id');				
+var array = id.split("");
+
+if (array.length == 12) {
+var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11];	
+}
+else if (array.length == 13) {
+var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11]+array[12];
+}		
+}
+
+function verificaConta(valor,nome) {
+var id = $(valor).attr('id');				
+var array = id.split("");
+
+console.log(array);
+
+if (array.length == 12) {
+var conta = '#'+nome+array[08]+array[09]+array[10]+array[11];	
+}						
+if (array.length == 13) {													
+var conta = '#'+nome+array[09]+array[10]+array[11]+array[12];
+}
+else if (array.length == 14) {
+var conta = '#'+nome+array[10]+array[11]+array[12]+array[13];
+}
+else if (array.length == 18) {
+var conta = '#'+nome+array[14]+array[15]+array[16]+array[17];
+}	
+
+console.log("Conta:"+conta);
+
+return conta;
+}
+
+var viagem = 0;
+var quilometro = 0;
+var refeicao = 0;
+var pedagio = 0;
+var pequeno_valor = 0;
+var escritorio = 0;
+var correio = 0;
+var transporte = 0;
+var informatica = 0;
+var somacat = 0;
+
+var insereDolarReal = function (valor){
+$("#dolaroureal").empty();
+$("#dolaroureal").val(valor);
+}		
+
+function coletaid(nome, desp_value){
+console.log('coletaid')		;							
+var id = $(nome).attr('id');
+var index = id.substring('desptipo___'.length);	
+console.log(index);
+			/*var array = id.split("");
+			
+			if (array.length == 12) {
+				var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11];	
+			}
+			else if (array.length == 13) {
+				var conta = '#despctacontabil'+array[08]+array[09]+array[10]+array[11]+array[12];
+			}	*/	
+			//"despctacontabil___"								
+			$('#despctacontabil___'+index).val($('#'+id).val());		
+			/*
+							
+			var despesa = ConsultaPlanoContas(desp_value);
+			var exibe = PreencheCampo(despesa,"cod_conta",conta);
+			*/
+			if (($(conta).val() == '314020023') || ($(conta).val() == '314020024'))  {
+			//var valorkm = verificaConta(nome,"despvalor");				
+			$('#despvalor___'+index).removeAttr("readonly");
+		}
+		else{
+		//var valorkm = verificaConta(nome,"despvalor");				
+		$('#despvalor___'+index).attr("readonly","readonly");				
+		$('#despvalor___'+index).addClass("disabled");
+		console.log('#despvalor___'+index);
+	}
+
+}
+
+
+var viagem = 0;
+
+function inserevalor(valor,campo){			
+var totalresul = verificaConta(valor,campo);
+valor = $(valor).val();
+$(totalresul).empty();
+$(totalresul).val(semVirgulas(valor));
+}
+
+function inserevalor2(valor,campo){
+valor = $(valor).val();
+console.log(valor);
+$(campo).empty();
+$(campo).val(semVirgulas(valor));
+console.log(campo);
+}
+
+</script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="col-md-12 text-center ">
+							<h1>Relatórios de despesas</h1>						
+						</div>
+
+						<!-- Aprovação -->
+						<div class="col-md-12 panel panel-default" id="aprovdiv">
+							<fieldset>
+
+								<!-- Form Name -->
+								<legend>Aprovação</legend>
+
+								<!-- Multiple Radios (inline) -->
+								<div class="form-group" class="col-md-12">
+									<label class="control-label" for="radaprov"></label>
+									<div class="col-md-12"> 
+										<label class="radio-inline" for="radaprov-0">
+											<input type="radio" name="radaprov" id="radaprov-0" value="0" checked="checked" onclick="apareceDestinatario(this.value)">
+											Sim
+										</label> 
+										<label class="radio-inline" for="radaprov-1">
+											<input type="radio" name="radaprov" id="radaprov-1" value="1" onclick="apareceDestinatario(this.value)">
+											Não
+										</label>
+									</div>
+									<div class="col-md-12"><br></div>
+								</div>
+
+								<!-- Text input-->
+								<div class="form-group col-md-12 " id="destdiv" style="display:none">
+									<div class="col-md-8">
+										<label class="control-label" for="aprovdestinatario">Destinatário:</label>
+										<input id="aprovdestinatario" name="aprovdestinatario" type="text" placeholder="email@exemplo.com.br" class="form-control input-md">    
+									</div>
+									<div class="col-md-12"><br></div>
+								</div>
+
+							</fieldset>
+
+						</div>
+
+						<!-- Informações do Funcionário -->
+						<div class="col-md-12  panel panel-default">
+							<div class="col-md-7">
+								<fieldset>
+
+									<!-- Form Name -->
+									<legend>Funcionário</legend>
+
+									<div class="form-group">									
+										<div class="col-md-4">
+											<label class="control-label" for="nome">Nome:</label>  
+											<input id="nome" name="nome" type="text" placeholder="" class=" nome form-control input-md">
+											<input id="nickname" name="nickname" type="hidden" placeholder="" class="form-control input-md">
+										</div>
+
+										<div class="col-md-4">
+											<label class="control-label" for="cpf">CPF:</label>  
+											<input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md" mask="000.000.000-00">
+										</div>
+
+										<div class="col-md-4">
+											<label class="control-label" for="departamento">Deptº:</label>  
+											<input id="departamento" name="departamento" type="text" placeholder="" class="form-control input-md">							    
+										</div>
+
+									</fieldset>
+								</div>			
+								<div class="col-md-5 row">
+									<fieldset>
+
+										<!-- Form Name -->
+										<legend>Dados para depósito</legend>
+
+										<!-- Text input-->
+										<div class="form-group">									
+											<div class="col-md-3">
+												<label class="control-label" for="banco">Banco:</label>  
+												<input id="banco" name="banco" type="text" placeholder="" class="form-control input-md">    
+											</div>
+
+
+											<!-- Text input-->																	
+											<div class="col-md-3">
+												<label class="control-label" for="agencia">Agência:</label>  
+												<input id="agencia" name="agencia" type="text" placeholder="" class="form-control input-md">
+											</div>
+
+
+											<!-- Text input-->																	
+											<div class="col-md-3">
+												<label class="control-label" for="conta">Conta:</label>  
+												<input id="conta" name="conta" type="text" placeholder="" class="form-control input-md">
+											</div>
+
+											<div class="col-md-3">										
+												<label class="control-label" for="centro_custo">C. Custo:</label>																			  	  
+												<input id="centro_custo" name="centro_custo" type="text" placeholder="" class="form-control input-md">
+											</div>
+										</div>								
+									</fieldset>
+								</div>
+								<div class="col-md-12"><br></div>
+							</div>
+
+
+							<div class="col-md-12"><br></div>
+
+							<!-- Informações da despesa -->
+							<div class="col-md-12 panel panel-default">
+								<div class="col-md-8">
+									<fieldset>
+										<!-- Form Name -->
+										<legend>Finalidade da viagem/visita</legend>
+										<div class="form-group">
+											<label class="control-label" for="finalidade"></label>  								                     
+											<textarea class="form-control" id="finalidade" name="finalidade"></textarea>  								
+										</div>
+									</fieldset>
+								</div>
+								<div class="col-md-4">
+									<fieldset>
+										<legend>Valor do Adiantamento</legend>
+										<!-- Text input-->
+										<div class="form-group col-md-12">
+											<label class="col-md-4 control-label" for="reais">R$</label>  
+											<div class="col-md-4">
+												<input id="reais" name="reais" type="text" onchange="insereDolarReal(this.value)" placeholder="" class="form-control input-md" mask="#,##9.99">								    
+											</div>
+										</div>
+
+										<!-- Text input-->
+										<div class="form-group col-md-12">
+											<label class="col-md-4 control-label" for="dolares">US$</label>  
+											<div class="col-md-4">
+												<input id="dolares" name="dolares" type="text" onchange="insereDolarReal(this.value)" placeholder="" class="form-control input-md" mask="#,##9.99">								    
+											</div>
+										</div>
+
+
+									</fieldset>
+								</div>
+							</div>
+
+							<!-- Inserção da despesa -->
+							<div class="col-md-12 panel panel-default">
+								<fieldset>							
+									<legend>Despesas</legend>
+									<table tablename="tbdespesas" id="tabela" class="table table-striped" noaddbutton="true" nodeletebutton="true">								
+										<button type="button" class="btn btn-primary" data-toggle="button" onclick="addDisp('tbdespesas');">Adicionar despesa</button>								
+										<thead>
+											<tr>
+												<th></th>
+												<th>Data</th>
+												<th>Tipo de Despesa</th>
+												<th>Justificativa</th>
+												<th>Cta. Contábil</th>
+												<th>R$/KM</th>
+												<th>Valor $</th>
+												<th>Taxa Câmbio</th>
+												<th>Total R$</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="linha">
+												<td class="bpm-mobile-trash-column" >
+													<span class="fluig-style-guide fs-display-block fs-md-space">
+														<i class="fluigicon fluigicon-trash fluigicon-md" onclick="Javascript:fnWdkRemoveChild(this)" style="cursor:pointer"></i>
+													</span>
+												</td>									
+												<td>
+													<input type="date" name="despdata" id="despdata" class="  form-control">
+												</td>
+												<td>
+													<select name="desptipo" id="desptipo" class=" despesa form-control" onchange="coletaid(this);" dataset="tipoDespesa" datasetkey="codigo" datasetvalue="descricao"></select>
+												</td>
+										<td>
+											<input type="text" class="form-control" name="desjustificativa" id="desjustificativa">
+										</td>
+										<td>
+											<input type="text" class="contabil form-control" name="despctacontabil" id="despctacontabil">											
+										</td>
+										<td>
+											<input type="text" class="form-control valor maskValor" name="despvalorporkm" id="despvalorporkm" onchange="inserevalor(this,'desptotal');multiplicaCampo(this,'despvalor','desptotal');somatoriaFunc('.ttresul','#total2');somaComMenosDolar('.valor','#total1','#dolaroureal');somatoriaFunc('.valor','#total3');somaPorDespesa('.ttresul','.contabil');"  mask="#,##9.99">
+										</td>
+										<td>
+											<input type="text" class="form-control maskValor" name="despvalor" id="despvalor" onchange="multiplicaCampo(this,'despvalorporkm','desptotal');somatoriaFunc('.ttresul','#total2');somaComMenosDolar('.valor','#total1','#dolaroureal');somatoriaFunc('.valor','#total3');somaPorDespesa('.ttresul','.contabil');" readonly="readonly"  mask="#,##9.99">
+										</td>
+										<td>
+											<input type="text" class="form-control maskValor" name="desptaxa" id="desptaxa" onchange="inserevalor2(this,'.taxa')"  mask="#,##9.99">
+										</td>
+										<td>
+											<input type="text" class="form-control ttresul maskValor" name="desptotal" id="desptotal" mask="#,##9.99" >
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</div>
+					<!-- subtotal -->
+
+					<div class="col-md-12 panel panel-default">
+						<legend>Sub total</legend>
+						<p id="total3olde"></p>
+						<input type="hidden" name="total3" class="form-control maskValor" id="total3"  mask="#,##9.99">
+
+						<div class="col-md-6">
+							<label><font color="red">(-)</font>Adiantamento R$/US$</label>
+							<input type="text" name="dolaroureal" class="form-control maskValor" id="dolaroureal"  mask="#,##9.99">
+						</div>
+
+						<div class="col-md-6">
+
+							<label>Taxa de Compra</label>										
+							<input type="text" name="taxa2" id="taxa2" class="form-control taxa maskValor"  mask="#,##9.99">
+						</div>
+
+						<div class="col-md-6">
+
+							<label>
+								<font color="red">(-)</font>Hotel/ Passagem /Aluguel de carros (Lançar somente os valores faturados)
+							</label>
+							<input type="text" name="taxa1" id="taxa1" class="taxa form-control maskValor"  mask="#,##9.99">
+						</div>
+
+						<div class="col-md-6">
+							
+							<label>Total Geral:</label>
+
+							<input type="text" name="total1" class="form-control maskValor" id="total1"  mask="#,##9.99"> 
+							
+							<label>
+								Reembolso
+							</label>
+							<input type="text" class="form-control maskValor" name="total2" id="total2"  mask="#,##9.99">
+						</div>
+
+
+								<div class="col-md-12"><br></div>
+								</div>
+					
+					<!-- Resumo das despesas -->
+					<div class="col-md-12 panel panel-default">
+						<legend>Resumo de Despesas</legend>
+						<table class="table">							
+							<thead>
+								<tr>
+									<th>Despesas de viagens</th>
+									<th>Reembolso de Km</th>
+									<th>Lanches e refeições</th>
+									<th>Estacionamento e pedágio</th>
+									<th>Bens e pequeno valor</th>
+									<th>Material de escritório</th>
+									<th>Correio</th>
+									<th>Transportes de passageiros</th>
+									<th>Material de informática</th>
+									<th></th>
+									<th></th>
+									<th>Total R$</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>314.02.0023</td>
+									<td>314.02.0024</td>
+									<td>314.02.0025</td>
+									<td>314.02.0026</td>
+									<td>314.02.0028</td>
+									<td>314.02.0031</td>
+									<td>314.02.0034</td>
+									<td>314.02.0021</td>
+									<td>314.02.0032</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" name="viagem" id="viagem" class="form-control maskValor" mask="#,##9.99">
+									</td>
+									<td>
+										<input type="text" name="quilometro" id="quilometro" class="form-control maskValor" mask="#,##9.99">
+									</td>
+									<td>
+										<input id="refeicao" type="text" name="refeicao" class="form-control maskValor" mask="#,##9.99">
+									</td>
+									<td>
+										<input name="pedagio" id="pedagio" type="text" class="form-control maskValor" mask="#,##9.99"> 
+									</td>
+									<td>
+										<input type="text" class="form-control" name="pequeno_valor" id="pequeno_valor maskValor" mask="#,##9.99">
+									</td>
+									<td>
+										<input type="text" name="escritorio" id="escritorio" class="form-control maskValor" mask="#,##9.99">
+									</td>
+									<td>
+										<input type="text" name="correio" id="correio" class="form-control maskValor" mask="#,##9.99">
+									</td>
+									<td>
+										<input type="text" id="tranporte" name="trasporte" class="form-control maskValor" mask="#,##9.99">
+									</td>
+									<td>
+										<input type="text" name="informatica" class="form-control" id="informatica maskValor" mask="#,##9.99">
+									</td>
+									<td></td>
+									<td></td>
+									<td>
+										<input type="text" name="totalcat" class="form-control maskValor" id="totalcat" mask="#,##9.99">
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>								
+
+							</tbody>
+							
+						</table>
+								<div class="col-md-12"><br></div>
+
+					</div>
+
+				</div>
+			</div>			
+		</div>		
+	</form>
+</div>
+</body>
+</html>
