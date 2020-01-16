@@ -50,9 +50,17 @@
 			<div id="dadosCliente" style="display:none;">
 				<legend>Dados da OS</legend>
 				<div class="col-md-6 col-xs-12">
+					<label for="os">OS</label>
+					
 					<div class="form-group">
-						<label for="os">OS</label>
-						<input type="text" name="os"  id="os" value="" class="form-control">
+						<div class="input-group ">
+							<input type="text" name="os"  id="os" value="" class="form-control">
+							<span class="input-group-btn fluigicon">
+								<button type="button" id="btZoomOSCli" class="btn btn-default" onclick="zoomOSCli(this);">
+									<span class="fluigicon-search"></span>
+								</button>
+							</span>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-xs-12">
@@ -103,13 +111,29 @@
 						<input type="text" name="produto"  id="produto" value="" class="form-control" >
 					</div>
 				</div> -->
-				<div class="col-md-12 col-xs-12">
+				<div class="col-md-4 col-xs-12">
 					<div class="form-group">
 						<label for="motivo">Motivo</label>
-						<textarea name="motivo" id="" cols="30" rows="5" class="form-control" ></textarea>
+						<select name="motivo" id="motivo" class="form-control">
+							<option value="CC-AWP">CC-AWP</option>
+							<option value="CC-REINC">CC-REINC</option>
+							<option value="CC-EXT-ENV">CC-EXT-ENV</option>
+							<option value="CC-EXT-RET">CC-EXT-RET</option>
+							<option value="CC-S/PEÇA">CC-S/PEÇA</option>
+							<option value="CC-OUTROS">CC-OUTROS</option>
+							<option value="CC-30 DIAS">CC-30 DIAS</option>
+							<option value="CC-OOW">CC-OOW</option>
+						</select>
 						<!-- <input type="text" name="motivo"  id="motivo" value="" class="form-control"> -->
 					</div>
 				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="form-group">
+						<label for="observacoes">Observações</label>
+						<textarea name="observacoes" id="observacoes" cols="30" rows="5" class="form-control" ></textarea>
+					</div>
+				</div>
+					<div class="row"></div>	
 				<legend>Dados do Cliente</legend>
 
 				<div class="col-md-6 col-xs-12">

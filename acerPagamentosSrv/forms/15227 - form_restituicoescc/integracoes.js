@@ -61,6 +61,53 @@ function setSelectedZoomItem(selectedItem) {
     }
 }
 
+// busca informações da OS do cliente pelo numero da OS
+function zoomOSCli(e){
+    let osVal = $("#os").val();
+    if(osVal){
+        var csOs = DatasetFactory.createConstraint('ticket',osVal, osVal, ConstraintType.MUST);
+        var dsOS = DatasetFactory.getDataset('dsClienteOSMP', null, new Array(csOs), null);
+        if(dsOS.values.length){
+            var oOS = dsOS.values[0];
+            $("#os").val(oOS['ticket']);
+            $("#nSerie").val(oOS['serie']);
+            $("#pn_produto").val(oOS['produto']);
+            $("#cpfcnpj").val(oOS['cnpj']);
+            // $("#cpfcnpj").change();
+            $("#nome").val(oOS['nome']);
+			$("#endereco").val(oOS['endereco']);
+			$("#complemento").val(oOS['complemento']);
+			$("#cep").val(oOS['cep']);
+			$("#estado").val(oOS['estado']);
+			$("#cidade").val(oOS['cidade']);
+            $("#bairro").val(oOS['bairro']);
+            if(oOS['produto'].trim() != ""){
+                getProdutoByPn();
+            }
+            
+        }
+    }
+}
+// busca produto pelo partnumber exato
+function getProdutoByPn(pn){
+    var cs = DatasetFactory.createConstraint('PRODUCTCODE',pn,pn, ConstraintType.MUST);
+    var dsProd = DatasetFactory.getDataset('dsProdutos', null, new Array(cs), null);
+    if(dsProd.values.length){
+        oProd = dsProd.values[0];
+        $("#produto").val(oProd['DESCRIPTION']);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 //funcoes uteis
 //retorna index do id paiiflho passado
 var indexFromId = function (id) {

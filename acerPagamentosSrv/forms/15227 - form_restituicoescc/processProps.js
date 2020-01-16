@@ -19,7 +19,9 @@ class ProcessProps {
 
         // campos requeridos
         //id da atividade =  campos obrigatorios da atividade
-         this.camposObrigatorios['inicio'] = ['os','nSerie','produto','dtVencimento','valor','motivo','nome','cpfcnpj','endereco','complemento','bairro','cep','cidade','estado','ccontaFin','ccontaSiga','favorecido','cpfcnpjFav','banco','agencia'];
+        //  this.camposObrigatorios['inicio'] = ['os','nSerie','produto','dtVencimento','valor','motivo','nome','cpfcnpj','endereco','complemento','bairro','cep','cidade','estado','ccontaFin','ccontaSiga','favorecido','cpfcnpjFav','banco','agencia'];
+        this.camposObrigatorios['inicio'] = ['os','nSerie','produto','dtVencimento','motivo','nome','cpfcnpj','endereco','complemento','bairro','cep','cidade','estado','favorecido','cpfcnpjFav','banco','agencia']; //'ccontaFin','ccontaSiga'
+        
         // divs exibidas na atividade
         this.divsAtividade['inicio'] = ['dadosCliente','dadosBancarios'];
         this.divsAtividade['triagem'] = ['dadosCliente','dadosBancarios','aprovTriagemdiv'];
