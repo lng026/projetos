@@ -2,7 +2,8 @@
 function addcompetencia(){
     $("#compDiv").append(nCompetenciaHtml());
     $("#compDiv").find(".compMes").last().append(getMesOpts());
-    MaskEvent.init();
+    // MaskEvent.init();
+    $(".compValor").mask("#,##0.00", {reverse: true});
 }
 
 function removeComp(e){
@@ -39,7 +40,7 @@ function getAllCompsForm(){
     return aComps;
 }
 function validaSomaComps(){
-    var total = $("#valor").val() ? parseFloat($("#valor").val()) : 0;
+    var total = $("#valor").val() ? parseFloat( trataValor($("#valor").val())) : 0;
     var status = $("#status").val();
     var isOk = false;
     if(total){
@@ -48,7 +49,7 @@ function validaSomaComps(){
         for (const camp in aComps) {
             if (aComps.hasOwnProperty(camp)) {
                 var { valor } = aComps[camp];
-                somaComps  = parseFloat(valor) + somaComps;
+                somaComps  = parseFloat(trataValor(valor)) + somaComps;
             }
         }
         if(status == "reversao"){
@@ -104,6 +105,10 @@ function getMesOpts(selId){
     });
     return options.join('');
 } 
+function trataValor(valor){
+    valor = valor.replace(',','');
+    return valor;
+}
 
 function nCompetenciaHtml(){
     var competencia = `
@@ -124,7 +129,7 @@ function nCompetenciaHtml(){
         <div class="col-md-3">
             <div class="form-group">
                 <label for="compValor">Valor</label>
-                <input type="text" name="compValor" id="compValor" class="form-control" mask="###9.99" required>
+                <input type="text" name="compValor" id="compValor" class="form-control compValor" required>
             </div>
         </div>
         <div class="col-md-1">
