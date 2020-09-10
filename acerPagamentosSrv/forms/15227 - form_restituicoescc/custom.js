@@ -64,9 +64,23 @@ $(document).ready(function(){
 	}
 
 	if(processo.getAtvCorrente().codigo == 'aprovDir'){
+		// Verificar se é retorno do financeiro
+		if($("#aprovFin").val() == '0' && $("#aprovFinObs").val().trim() != ''){
+			var aprovDir = document.querySelector('#aprovFindiv');
+				setVisibleDiv(aprovFin,true);
+				setDisableDiv('aprovFinDiv');
+				$("#alertCorrecao").show();
+			}
 		//Validar obrigatoriedade das obseracoes caso negativo
 		$("#aprovDir").on("change",function(){
 			valObrAprov('aprovDir','aprovDirObs');
+		});
+	}
+
+	if(processo.getAtvCorrente().codigo == 'aprovFin'){
+		//Validar obrigatoriedade das obseracoes caso negativo
+		$("#aprovFin").on("change",function(){
+			valObrAprov('aprovFin','aprovFinObs');
 		});
 	}
 });

@@ -33,7 +33,7 @@ class DatasetService {
         
     }
     
-    static getHtmlConstraint = (nome, value, type, like) => {
+    getHtmlConstraint = (nome, value, type, like) => {
         let _nome = nome ? nome : "";
         let _value = value ? value : "";
         let _type = type ? type : 0;

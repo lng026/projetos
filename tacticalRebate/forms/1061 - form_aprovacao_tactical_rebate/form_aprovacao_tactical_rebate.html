@@ -1,0 +1,265 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="./funcoes.js"></script>
+	<script type="text/javascript" src="./controleZoom.js"></script>
+	<script>
+		$(document).ready(function () {
+		
+
+		});
+		
+
+		// 		function newTd(text){
+	    // var nTD = document.createElement('td');
+	    // nTD.textContent = text;
+	    // return nTD;
+	//}
+	</script>
+	</head>
+	
+	<body>
+		<div class="fluig-style-guide">
+			<div class="container-fluid" class="borda row">
+				<form name="form" role="form">
+	
+					<div class="form-title text-center borda" id="form-title">
+						<h3>
+							<b>Nota de Crédito</b>
+						</h3>
+					</div>
+					<div class="" id="buscaRebate">	
+						<div class="col-md-6">
+								<div class="form-group">
+									<label for="buscaRebate">Rebate nº</label>
+									<div class="input-group">
+										<input type="text" name="inputBuscaRebate" id="inputBuscaRebate" class="form-control" mask="#" readonly="readonly">
+										<span class="input-group-btn">
+										<button id="btnBuscaRebate" class="btn btn-primary" onclick="zoomRebate();"><span>Buscar</span></button>
+										</span>
+									</div>
+								</div>
+						</div>
+					</div>
+
+
+	
+					<div class="col-xs-12 borda">
+	
+						<div id="form-cliente" class="row col-md-6 col-xs-12">
+
+							<div class="row col-xs-12">
+								<div class="form-group">
+									<label for="pn_cli_razao">Razão Social: </label>
+									<br>
+	
+									<!-- readonly="readonly" -->
+									<input type="hidden" class="form-control pn_cli" name="pn_cli" id="pn_cli">
+									<input type="text" name="pn_cli_razao" id="pn_cli_razao" class="form-control" readonly="readonly">
+	
+								</div>
+							</div>
+	
+							<div class="row col-xs-12">
+								<div class="form-group">
+									<label for="pn_cli_endereco">Endereço</label>
+									<br>
+									<input type="text" name="pn_cli_endereco" id="pn_cli_endereco" value="" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class="row col-xs-6">
+								<div class="form-group">
+									<label for="pn_cli_cnpj">CNPJ</label>
+									<br>
+									<input type="text" name="pn_cli_cnpj" id="pn_cli_cnpj" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class=" col-xs-6">
+								<div class="form-group">
+									<label for="pn_cli_municipio">Município</label>
+									<br>
+									<input type="text" name="pn_cli_municipio" id="pn_cli_municipio" class="form-control" readonly="readonly">
+								</div>
+							</div>
+						</div>
+						<!-- cliente -->
+	
+						<div id="form-cliente" class="col-xs-12 col-md-6 row">
+	
+							<!-- <h5 class="panel-title">
+								<b>Dados da solicitação</b>
+							</h5> -->
+	
+							<div class=" col-xs-6">
+								<div class="form-group">
+									<label for="pn_nRebate">Rebate nº</label>
+									<br>
+									<input type="text" name="pn_nRebate" id="pn_nRebate" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class=" col-xs-6">
+								<div class="form-group">
+									<label for="pn_aprovDate">Aprovado Data:</label>
+									<br>
+									<input type="text" name="pn_aprovDate" id="pn_aprovDate" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class=" col-xs-6">
+								<div class="form-group">
+									<label for="pn_solicitante">Solicitante:</label>
+									<br>
+									<input type="text" name="pn_solicitante" id="pn_solicitante" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class=" col-xs-6">
+								<div class="form-group">
+									<label for="pn_aprovador">Aprovador:</label>
+									<br>
+									<input type="text" name="pn_aprovador" id="pn_aprovador" class="form-control" readonly="readonly">
+								</div>
+							</div>
+	
+	
+						</div>
+					</div>
+					<div class="row">
+						<br>
+					</div>
+						<div id="tbPNdiv" class="">
+							<div class="linhaPN">
+								<div class="col-md-4">
+									<label>Tipo de Verda</label>
+									<input type="text" class="form-control pn_tipoVerba" name="pn_tipoVerba" id="pn_tipoVerba" readonly="readonly"	>
+										
+								</div>
+								<div class="col-md-4 prodpartnumber">
+		
+								<label>PartNumber</label>
+								<div class="form-group">
+									<div class="form-group ">
+										<input type="hidden" id="pn_produto_cod" name="pn_produto_cod" value="">
+										<input type="text" id="pn_produto_desc" name="pn_produto_desc" class="form-control pn_pro" value="" readonly="readonly">
+									</div>
+								</div>
+			
+								</div>
+								<div class="col-md-4">
+									<label>Produto / Ação</label>
+									<input class="form-control" name="pn_produtosAcao" id="pn_produtosAcao" type="text" readonly="readonly" />
+								</div>
+								<div class="col-md-6">
+									<label>Descrição</label>
+									<input class="form-control" name="pn_descricao" id="pn_descricao" type="text" readonly="readonly" />
+								</div>
+								<div class="col-md-2">
+									<label>Valor Unitário</label>
+									<input class="form-control" name="pn_preco" id="pn_preco" type="text" mask="#,##9.99"  readonly="readonly" />
+								</div>
+								<div class="col-md-2">
+									<label>Quantidade</label>
+									<input class="form-control pn_quant" name="pn_quant" id="pn_quant" type="text" mask="#" readonly="readonly" />
+								</div>
+								<div class="col-md-2">
+									<label>Valor Total</label>
+									<input class="form-control" name="pn_valor" id="pn_valor" type="text" mask="#,##9.99" readonly="readonly" />
+								</div>
+								<div class="aprovacao col-md-2 col-md-offset-10">
+									<label for="aprov">Aprovação</label><br>
+									<div class="radio">
+										<div class="radio"><label><input type="radio" class="desabilita" name="aprov" id="aprovA" value="A" onchange="changeAprov();">Aprovação Total</label></div>
+										<div class="radio"><label><input type="radio"  class="desabilita" name="aprov" id="aprovP" value="P" onchange="changeAprov();">Aprovação Parcial</label></div>
+										<div class="radio"><label><input type="radio" class="desabilita" name="aprov" id="aprovR" value="R" onchange="changeAprov();">Recusar</label></div>
+									</div>
+								</div>
+								<div class="col-md-6 col-md-offset-6 col-xs-12 pnDivAprov" style="display: none;">
+									<div class="col-md-4 col-xs-12">
+										<label>Quantidade</label>
+										<input class="form-control pn_quantAprov" name="pn_quantAprov" id="pn_quantAprov" onchange="calcTotalParcial(this);" type="text" mask="#" />
+									</div>
+									<div class="col-md-4 col-xs-12">
+										<label>Valor</label>
+										<input class="form-control pn_valorAprov" name="pn_valorAprov" id="pn_valorAprov" type="text" mask="#,##9.99" />
+									</div>
+									<div class="col-md-4 row col-xs-12">
+										<label for="finaliza">Finalizar Solicitação</label>
+										<br>
+										<input type="radio"  class="desabilita" name="finaliza" id="finalizaS" value="S">Finaliza
+										<input type="radio"  class="desabilita" name="finaliza" id="finalizaN" value="N">Fin. Parcial
+									</div>
+								</div>
+							</div>
+									
+						</div>
+						<div class="row">
+							<br>
+						</div>	
+					<!--observacao  -->
+						<div class="col-md-12 borda">
+							<div class="form-group">
+								<h5 class="text-center">
+									<b>Observações</b>
+								</h5>
+								<b>Solicitante: </b>
+								<input type="text" name="observacoes" id="observacoes" class="form-control" readonly="readonly">
+								<br>
+								<b>Aprovador: </b>
+								<input type="text" name="aprovGestorObsor" id="aprovGestorObsor" class="form-control" readonly="readonly">
+							</div>
+						</div>
+						<!-- observacao -->
+
+						<!-- aprovacao -->
+						<div id="aprovdiv" class="aprovdiv">
+							<div class="col-md-12">
+								<input type="hidden" id="aprovacao" name="aprovacao" value="0">
+						
+								<legend>Aprovação</legend>
+								<div id="aprovGestorDiv" class=' row'>
+									<div class="col-md-3">
+										<label for="aprovGestor">Aprova Solicitação?</label>
+						
+										<div class='form-group'>
+											<select class="form-control" name="aprovGestor" id="aprovGestor" onchange="aprovChange(this);">
+												<option value="sim">Aprovar</option>
+												<option value="nao">Reprovar</option>
+											</select>
+										</div>
+										<div class="form-gropu vParcial">
+											<label for="valorParcial">Valor Aprovado</label>
+											<input type="text" name="valorParcial" id="valorParcial" class="form-control" mask="#,##9.99">
+										</div>
+
+									</div>
+									<div class="col-md-9">
+										<div class='form-group' id='aprovGestorObsdiv'>
+											<label for="aprovGestorObs">Observações</label>
+											<textarea id="aprovGestorObs" class="form-control" name="aprovGestorObs"></textarea>
+											</br>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- aprovacao -->
+						<div class="row"><br></div>
+				</form>
+			</div>
+			<script>
+				function aprovChange(e){
+					if(e.value == 'parcial'){
+						$('.vParcial').show();
+					}else{
+						$('.vParcial').val('');
+						$('.vParcial').hide();
+					}
+				}
+
+			</script>
+		</div>
+</body>
+</html>

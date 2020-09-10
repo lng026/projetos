@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;readCSV.js&apos; to &apos;form_customers_propostas&apos;&#x0D;&#x0A;- Original project: &apos;Fluxo de aprovações de verba&apos;&#x0D;&#x0A;- Destination element: &apos;form_customers_propostas&apos;&#x0D;&#x0A;- Original element: &apos;readCSV.js&apos;" description="Copy file" element1="forms/form_lineup_prospostas/readCSV.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1586810641501" target="/Fluxo de aprovações de verba/forms/form_customers_propostas" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;acerTacticalRebateV2revisao/forms/5083 - tactical_rebateV2&apos; to &apos;tactical_rebateV2&apos;" description="Rename resource &apos;5083 - tactical_rebateV2&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="forms/5083 - tactical_rebateV2" name="tactical_rebateV2" stamp="1588078825907" updateReferences="true"/>
+</session>

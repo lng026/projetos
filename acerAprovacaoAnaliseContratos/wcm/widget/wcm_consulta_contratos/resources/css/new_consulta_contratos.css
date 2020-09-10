@@ -1,0 +1,7 @@
+/* Coloque aqui seu codigo CSS */
+	.dataTables_filter{
+		float:rigth !important;
+	}
+	.pagination{
+		float:rigth !important;
+	}

@@ -1,0 +1,105 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+	<form name="form" role="form">
+		<!-- Informações gerais -->
+		<div class="container-fluid">
+		<div class='row'>
+			<div class="col-12">
+				<div class="mt-3">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title">INSERIR REGRAS</h5>
+						</div>
+
+						<div class="card-body">
+							<div class="row">
+								<div class="col">
+									<div class='form-group'>
+									<label for='nametarefa'>Nome da atividade:</label>
+									<input type='text' class='form-control' name="nametarefa" id="nametarefa">
+									</div>
+								</div>
+								<div class="col">
+									<div class='form-group'>
+										<div id="fileDiv">
+											<div class="input-group">
+												<label class="" for="fileCSV">Incluir a partir de um arquivo</label>
+												<input type="file" id="fileCSV" name="fileCSV" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class='row '>
+								<div class="col">
+									<div class='table-responsive'>
+									<table class='table' tablename="tdLineup" id="tdLineup" noaddbutton="true" nodeletebutton="true">
+										<thead>
+										<tr>
+											<th>CODE</th>
+											<th>FAMILY</th>
+											<th>SOURCE</th>
+											<th>MODEL</th>
+											<th>CPU</th>
+											<th>MEM</th>
+											<th>HDD</th>
+											<th>ODD</th>
+											<th>OS</th>
+											<th>COLOR</th>
+											<th>TAMANHO</th>
+											<th>GRAPHICS</th>
+											<th>CPU MODEL</th>
+											<th>DISPLAY</th>
+											<th>DIMENSAO</th>
+											<th>PALLET</th>
+											<th>EAN</th>
+											<th>NCM</th>
+										</tr>
+										</thead>
+										<tbody>
+												<tr>
+													<td><input type='text' class='form-control' name="prod_code" id="prod_code" readonly></td>
+													<td><input type='text' class='form-control' name="prod_family" id="prod_family" readonly></td>
+													<td><input type='text' class='form-control' name="prod_source" id="prod_source" readonly></td>
+													<td><input type='text' class='form-control' name="prod_model" id="prod_model" readonly></td>
+													<td><input type='text' class='form-control' name="prod_cpu" id="prod_cpu" readonly></td>
+													<td><input type='text' class='form-control' name="prod_mem" id="prod_mem" readonly></td>
+													<td><input type='text' class='form-control' name="prod_hdd" id="prod_hdd" readonly></td>
+													<td><input type='text' class='form-control' name="prod_odd" id="prod_odd" readonly></td>
+													<td><input type='text' class='form-control' name="prod_os" id="prod_os" readonly></td>
+													<td><input type='text' class='form-control' name="prod_color" id="prod_color" readonly></td>
+													<td><input type='text' class='form-control' name="prod_graphics" id="prod_graphics" readonly></td>
+													<td><input type='text' class='form-control' name="prod_cpu_model" id="prod_cpu_model" readonly></td>
+													<td><input type='text' class='form-control' name="prod_display" id="prod_display" readonly></td>
+													<td><input type='text' class='form-control' name="prod_dim" id="prod_dim" readonly></td>
+													<td><input type='text' class='form-control' name="prod_pallet" id="prod_pallet" readonly></td>
+													<td><input type='text' class='form-control' name="prod_ean" id="prod_ean" readonly></td>
+													<td><input type='text' class='form-control' name="prod_ncm" id="prod_ncm" readonly></td>
+												</tr>
+										</tbody>
+									</table>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+</div><!-- fluig-style-guide -->
+<script type="text/javascript" src="js/readCSV.js"></script>
+</body>
+</html>

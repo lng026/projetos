@@ -56,7 +56,9 @@ function buscarAniversariantes(){
 function exibeAniversariantesMes(funcionarios){
 	$("#aniversariantes").html("");
 	for(i = 0; i < funcionarios.length; i++){
-		if (funcionarios[i]['CNOME'] != "" && retornaData(funcionarios[i]['CDTADMISSA']).getMonth() == retornaData().getMonth()) {
+		if (funcionarios[i]['CNOME'] != "" 
+			&& retornaData(funcionarios[i]['CDTADMISSA']).getMonth() == retornaData().getMonth() 
+				&& retornaData(funcionarios[i]['CDTADMISSA']).getFullYear() != retornaData().getFullYear() ) {
 			var html = '<div class="media">';
 			html += '<a class="pull-left fs-no-text-underline" href="#">';
 			html += '	<div class="panel panel-default">';

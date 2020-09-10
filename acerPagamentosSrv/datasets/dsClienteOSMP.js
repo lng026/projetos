@@ -32,9 +32,9 @@ function createDataset(fields, constraints, sortFields) {
 			// Conecta 
 		   var restService = fluigAPI.getAuthorizeClientService();
 		   var epoint = "/erpworks/api/v1/Tickets/?"; //1250388X // 2192868X
-		   		epoint += "z06cssnum="+param;	
-			   epoint += "&fields=z06cssnum,z06produt,z06serie,z06cnpj"; 
-			   epoint += ",z06nome,z06end,z06comple,z06bairro,z06cidade,z06estado,z06cep,z06ie,z06tel,z06email"; 
+		   		epoint += "z04cssnum="+param;	
+			   epoint += "&fields=z04cssnum,z04produt,z04serie,z04cnpj"; 
+			   epoint += ",z04nome,z04end,z04comple,z04bairro,z04cidade,z04estado,z04cep,z04ie,z04tel,z04email"; 
 			   
 		   //log.info('service:' + service);
 		   
@@ -60,20 +60,20 @@ function createDataset(fields, constraints, sortFields) {
 			   for (var i = 0; i < result.items.length; i++) {
 				   var cliente = result.items[i];
 				   dataset.addRow(new Array(
-					   cliente.z06cssnum,
-					   cliente.z06serie,
-					   cliente.z06produt,
-					   cliente.z06cnpj,
-					   cliente.z06nome,
-					   cliente.z06end,
-					   cliente.z06comple,
-					   cliente.z06bairro,
-					   cliente.z06cidade,
-					   cliente.z06estado,
-					   cliente.z06cep,
-					   cliente.z06ie,
-					   cliente.z06tel,
-					   cliente.z06email
+					   cliente.z04cssnum,
+					   cliente.z04serie,
+					   cliente.z04produt,
+					   cliente.z04cnpj,
+					   cliente.z04nome,
+					   cliente.z04end,
+					   cliente.z04comple,
+					   cliente.z04bairro,
+					   cliente.z04cidade,
+					   cliente.z04estado,
+					   cliente.z04cep,
+					   cliente.z04ie,
+					   cliente.z04tel,
+					   cliente.z04email
 				   ));
 			   }
 		   }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;acerPagamentoSrvProd/forms/15227 - form_restituicoescc&apos; to &apos;form_restituicoescc&apos;" description="Rename resource &apos;15227 - form_restituicoescc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="forms/15227 - form_restituicoescc" name="form_restituicoescc" stamp="1582826844202" updateReferences="true"/>
+</session>

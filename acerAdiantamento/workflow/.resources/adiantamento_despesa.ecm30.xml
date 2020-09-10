@@ -444,7 +444,7 @@
       <formFolder>0</formFolder>
       <automatic>true</automatic>
       <positionX>670</positionX>
-      <positionY>170</positionY>
+      <positionY>165</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -1306,8 +1306,8 @@
         <linkSequence>115</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>824</positionX>
-      <positionY>213</positionY>
+      <positionX>822</positionX>
+      <positionY>218</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>

@@ -1,0 +1,393 @@
+    <html>
+    <head>
+            <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+            <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+            <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+            <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+            <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+    <div class="fluig-style-guide">
+    <form name="form" role="form">
+            <div class="panel panel-primary">
+                    <div class="panel-heading">
+                            <h3 class="panel-title"><span class="fluigicon fluigicon-gamification-helmet icon-md"></span>  Formulário Motoboy - Retirar</h3>
+                    </div>
+                    <div class="panel-body">
+                            <div class="row">
+                            <div class="form-group col-md-6">
+                            <label>Solicitante</label>
+                            <input
+                            type="zoom"
+                            id = "solicitante"
+                            name="solicitante"
+                            data-zoom="{
+                                    'displayKey':'colleagueName',
+                                    'datasetId':'colleague',
+                                    'placeholder':'Escolha o usuário',
+                                    'fields':[
+                            {
+                               'field':'colleagueId',
+                               'label':'ID'
+                            },{
+                              'field':'colleagueName',
+                              'label':'Nome',
+                              'standard':'true'
+                            },{
+                              'field':'login',
+                              'label':'Login'
+                            }
+                            ]
+                            }"
+                            />
+                            </div>	   
+                            </div>	
+                            <div class="row">
+                            <div class="form-group col-md-6">
+                                                    <label for="nome">Retirar com</label>
+                                                    <input type="text" class="form-control" id="retira" name="retira" placeholder="Informe o nome">
+                                            </div>	   
+                            </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                            <label for="origem">Retirar em</label>
+                                            <select id="origem" name="origem" onclick="alteraOrigem()" dataset="dsOrigem" datasetkey="Origem" datasetvalue="Origem"></select>
+                                    </div>
+                                    </div> 
+
+                        <div class="row">
+
+                            <div class="form-group col-md-2">
+                                    <label for="cep">CEP</label>
+                                    <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" mask="00000-000" onchange="verificaOrigemDestino()">
+                            </div>
+                            <div class="form-group col-md-8">
+                                    <label for="rua">Logradouro</label>
+                                    <input type="text" class="form-control" id="rua" name="rua">
+                            </div>
+
+                            <div class="form-group col-md-1">
+                                    <label for="numero">Numero</label>
+                                    <input type="text" class="form-control" id="numero" name="numero">
+                            </div>	
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                    <label for="bairro">Bairro</label>
+                                    <input type="text" class="form-control" id="bairro" name="bairro">
+                            </div>	
+                            <div class="form-group col-md-2">
+                                    <label for="cidade">Cidade</label>
+                                    <input type="text" class="form-control" id="cidade" name="cidade">
+                            </div>	
+                            <div class="form-group col-md-1">
+                                    <label for="uf">Estado</label>
+                                    <input type="text" class="form-control" id="uf" name="uf">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="comp">Complemento</label>
+                                    <input type="text" class="form-control" id="comp" name="comp">
+                            </div>
+                        </div>
+
+
+                                    <div class="row">
+                                    <div class="form-group col-md-2">
+                                                    <label for="datan">Data</label>
+                                                    <input type="text" class="form-control" id="datan" name="datan" placeholder="00/00/0000">
+                                    </div>
+                                    </div>
+
+                    </div>
+            </div>
+
+        <div class="panel panel-primary">
+                    <div class="panel-heading">
+                            <h3 class="panel-title"><span class="fluigicon fluigicon-gamification-helmet icon-md"></span>  Formulário Motoboy - Entregar</h3>
+                    </div>
+                    <div class="panel-body">
+
+                       <div class="row">
+                            <div class="form-group col-md-6">
+                                                    <label for="nome">Entregar para</label>
+                                                    <input type="text" class="form-control" id="receptor" name="receptor" placeholder="Informe o nome">
+                                            </div>	   
+                            </div>
+
+
+
+                      <div class="row">
+                                    <div class="form-group col-md-4">
+                                            <label for="detino">Entregar em</label>
+                                            <select id="destino" name="destino" onchange="alteraDestino()" dataset="dsDestino" datasetkey="Destino" datasetvalue="Destino"></select>
+                                    </div>
+                                    </div>   
+                        <div class="row">
+
+                            <div class="form-group col-md-2">
+                                    <label for="dcep">CEP</label>
+                                    <input type="text" class="form-control" id="dcep" name="dcep" placeholder="00000-000" mask="00000-000" onchange="verificaOrigemDestino()">
+                            </div>
+                            <div class="form-group col-md-8">
+                                    <label for="drua">Logradouro</label>
+                                    <input type="text" class="form-control" id="drua" name="drua">
+                            </div>
+
+                            <div class="form-group col-md-1">
+                                    <label for="dnumero">Numero</label>
+                                    <input type="text" class="form-control" id="dnumero" name="dnumero">
+                            </div>	
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                    <label for="dbairro">Bairro</label>
+                                    <input type="text" class="form-control" id="dbairro" name="dbairro">
+                            </div>	
+                            <div class="form-group col-md-2">
+                                    <label for="dcidade">Cidade</label>
+                                    <input type="text" class="form-control" id="dcidade" name="dcidade">
+                            </div>	
+                            <div class="form-group col-md-1">
+                                    <label for="duf">Estado</label>
+                                    <input type="text" class="form-control" id="duf" name="duf">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="dcomp">Complemento</label>
+                                    <input type="text" class="form-control" id="dcomp" name="dcomp">
+                            </div>
+                        </div>
+                        <div class="row">
+                                    <div class="form-group col-md-6">
+                                            <label for="justi">Justificativa</label>
+                                            <textarea rows="2" class="form-control" id="justi" name="justi"></textarea>
+                                    </div>	
+					     <div class="form-group col-md-5">
+                                            <label for="info">Informações adicionais</label>
+                                            <textarea rows="2" class="form-control" id="info" name="info"></textarea>
+                                    </div>	
+                            </div>
+							
+                            <label for="dist">Distância Trecho&nbsp;(KM)</label>                     
+                        <div class="row">
+                        
+                            <div class="form-group col-md-1">
+						 
+                                    <input type="text" class="form-control" id="dist" name="dist" readonly="true">
+                            </div>
+				
+                        </div>
+						<label for="tdist">Distância Total&nbsp;(KM)</label> 
+						<div class="row">
+						<div class="form-group col-md-1">
+				   
+                                    <input type="text" class="form-control" id="tdist" name="tdist" readonly="true">
+                            </div>
+							</div>
+
+				 <div class="row">
+                        
+                            <div class="form-group col-md-1">
+						 
+                                    <input type="hidden" class="form-control" id="aux" name="aux" readonly="true" value="0">
+                            </div>
+				
+                        </div>
+						
+
+				 <div class="row">
+                        
+                            <div class="form-group col-md-1">
+						 
+                                    <input type="text" class="form-control" id="destiatebar" name="destiatebar" readonly="true">
+                            </div>
+				
+                        </div>
+        </div>
+        </div>
+        </form>
+        </div>
+
+        <script type="text/javascript">
+            var mySimpleCalendar = FLUIGC.calendar('#datan');
+        </script>
+
+        <script>
+            function alteraOrigem(){
+            var c = document.getElementById("origem");
+               if (c.options[c.selectedIndex].text == "Barueri"){
+            document.getElementById("cep").value = "06460-000";
+            document.getElementById("numero").value = "267"; 
+            document.getElementById("rua").value = "Avenida Tamboré"; 
+            document.getElementById("bairro").value = "Tamboré"; 
+            document.getElementById("cidade").value = "Barueri"; 
+            document.getElementById("uf").value = "SP";        
+           } if (c.options[c.selectedIndex].text == "Jundiaí"){
+            document.getElementById("cep").value = "13213-090";
+            document.getElementById("numero").value = "175"; 
+            document.getElementById("rua").value = "Rua Kanebo"; 
+            document.getElementById("bairro").value = "Distrito Industrial"; 
+            document.getElementById("cidade").value = "Jundiaí"; 
+            document.getElementById("uf").value = "SP";
+           } if (c.options[c.selectedIndex].text == "Berrini"){
+            document.getElementById("cep").value = "04565-000";
+            document.getElementById("numero").value = "1758"; 
+            document.getElementById("rua").value = "Rua Flórida"; 
+            document.getElementById("bairro").value = "Cidade Monções"; 
+            document.getElementById("cidade").value = "São Paulo"; 
+            document.getElementById("uf").value = "SP";
+           } if (c.options[c.selectedIndex].text == "ROM"){
+            document.getElementById("cep").value = "06460-928";
+            document.getElementById("numero").value = "1810 "; 
+            document.getElementById("rua").value = "Avenida Marginal Projetada"; 
+            document.getElementById("bairro").value = "Jardim Mutinga"; 
+            document.getElementById("cidade").value = "Barueri"; 
+            document.getElementById("uf").value = "SP";
+           } if (c.options[c.selectedIndex].text == "Outros"){
+            document.getElementById("cep").value = "";
+            document.getElementById("numero").value = ""; 
+            document.getElementById("rua").value = ""; 
+            document.getElementById("bairro").value = ""; 
+            document.getElementById("cidade").value = ""; 
+            document.getElementById("uf").value = "";
+           }
+		   verificaOrigemDestino();
+           }
+            
+           $("#cep ").blur(function(){								
+                    $.getJSON("https://viacep.com.br/ws/"+ $("#cep").val() +"/json/", function(dados) {
+            //Atualiza os campos com os valores da consulta.
+                            $("#rua").val(dados.logradouro);
+                            $("#bairro").val(dados.bairro);
+                            $("#cidade").val(dados.localidade);
+                            $("#uf").val(dados.uf);
+                document.getElementById("numero").value = "";
+                
+                            })
+                    }); 
+
+           function alteraDestino(){
+            var d = document.getElementById("destino");
+               if (d.options[d.selectedIndex].text == "Barueri"){
+            document.getElementById("dcep").value = "06460-000";
+            document.getElementById("dnumero").value = "267"; 
+            document.getElementById("drua").value = "Avenida Tamboré"; 
+            document.getElementById("dbairro").value = "Tamboré"; 
+            document.getElementById("dcidade").value = "Barueri"; 
+            document.getElementById("duf").value = "SP";  
+           }        
+            if (d.options[d.selectedIndex].text == "Outros"){
+            document.getElementById("dcep").value = "";
+            document.getElementById("dnumero").value = ""; 
+            document.getElementById("drua").value = ""; 
+            document.getElementById("dbairro").value = ""; 
+            document.getElementById("dcidade").value = ""; 
+            document.getElementById("duf").value = "";
+
+           }if (d.options[d.selectedIndex].text == "ROM"){
+            document.getElementById("dcep").value = "06460-928";
+            document.getElementById("dnumero").value = "1810 "; 
+            document.getElementById("drua").value = "Avenida Marginal Projetada"; 
+            document.getElementById("dbairro").value = "Jardim Mutinga"; 
+            document.getElementById("dcidade").value = "Barueri"; 
+            document.getElementById("duf").value = "SP";
+			
+           } if (d.options[d.selectedIndex].text == "Jundiaí"){
+                document.getElementById("dcep").value = "13213-090";
+                document.getElementById("dnumero").value = "175"; 
+                document.getElementById("drua").value = "Rua Kanebo"; 
+                document.getElementById("dbairro").value = "Distrito Industrial"; 
+                document.getElementById("dcidade").value = "Jundiaí"; 
+                document.getElementById("duf").value = "SP";
+ 		
+               } 
+			   verificaOrigemDestino();
+	
+           }
+           $("#dcep ").blur(function(){								
+                    $.getJSON("https://viacep.com.br/ws/"+ $("#dcep").val() +"/json/", function(dados) {
+            //Atualiza os campos com os valores da consulta.
+                            $("#drua").val(dados.logradouro);
+                            $("#dbairro").val(dados.bairro);
+                            $("#dcidade").val(dados.localidade);
+                            $("#duf").val(dados.uf);
+                document.getElementById("dnumero").value = "";
+                            })
+                    }); 
+                    
+           	$("#cep").click(function(event) {
+			$("#origem").val("Outros");
+			$("#cep").val("");
+			alteraOrigem();
+			verificaOrigemDestino();
+			//$("#profissionalFiltro option").remove(); //essa tambem funciona
+			});
+           	
+           	$("#dcep").click(function(event) {
+    			$("#destino").val("Outros");
+    			$("#dcep").val("");
+    			alteraDestino();
+				verificaOrigemDestino();
+    			//$("#profissionalFiltro option").remove(); //essa tambem funciona
+    			});
+        </script>
+        
+        <script src="http://maps.google.com/maps/api/js?key=AIzaSyBMbWDq7-r-BuLteiZGFEIFDUEb3cMcrJU"></script>
+<script type="text/javascript">
+var dis = "";
+var d1=0;
+var d2 = 0;
+var d3 = 0;
+var cep = "";
+var dcep = "";
+var cepbarueri = "06460-000";
+function CalculaDistancia(origem, destino) {
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+	{
+	    origins: [origem],
+	    destinations: [destino],
+	    travelMode: google.maps.TravelMode.DRIVING
+	}, callback);
+   
+}
+function callback(response, status) {
+    if (status == google.maps.DistanceMatrixStatus.OK) {
+        dis = response.rows[0].elements[0].distance.text;
+		d1 = parseFloat(dis.substring(0,4));
+		console.log(d1);
+		if(d1 == 1){
+			d1 = 0;
+		}
+		d2 = d1 + d2;
+		document.getElementById("dist").value = d1;
+		document.getElementById("tdist").value = d2;
+	}
+}
+
+function verificaOrigemDestino() {
+	d1 = 0;
+	d2 = 0;
+	var total = 0;
+	cep = document.getElementById("cep").value;
+	dcep = document.getElementById("dcep").value;
+	if (cep == "" || dcep == ""){
+		document.getElementById("dist").value = "";
+		document.getElementById("tdist").value = "";
+	}
+	if (cep != "" && dcep != "") {				
+				CalculaDistancia(cepbarueri, cep);
+				CalculaDistancia(dcep, cepbarueri);			
+				CalculaDistancia(cep, dcep);
+	}
+	
+}
+    
+    
+</script>
+        
+    </body>
+    </html>
+        
+        

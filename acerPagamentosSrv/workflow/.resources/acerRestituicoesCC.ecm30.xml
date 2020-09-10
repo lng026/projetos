@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Restituições CC e Juridico</processId>
-      <version>8</version>
+      <version>11</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>15227</formId>
@@ -360,6 +360,56 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <version>1</version>
+        <sequence>41</sequence>
+      </processStatePK>
+      <stateName>Aprovação do Financeiro</stateName>
+      <stateDescription>Aprovação do Financeiro</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>390</positionX>
+      <positionY>292</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <version>1</version>
         <sequence>24</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -507,6 +557,31 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <version>1</version>
+        <sequence>43</sequence>
+      </processStatePK>
+      <stateName>Exclusivo</stateName>
+      <stateDescription>Exclusivo</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>193</positionX>
+      <positionY>276</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <version>1</version>
         <sequence>22</sequence>
       </processStatePK>
       <stateName>Fim</stateName>
@@ -556,7 +631,7 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>11</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -568,7 +643,7 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>11</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -580,7 +655,7 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>11</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovTriagem&quot;) == &apos;1&apos;</condition>
@@ -592,7 +667,7 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>11</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovTriagem&quot;) != &apos;1&apos;</condition>
@@ -604,7 +679,7 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>11</version>
         <sequence>34</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovCord&quot;) == &apos;1&apos;</condition>
@@ -616,7 +691,7 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
+        <version>11</version>
         <sequence>34</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovCord&quot;) != &apos;1&apos;</condition>
@@ -628,8 +703,32 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>1</expressionOrder>
-        <version>8</version>
+        <version>11</version>
         <sequence>38</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovDir&quot;) == &apos;1&apos;</condition>
+      <destinationSequenceId>41</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>11</version>
+        <sequence>38</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovDir&quot;) != &apos;1&apos;</condition>
+      <destinationSequenceId>9</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>11</version>
+        <sequence>43</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovDir&quot;) == &apos;1&apos;</condition>
       <destinationSequenceId>17</destinationSequenceId>
@@ -640,11 +739,11 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <expressionOrder>2</expressionOrder>
-        <version>8</version>
-        <sequence>38</sequence>
+        <version>11</version>
+        <sequence>43</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovDir&quot;) != &apos;1&apos;</condition>
-      <destinationSequenceId>9</destinationSequenceId>
+      <destinationSequenceId>13</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -909,12 +1008,63 @@
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
         <version>1</version>
-        <linkSequence>41</linkSequence>
+        <linkSequence>42</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
       <initialStateSequence>38</initialStateSequence>
+      <finalStateSequence>41</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>41</initialStateSequence>
+      <finalStateSequence>43</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <version>1</version>
+        <linkSequence>45</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>43</initialStateSequence>
       <finalStateSequence>17</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <version>1</version>
+        <linkSequence>46</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>43</initialStateSequence>
+      <finalStateSequence>13</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -1207,7 +1357,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
+        <version>11</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1218,7 +1368,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
+        <version>11</version>
         <linkSequence>27</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1229,7 +1379,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
+        <version>11</version>
         <linkSequence>31</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1240,7 +1390,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
+        <version>11</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1251,7 +1401,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
+        <version>11</version>
         <linkSequence>32</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1262,7 +1412,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
+        <version>11</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1273,7 +1423,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
+        <version>11</version>
         <linkSequence>37</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1284,12 +1434,23 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>acerRestituicoesCC</processId>
-        <version>8</version>
-        <linkSequence>41</linkSequence>
+        <version>11</version>
+        <linkSequence>46</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>222</positionX>
-      <positionY>327</positionY>
+      <positionX>225</positionX>
+      <positionY>401</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>acerRestituicoesCC</processId>
+        <version>11</version>
+        <linkSequence>46</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>798</positionX>
+      <positionY>401</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

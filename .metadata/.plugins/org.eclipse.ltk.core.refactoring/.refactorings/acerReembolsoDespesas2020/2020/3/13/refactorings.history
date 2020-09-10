@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 element(s) from project &apos;acerReembolsoDespesas2020&apos;&#x0D;&#x0A;- Original project: &apos;acerReembolsoDespesas2020&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     reembolso_despesa.scripttask28.js&#x0D;&#x0A;     reembolso_despesa.scripttask29.js&#x0D;&#x0A;     reembolso_despesa.scripttask30.js&#x0D;&#x0A;     reembolso_despesa.scripttask31.js" description="Delete elements" element1="workflow/scripts/reembolso_despesa.scripttask28.js" element2="workflow/scripts/reembolso_despesa.scripttask31.js" element3="workflow/scripts/reembolso_despesa.scripttask29.js" element4="workflow/scripts/reembolso_despesa.scripttask30.js" elements="0" flags="589830" id="org.eclipse.wst.jsdt.ui.delete" resources="4" stamp="1584983099053" subPackages="false" version="1.0"/>
+</session>

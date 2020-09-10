@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_211" class="java.beans.XMLDecoder">
+<java version="1.8.0_241" class="java.beans.XMLDecoder">
  <object class="java.util.HashMap">
   <void method="put">
    <string>volume</string>
@@ -554,6 +554,149 @@
      </object>
     </void>
    </object>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 15227</string>
+   <array class="java.lang.String" length="46">
+    <void index="0">
+     <string>agencia</string>
+    </void>
+    <void index="1">
+     <string>aprovCord</string>
+    </void>
+    <void index="2">
+     <string>aprovCordObs</string>
+    </void>
+    <void index="3">
+     <string>aprovDir</string>
+    </void>
+    <void index="4">
+     <string>aprovDirObs</string>
+    </void>
+    <void index="5">
+     <string>aprovHist</string>
+    </void>
+    <void index="6">
+     <string>aprovTriagem</string>
+    </void>
+    <void index="7">
+     <string>aprovTriagemObs</string>
+    </void>
+    <void index="8">
+     <string>atvAtual</string>
+    </void>
+    <void index="9">
+     <string>bairro</string>
+    </void>
+    <void index="10">
+     <string>banco</string>
+    </void>
+    <void index="11">
+     <string>bancoDesc</string>
+    </void>
+    <void index="12">
+     <string>cchave</string>
+    </void>
+    <void index="13">
+     <string>ccontaFin</string>
+    </void>
+    <void index="14">
+     <string>ccontaSiga</string>
+    </void>
+    <void index="15">
+     <string>ccusto</string>
+    </void>
+    <void index="16">
+     <string>cDescricao</string>
+    </void>
+    <void index="17">
+     <string>cep</string>
+    </void>
+    <void index="18">
+     <string>cFormaPgto</string>
+    </void>
+    <void index="19">
+     <string>cidade</string>
+    </void>
+    <void index="20">
+     <string>complemento</string>
+    </void>
+    <void index="21">
+     <string>contac</string>
+    </void>
+    <void index="22">
+     <string>contap</string>
+    </void>
+    <void index="23">
+     <string>cpfcnpj</string>
+    </void>
+    <void index="24">
+     <string>cpfcnpjFav</string>
+    </void>
+    <void index="25">
+     <string>dtHist</string>
+    </void>
+    <void index="26">
+     <string>dtVencimento</string>
+    </void>
+    <void index="27">
+     <string>endereco</string>
+    </void>
+    <void index="28">
+     <string>estado</string>
+    </void>
+    <void index="29">
+     <string>favorecido</string>
+    </void>
+    <void index="30">
+     <string>motivo</string>
+    </void>
+    <void index="31">
+     <string>natureza</string>
+    </void>
+    <void index="32">
+     <string>nBolCodBar</string>
+    </void>
+    <void index="33">
+     <string>nBoleto</string>
+    </void>
+    <void index="34">
+     <string>nome</string>
+    </void>
+    <void index="35">
+     <string>nSerie</string>
+    </void>
+    <void index="36">
+     <string>numero</string>
+    </void>
+    <void index="37">
+     <string>numSolicitacao</string>
+    </void>
+    <void index="38">
+     <string>observacoes</string>
+    </void>
+    <void index="39">
+     <string>obsHist</string>
+    </void>
+    <void index="40">
+     <string>os</string>
+    </void>
+    <void index="41">
+     <string>pn_produto</string>
+    </void>
+    <void index="42">
+     <string>produto</string>
+    </void>
+    <void index="43">
+     <string>userAtual</string>
+    </void>
+    <void index="44">
+     <string>usuario</string>
+    </void>
+    <void index="45">
+     <string>valor</string>
+    </void>
+   </array>
   </void>
   <void method="put">
    <string>mecanismo</string>

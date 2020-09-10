@@ -1,0 +1,253 @@
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../vcXMLRPC.js"></script>
+	<style>
+		table, tr,th,td {
+			color: black !important; border-color: black !important;
+				border: 1px solid black !important; 
+				text-align: center !important;
+		}
+		.borda {
+			border: 1px solid black !important; 
+			color: black !important;
+		}
+		.break { page-break-before: auto; }
+		
+		* { margin: 0px  !important; padding: 0px !important;}
+	</style>
+	<style type="text/css"></style>
+		<script>
+			$(document).ready(function () {
+				var pDoc = window.opener.document;
+				var $p = pDoc.querySelector.bind(pDoc);;
+				//pega campos
+				// $('#cliente').append($p('#cliente').value);
+				$('#pn_cli_razao').append($p('#pn_cli_razao').value);
+				$('#pn_cli_endereco').append($p('#pn_cli_endereco').value);
+				$('#pn_cli_cnpj').append($p('#pn_cli_cnpj').value);
+				$('#pn_cli_municipio').append($p('#pn_cli_municipio').value);
+				$('#pn_nRebate').append($p('#pn_nRebate').value);
+				$('#pn_aprovDate').append($p('#pn_aprovDate').value);
+				$('#pn_solicitante').append($p('#pn_solicitante').value);
+				$('#pn_aprovador').append($p('#pn_aprovador').value);
+				$('#observacoes').append($p('#observacoes').value);
+				$('#aprovObs').append($p('#aprovGestorObs').value);
+				
+				//monta tabela com partnumber
+				
+				// pega todas as linhas da tabela
+				// var linhas = pDoc.querySelectorAll('.linhaPN');
+				var tbody = document.querySelector('.tbPn');
+					let tipoVerba = $p('#pn_tipoVerba');
+					let prodCod = $p('#pn_produto_cod');
+					let prodDesc = $p('#pn_produto_desc');
+					let prodAcao = $p('#pn_produtosAcao');
+					let pnDesc = $p('#pn_descricao');
+					let pnQuant = $p('#pn_quant');
+					let pnValor = $p('#pn_valor');
+					let pnPreco = $p('#pn_preco');
+					
+					var tr = document.createElement('tr');
+					tr.appendChild(newTd(tipoVerba.options[tipoVerba.selectedIndex].textContent));
+					//tr.appendChild(newTd(prodCod.value));
+					tr.appendChild(newTd(prodDesc.value));
+					tr.appendChild(newTd(prodAcao.value));
+					tr.appendChild(newTd(pnDesc.value));
+					tr.appendChild(newTd(pnPreco.value));
+					tr.appendChild(newTd(pnQuant.value));
+					tr.appendChild(newTd(pnValor.value));
+					console.log(tr);
+					tbody.appendChild(tr);
+
+					
+			
+			function newTd(text) {
+					var nTD = document.createElement('td');
+					nTD.textContent = text;
+					nTD.classList.add('borda');
+					return nTD;
+				}		
+
+			});
+	// 		function newTd(text){
+    // var nTD = document.createElement('td');
+    // nTD.textContent = text;
+    // return nTD;
+//}
+		</script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+	<div class="container-fluid" class="borda row">
+		<form name="form" role="form">
+
+			<div class="form-title text-center borda" id="form-title">
+				<h3><b>Nota de Crédito</b></h3>
+			</div>
+			<div class="borda">
+				<div class="col-xs-4 borda">
+					<div class="logo" style="text-align: center; padding:5px;" >
+						<img src="./logoacer.png" class="rounded" alt="ACER ">
+					</div>
+				</div>
+				<div id="form-cliente" class="col-xs-8" style="padding-left: 10px !important;">
+					<div class="row col-xs-12">
+						<div class="form-group">
+							<label for="pn_cli_razao">Razão Social: </label>
+							<span>AGP TEC EM INFORMATICA D O BRASIL L</span>
+						</div>
+					</div>
+					<div class="row col-xs-12">
+						<div class="form-group">
+							<label>Endereço</label>
+							<span>RUA FLORIDA, 1.758 - ANDAR 5 CONJ. 52</span>
+						</div>
+					</div>
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label>CNPJ</label>
+							<span>11.068.167/0001-00</span>
+						</div>
+					</div>
+					<div class=" col-xs-6">
+						<div class="form-group">
+							<label for="">Município</label>
+							<span>SAO PAULO</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 borda" style="padding: 0px;">
+				<div class="borda">
+				<h5 class="text-center"><b>Tipo de Verba</b></h5>
+				</div>
+				<div id="form-cliente" class="col-xs-6 borda" style="padding-left: 10px !important;">
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label for="pn_cli_razao">Razão Social: </label><br>
+							
+							<!-- readonly="readonly" -->
+							<input type="hidden" class="form-control pn_cli" name="pn_cli" id="pn_cli">
+							<span name="pn_cli_razao" id="pn_cli_razao"></span>
+						</div>
+					</div>
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label for="pn_cli_cnpj">CNPJ</label>
+							<br>
+							<span name="pn_cli_cnpj" id="pn_cli_cnpj"></span>
+						</div>
+					</div>
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label for="pn_cli_endereco">Endereço</label><br>
+							<span name="pn_cli_endereco" id="pn_cli_endereco" value=""></span>
+						</div>
+					</div>
+					
+					<div class=" col-xs-6">
+						<div class="form-group">
+							<label for="pn_cli_municipio">Município</label><br>
+							<span name="pn_cli_municipio" id="pn_cli_municipio"></span>
+						</div>
+					</div>
+				</div>
+	<!-- cliente -->
+	
+				<div id="form-cliente" class="col-xs-6 borda" style="border-bottom: 0px !important; padding-left: 10px !important;">
+					
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label for="pn_nRebate">Rebate nº</label><br>
+							<span name="pn_nRebate" id="pn_nRebate"></span>
+						</div>
+					</div>
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label for="pn_aprovDate">Aprovado Data:</label><br>
+							<span name="pn_aprovDate" id="pn_aprovDate"></span>
+						</div>
+					</div>
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label for="pn_solicitante">Solicitante:</label><br>
+							<span name="pn_solicitante" id="pn_solicitante"></span>
+						</div>
+					</div>
+					<div class="row col-xs-6">
+						<div class="form-group">
+							<label for="pn_aprovador">Aprovador:</label>
+							<br>
+							<span name="pn_aprovador" id="pn_aprovador"></span>
+						</div>
+					</div>
+					
+
+					</div>
+				</div>
+				<div class="" id="TIPODEVERBA_32">
+					<div class="borda">
+							<table  class=""  style="color: black; border-color: black; text-align: left; border: 1px solid black; width: 100%; text-align: center;">
+								<thead>	
+									<tr style="color: black; border-color: black; border: 1px solid black;">
+										<th>Tipo de Verba</th>
+										<th>PartNumber</th>
+										<th>Produto / Ação</th>
+										<th>Descrição</th>
+										<th>Valor Unitário</th>
+										<th>Quantidade</th>
+										<th>Valor Total</th>
+									</tr>
+								</thead>
+								<tbody class="tbPn"  style="color: black; border-color: black; border: 1px solid black; text-align: center;" >
+								</tbody>
+							</table>	
+					</div>
+					<div class="col-md-12 borda">
+						<div class="form-group">
+							<div class="borda">
+								<h5 class="text-center">
+									<b>Observações</b>
+								</h5>
+							</div>
+							<b>Solicitante: </b><span name="observacoes" id="observacoes"></span> <br>
+							<b>Aprovador: </b><span name="aprovObs" id="aprovObs"></span>
+						</div>
+					</div>
+					<div class="col-md-12 borda break">
+						<h5 class="text-center"><b>Termos E Condições</b></h5>					
+						<p>1- Geração de Verba só poderá ser emitida dentro dos limites estabelecidos na tabela de preço vigente (disponibilizada pela
+						AGP) e com a aprovação prévia da Gerência de negócios da AGP.
+						<br>2- Tipos de Verbas :
+							<br>&emsp;A - Ação de "Sell IN" - Verba gerada na negociação de "Sell In", atrelada ao recebimento do volume no periodo negociado.
+							<br>&emsp;B - Ação de "Sell Out" - Verba atrelada ao "Sell Out" dos produtos da negociação ou do estoque no varejista.
+							<br>&emsp;C - Ação de Marketing - Verba gerada na execução de uma ação de marketing pré-aprovada pela AGP.
+							<br>&emsp;D - Tipo de Ação - Anúncio, exposição, ação de Trade.
+							<br>&emsp;E - Outros					
+						<br>3- Todos verbas estão condicionadas aos modelos, volume e preços pré estabelecidos.
+						<br>4- Todas as verbas deverão ser apresentadas no prazo máximo de 180 dias a contar da data de aprovação do programa.   					
+						<br>5- Quaisquer solicitações recebidas após o prazo de 180 dias serão desconsideradas.				
+						<br>6- Somente serão aprovadas as verbas para produtos adquiridos no preço de tabela, desconsiderando os descontos, contendo
+						o nº de identificação fornecido pela Gerência de negócios da AGP.					
+						<br>7- Produtos adquiridos a preços especiais, só terão direito ao rebate com a prévia autorização expressa da AGP.
+						<br>8- O programa é limitado ao produto e a quantidade vendida.					
+						<br>9- Toda verba será paga (através de boleto bancário) em sua totalidade 60 dias após a emissão da mesma e após a aprovação
+						da Gerência de negócios da AGP.		
+						<br>10- Não será permitida a aplicação de descontos promocionais bem como abatimentos em duplicadas.</p>			
+						<h5 class="text-center">AGP Tecnologia em Informática do Brasil Ltda</h5>		
+					</div>
+				</div>
+		</form>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="principal.js"></script>
+<script type="text/javascript" src="validate.js"></script>
+</html>

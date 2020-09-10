@@ -1,60 +1,66 @@
 <html>
 <head>
-	  <meta charset="UTF-8">
-	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
-	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
-	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
-	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
-	<script type="text/javascript" src="custom.js"></script>
-	<script type="text/javascript" src="integracoes.js"></script>
-	<script type="text/javascript" src="validate.js"></script>
-	<link type="text/css" rel="stylesheet"  href="table.css">
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet"
+	href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+	charset="utf-8"></script>
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+<script type="text/javascript" src="custom.js"></script>
+<script type="text/javascript" src="integracoes.js"></script>
+<script type="text/javascript" src="validate.js"></script>
+<link type="text/css" rel="stylesheet" href="table.css">
 
 
 </head>
 <body>
-<div class="fluig-style-guide">
-<form name="form" role="form">
-	<input type="hidden" id="cid" name="cid">
-	<input type="hidden" id="retorno" name="retorno">
-	<input type="hidden" id="retornoIds" name="retornoIds">
-	<input type="hidden" id="pv_apPrecoDate" name="pv_apPrecoDate" class="pv_apPrecoDate">
-	<input type="hidden" id="sorder_cliente" name="sorder_cliente" value="">
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<input type="hidden" id="cid" name="cid"> <input
+				type="hidden" id="retorno" name="retorno"> <input
+				type="hidden" id="retornoIds" name="retornoIds"> <input
+				type="hidden" id="pv_apPrecoDate" name="pv_apPrecoDate"
+				class="pv_apPrecoDate"> <input type="hidden"
+				id="sorder_cliente" name="sorder_cliente" value="">
 
-	<div class="container-fluid">
-		<div class="text-center">
-			<h1>Pedido de vendas</h1>
-			<p>Preencha o formulário para realizar um pedido de venda</p>
-		</div>
-	<!-- form-header -->
+			<div class="container-fluid">
+				<div class="text-center">
+					<h1>Pedido de vendas</h1>
+					<p>Preencha o formulário para realizar um pedido de venda</p>
+				</div>
+				<!-- form-header -->
 
-		<div class="row" id="form-header">
-		<div class="col-md-6 col-xs-12">
-			<div class="form-group">
-				<label for="pv_data">Data PO</label>
-				<input type="text" name="pv_data" id="pv_data" value="" class="form-control date">
-			</div>
-		</div>
-	</div>
-	<!-- form-header -->
-		<!-- <div class="row col-md-6 col-xs-12 " id="divFilial" style="display:none;">
+				<div class="row" id="form-header">
+					<div class="col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="pv_data">Data PO</label> <input type="text"
+								name="pv_data" id="pv_data" value="" class="form-control date">
+						</div>
+					</div>
+				</div>
+				<!-- form-header -->
+				<!-- <div class="row col-md-6 col-xs-12 " id="divFilial" style="display:none;">
 		
 		</div> -->
-	
-	<!-- cliente -->
-		<div id="form-cliente" class="row">
 
-			<div class="col-md-12 col-xs-12"><legend>Faturamento</legend></div>
-			<div class="col-md-12 col-xs-12">
-			<div class="form-group">
-				<label for="cliente">Cliente</label>
-				<input
-					    type="zoom"
-					    id = "cliente"
-					    name="cliente"
-					    data-zoom="{
+				<!-- cliente -->
+				<div id="form-cliente" class="row">
+
+					<div class="col-md-12 col-xs-12">
+						<legend>Faturamento</legend>
+					</div>
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label for="cliente">Cliente</label> <input type="zoom"
+								id="cliente" name="cliente"
+								data-zoom="{
 					        'displayKey':'CNOME',
 					        'datasetId':'dsCliente',
 					        'placeholder':'Digite o Nome do cliente',
@@ -76,265 +82,309 @@
 									'field':'CENDERECO',
 									'label' : 'Endereço' 
 								}]
-					     }"
-					/>
-			</div>
-		
-		</div>
-		<div class="div-clean"><br></div>
+					     }" />
+						</div>
+
+					</div>
+					<div class="div-clean">
+						<br>
+					</div>
 
 
 
-			<div class="col-md-12 col-xs-12">
-				<div class="form-group">
-					<label for="pv_cli_razao">Nome Fantasia</label>
-						<!-- readonly="readonly" -->
-						<input type="hidden" class="form-control pv_cli" name="pv_cli" id="pv_cli">
-						<input type="text" class="form-control pv_cli_razao" name="pv_cli_razao" id="pv_cli_razao">
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label for="pv_cli_razao">Nome Fantasia</label>
+							<!-- readonly="readonly" -->
+							<input type="hidden" class="form-control pv_cli" name="pv_cli"
+								id="pv_cli"> <input type="text"
+								class="form-control pv_cli_razao" name="pv_cli_razao"
+								id="pv_cli_razao">
 
 
-				</div>
-			</div>
+						</div>
+					</div>
 
-			<div class="col-md-12 col-xs-12">
-				<div class="form-group">
-					<label for="pv_cli_endereco">Endereço</label>
-					<input type="text" name="pv_cli_endereco"  id="pv_cli_endereco" value="" class="form-control">
-				</div>
-			</div>
-			<div class="col-md-6 col-xs-12">
-				<div class="form-group">
-					<label for="pv_cli_cnpj">CNPJ</label>
-					<div class="input-group">
-						<input type="text" name="pv_cli_cnpj"  id="pv_cli_cnpj" value="" class="form-control">
-						<span class="input-group-btn fluigicon">
-							<button type="button"id="btZoomClientt" class="btn btn-default" onclick="zoomCliente(this);">
-								<span class="fluigicon-search"></span>
-							</button>
-						</span>
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label for="pv_cli_endereco">Endereço</label> <input type="text"
+								name="pv_cli_endereco" id="pv_cli_endereco" value=""
+								class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="pv_cli_cnpj">CNPJ</label>
+							<div class="input-group">
+								<input type="text" name="pv_cli_cnpj" id="pv_cli_cnpj" value=""
+									class="form-control"> <span
+									class="input-group-btn fluigicon">
+									<button type="button" id="btZoomClientt"
+										class="btn btn-default" onclick="zoomCliente(this);">
+										<span class="fluigicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<div class="form-group">
+							<label for="pv_cli_municipio">Município</label> <input
+								type="text" name="pv_cli_municipio" id="pv_cli_municipio"
+								value="" class="form-control">
+
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-6 col-xs-12">
-				<div class="form-group">
-					<label for="pv_cli_municipio">Município</label>
-					<input type="text" name="pv_cli_municipio"  id="pv_cli_municipio" value="" class="form-control">
-					
+				<!-- cliente -->
+				<div class="col-md-12">
+					<div class="div-clean">
+						<br>
+					</div>
 				</div>
-			</div>
-		</div>
-		<!-- cliente -->
-		<div class="col-md-12">
-			<div class="div-clean"><br></div>
-		</div>
-		<!-- produtos -->
-		<div id="produtos" class="row">
-			<div class="col-md-12 col-xs-12"><legend>Produtos</legend></div>
+				<!-- produtos -->
+				<div id="produtos" class="row">
+					<div class="col-md-12 col-xs-12">
+						<legend>Produtos</legend>
+					</div>
 
 
-			<div class="col-md-12">
-				
-			<table class="talbe table-striped" tablename="tbPvProdutos" id="tbPvProdutos" noaddbutton="true" nodeletebutton="true">
-					<thead>
-						<tr>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody class="provTBody">
-						<tr>
-							<td>
-							<div class="col-md-12">
-								<div class="col-md-4">
-									<div class="form-group">
-										<!-- <input type="text" name="pv_pro_cod"  id="pv_pro_cod" value="" class="form-control"> -->
-										<div class="form-group">
-	
-											<input type="hidden" id="pv_idPEd" name="pv_idPEd" class="pv_idPEd" value="">
-											<input type="hidden" id="pv_produto_cod" name="pv_produto_cod" class="pv_produto_cod" value="">
-											<label>Código</label>
-											<div class="input-group">
-												<input type="text" id="pv_produto_desc" name="pv_produto_desc" class="form-control pv_pro" value="">
-												<span class="input-group-btn fluigicon"><br>
-													<button type="button"id="btZoomProd" class="btn btn-default" onclick="zoomProdutoCod(this);">
-														<span class=" fluigicon-search"></span>
-													</button>
-												</span>
-												<!-- <div class="input-group-btn">
+					<div class="col-md-12">
+
+						<table class="talbe table-striped" tablename="tbPvProdutos"
+							id="tbPvProdutos" noaddbutton="true" nodeletebutton="true">
+							<thead>
+								<tr>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody class="provTBody">
+								<tr>
+									<td>
+										<div class="col-md-12">
+											<div class="col-md-4">
+												<div class="form-group">
+													<!-- <input type="text" name="pv_pro_cod"  id="pv_pro_cod" value="" class="form-control"> -->
+													<div class="form-group">
+
+														<input type="hidden" id="pv_idPEd" name="pv_idPEd"
+															class="pv_idPEd" value=""> <input type="hidden"
+															id="pv_produto_cod" name="pv_produto_cod"
+															class="pv_produto_cod" value=""> <label>Código</label>
+														<div class="input-group">
+															<input type="text" id="pv_produto_desc"
+																name="pv_produto_desc" class="form-control pv_pro"
+																value=""> <span
+																class="input-group-btn fluigicon"><br>
+																<button type="button" id="btZoomProd"
+																	class="btn btn-default" onclick="zoomProdutoCod(this);">
+																	<span class=" fluigicon-search"></span>
+																</button> </span>
+															<!-- <div class="input-group-btn">
 													<button	class="btn btn-default"><span class="">@</span></button>
 												</div> -->
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<!--  modelo / desc -->
+											<div class="col-md-4">
+												<div class="form-group">
+													<label>Descrição</label>
+													<div class="input-group ">
+														<input type="text" name="pv_pro_modelo" id="pv_pro_modelo"
+															value="" class="form-control"> <span
+															class="input-group-btn fluigicon"><br>
+															<button type="button" id="btZoomProd"
+																class="btn btn-default" onclick="zoomProdutoDesc(this);">
+																<span class="fluigicon-search"></span>
+															</button> </span>
+													</div>
+												</div>
+
+											</div>
+
+											<div class="col-md-4">
+												<div class="form-group">
+													<label>Qntd PO</label> <input type="text" name="pv_pro_qty"
+														id="pv_pro_qty" value="" class="form-control" mask="#"
+														onchange="calculaTotalProduto(this);">
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Custo</label> <input type="text" name="pv_pro_custo"
+														id="pv_pro_custo" value="" class="form-control"
+														mask="#,##9.99" onchange="calculaTotalProduto(this);">
+												</div>
+											</div>
+
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Total</label> <input type="text" name="pv_pro_total"
+														id="pv_pro_total" value="" class="form-control totalPro"
+														mask="#,##9.99">
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Data Solicitada</label> <input type="text"
+														name="pv_crdd" id="pv_crdd" value=""
+														class="form-control date">
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group">
+													<label>Prioridade</label> <input type="number"
+														name="pv_pro_pri" id="pv_pro_pri" value=""
+														class="form-control" min="1" max="4">
+												</div>
+											</div>
+
+											<div class="col-md-1 deleteBtn">
+												<div class="form-group">
+													<label>Remover</label>
+													<button type="button" name="pv_pro_delete"
+														id="pv_pro_delete" class="btn btn-danger btn-block"
+														onclick="removeProClick(this);">
+														<span class="fluigicon fluigicon-remove"></span>
+													</button>
+												</div>
 											</div>
 										</div>
-	
-									</div>
-								</div>
-								<!--  modelo / desc -->
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Descrição</label>
-										<div class="input-group ">
-											<input type="text" name="pv_pro_modelo"  id="pv_pro_modelo" value="" class="form-control">
-											<span class="input-group-btn fluigicon"><br>
-												<button type="button"id="btZoomProd" class="btn btn-default" onclick="zoomProdutoDesc(this);">
-													<span class="fluigicon-search"></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-md-12">
+						<div class="pull-right">
+							<button type="button" id="addFc" class="btn btn-primary"
+								onclick="addProClick('tbPvProdutos');">
+								<span class="fluigicon fluigicon-plus-sign"></span> Adicionar
+								produto
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- produtos -->
+				<div class="col-md-12">
+					<div class="div-clean">
+						<br>
+					</div>
+				</div>
+				<!-- total -->
+				<div class="row" id="total">
+
+					<div class="col-md-6" style="display: none;">
+						<div class="form-group">
+							<label for="">Condição de Pagamento:</label> <input type="text"
+								name="pv_condicao_pagamento" id="pv_condicao_pagamento" value=""
+								class="form-control">
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="">Total PO R$</label> <input type="text"
+								name="pv_total" id="pv_total" value="" class="form-control"
+								mask="#,##9.99">
+						</div>
+					</div>
+				</div>
+				<!-- total -->
+
+				<!-- Agendamento de entrega -->
+				<div class="row" id="agendamentodiv">
+					<div class="col-md-12 col-xs-12">
+						<legend>Agendamento de Entrega</legend>
+					</div>
+					<div class="col-md-12" style="display: none;">
+						<div class="pull-right">
+							<button type="button" id="addEntrega" class="btn btn-primary">
+								<!-- onclick="addProClick('tbPvEntregas');aplicaDates();" -->
+								<span class="fluigicon fluigicon-plus-sign"></span> Adicionar
+							</button>
+						</div>
+					</div>
+					<div class="col-md-12 col-xs-12">
+						<table class="col-md-12 table" tablename="tbPvEntregas"
+							id="tbPvEntregas" noaddbutton="true" nodeletebutton="true">
+							<thead>
+								<tr>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="linhaEntrega">
+									<td>
+										<div class="col-md-2 col-xs-12">
+											<div class="form-group">
+												<label for="cproduto">N. Fiscal</label> <br> <span
+													id="cproduto"></span>
+											</div>
+										</div>
+										<div class="col-md-2 col-xs-12">
+											<div class="form-group">
+												<label for="pv_nFiscal">N. Fiscal</label> <input type="text"
+													name="pv_nFiscal" id="pv_nFiscal" value=""
+													class="form-control pv_nFiscal" mask="#">
+											</div>
+										</div>
+										<div class="col-md-2 col-xs-12">
+											<div class="form-group">
+												<label for="pv_data_agenda">Data Agenda</label> <input
+													type="text" name="pv_data_agenda" id="pv_data_agenda"
+													value="" class="form-control date pv_data_entrega">
+											</div>
+										</div>
+										<div class="col-md-2 col-xs-12">
+											<div class="form-group">
+												<label for="pv_horario_entrega">Horário</label> <input
+													type="text" name="pv_horario_entrega"
+													id="pv_horario_entrega" value=""
+													class="form-control hour pv_horario_entrega">
+											</div>
+										</div>
+										<div class="col-md-2 col-xs-12">
+											<div class="form-group">
+												<label for="pv_data_saida">Data Saída</label> <input
+													type="text" name="pv_data_saida" id="pv_data_saida"
+													value="" class="form-control pv_data_saida date">
+											</div>
+										</div>
+										<div class="col-md-2 col-xs-12 dtEntrega">
+											<div class="form-group">
+												<label for="pv_entRealDt">Data Entrega</label> <input
+													type="text" name="pv_entRealDt" id="pv_entRealDt" value=""
+													class="form-control date pv_entRealDt">
+											</div>
+										</div>
+										<div class="col-md-1 col-xs-12">
+											<div class="form-group">
+												<label for="pv_entrega_delete">Remover</label>
+												<button type="button" id="pv_entrega_delete"
+													class="btn btn-warning" onclick="removeEntregaClick(this);">
+													<span class="fluigicon fluigicon-remove"></span>
 												</button>
-											</span>
+											</div>
 										</div>
-									</div>
-	
-								</div>
-								
-								<div class="col-md-4">
-									<div class="form-group">
-											<label>Qntd PO</label>
-										<input type="text" name="pv_pro_qty"  id="pv_pro_qty" value="" class="form-control" mask="#" onchange="calculaTotalProduto(this);">
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>Custo</label>
-										<input type="text" name="pv_pro_custo"  id="pv_pro_custo" value="" class="form-control" mask="#,##9.99" onchange="calculaTotalProduto(this);">
-									</div>
-								</div>
-	
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>Total</label>
-										<input type="text" name="pv_pro_total"  id="pv_pro_total" value="" class="form-control totalPro" mask="#,##9.99">
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>Data Solicitada</label>
-										<input type="text" name="pv_crdd" id="pv_crdd" value="" class="form-control date">
-									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-group">
-											<label>Prioridade</label>
-										<input type="number" name="pv_pro_pri"  id="pv_pro_pri" value="" class="form-control" min="1" max="4">
-									</div>
-								</div>
-								
-								<div class="col-md-1 deleteBtn">
-										<div class="form-group">
-											<label>Remover</label>
-											<button type="button" name="pv_pro_delete" id="pv_pro_delete" class="btn btn-danger btn-block" onclick="removeProClick(this);"><span class="fluigicon fluigicon-remove"></span></button>
-										</div>
-									</div>
-							</div>
-						</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="col-md-12">
-				<div class="pull-right">
-					<button type="button" id="addFc" class="btn btn-primary" onclick="addProClick('tbPvProdutos');"> <span class="fluigicon fluigicon-plus-sign"></span> Adicionar produto</button>
-				</div>
-			</div>
-		</div>
-		<!-- produtos -->
-		<div class="col-md-12">
-		<div class="div-clean"><br></div>
-		</div>
-		<!-- total -->
-		<div class="row" id="total">
 
-			<div class="col-md-6" style="display:none;">
-					<div class="form-group">
-						<label for="">Condição de Pagamento:</label>
-						<input type="text" name="pv_condicao_pagamento"  id="pv_condicao_pagamento" value="" class="form-control">
-					</div>
-			</div>
-
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="">Total PO R$</label>
-						<input type="text" name="pv_total"  id="pv_total" value="" class="form-control" mask="#,##9.99">
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-		</div>
-		<!-- total -->
-
-		<!-- Agendamento de entrega -->
-		<div class="row" id="agendamentodiv">
-			<div class="col-md-12 col-xs-12"><legend>Agendamento de Entrega</legend></div>
-			<div class="col-md-12" style="display:none;">
-				<div class="pull-right">
-					<button type="button" id="addEntrega" class="btn btn-primary">
-					<!-- onclick="addProClick('tbPvEntregas');aplicaDates();" -->
-					<span class="fluigicon fluigicon-plus-sign"></span> Adicionar</button>
+				<!-- Agendamento de entrega -->
+				<div class="col-md-12">
+					<div class="div-clean">
+						<br />
+						<br />
+					</div>
 				</div>
-			</div>
-			<div class="col-md-12 col-xs-12">
-				<table class="col-md-12 table" tablename="tbPvEntregas" id="tbPvEntregas" noaddbutton="true" nodeletebutton="true">
-					<thead>
-						<tr><td></td></tr>
-					</thead>
-					<tbody>
-						<tr class="linhaEntrega">
-							<td>
-							<div class="col-md-2 col-xs-12">
-									<div class="form-group">
-										<label for="cproduto">N. Fiscal</label>	<br>	
-										<span id="cproduto"></span>
-									</div>
-								</div>
-								<div class="col-md-2 col-xs-12">
-									<div class="form-group">
-										<label for="pv_nFiscal">N. Fiscal</label>
-										<input type="text" name="pv_nFiscal" id="pv_nFiscal" value="" class="form-control pv_nFiscal" mask="#">
-									</div>
-								</div>
-								<div class="col-md-2 col-xs-12">
-									<div class="form-group">
-										<label for="pv_data_agenda">Data Agenda</label>
-										<input type="text" name="pv_data_agenda" id="pv_data_agenda" value="" class="form-control date pv_data_entrega">
-									</div>
-								</div>
-								<div class="col-md-2 col-xs-12">
-									<div class="form-group">
-										<label for="pv_horario_entrega">Horário</label>
-										<input type="text" name="pv_horario_entrega" id="pv_horario_entrega" value="" class="form-control hour pv_horario_entrega">
-									</div>
-								</div>
-								<div class="col-md-2 col-xs-12">
-									<div class="form-group">
-										<label for="pv_data_saida">Data Saída</label>
-										<input type="text" name="pv_data_saida" id="pv_data_saida" value="" class="form-control pv_data_saida date">
-									</div>
-								</div>
-								<div class="col-md-2 col-xs-12 dtEntrega">
-									<div class="form-group">
-										<label for="pv_entRealDt">Data Entrega</label>
-										<input type="text" name="pv_entRealDt" id="pv_entRealDt" value="" class="form-control date pv_entRealDt">
-									</div>
-								</div>
-								<div class="col-md-1 col-xs-12">
-									<div class="form-group">
-										<label for="pv_entrega_delete">Remover</label>										
-										<button type="button"  id="pv_entrega_delete" class="btn btn-warning" onclick="removeEntregaClick(this);">
-											<span class="fluigicon fluigicon-remove"></span>
-										</button>
-									</div>
-								</div> 
-								
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<!-- Agendamento de entrega -->
-		<div class="col-md-12">
-			<div class="div-clean">
-				<br/><br/>
-			</div>
-		</div>
-
-
-
-</form>
-</div>
+		</form>
+	</div>
 </body>
 </html>
