@@ -1,0 +1,264 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<style>span.obg{color: red;font-family: 'Verdana' !important;}</style>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<!-- hiddenfields -->
+			<input type="hidden" name="numSolicitacao" id="numSolicitacao">
+			<input type="hidden" name="atvAtual" id="atvAtual">
+			<input type="hidden" name="userAtual" id="userAtual">
+			<input type="hidden" name="formMode" id="formMode">
+			<input type="hidden" name="productInfoJson" id="productInfoJson">
+			<input type="hidden" name="taxSobreCusto" id="taxSobreCusto">
+			<input type="hidden" name="precoAtualVtex" id="precoAtualVtex">
+			<input type="hidden" name="precoAtualAnyM" id="precoAtualAnyM">
+			<input type="hidden" name="precoVtexNovo" id="precoVtexNovo">
+			<input type="hidden" name="precoAnyMNovo" id="precoAnyMNovo">
+			<input type="hidden" name="resultInt" id="resultInt">
+			<input type="hidden" name="intOK" id="intOK">
+			<input type="hidden" name="intAnyMRes" id="intAnyMRes">
+			<input type="hidden" name="intAnyMOK" id="intAnyMOK">
+			<!-- hiddenfields -->
+			<div class="container-fluid" id="allForm">
+				<div class="text-center">
+					<h1>Alteração de preço de produto Ecommerce</h1>
+				</div>
+				<div class="row" id="selectProd">
+					<legend>Produto</legend>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="partNumber">PartNumber</label>
+							<div class="input-group">
+								<input type="text" name="partNumber" id="partNumber" class="form-control">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" type="button" onclick="getProByCod()" >Ok!</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="descProduto">Descrição</label>
+							<div class="input-group">
+								<input type="text" name="descProduto" id="descProduto" class="form-control">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" type="button" onclick="getProByDesc()" >Ok!</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="infoProdutosDiv" class="row" style="display: none;">
+					<div class="panel panel-default">
+						<div class="panel-heading">Informações Produto - Protheus</div>
+						<div class="panel-body">
+						
+							<table class="table table-responsive">
+								<thead>
+									<tr>
+										<th>PartNumber</th>
+										<th>Descrição</th>
+										<th>Local</th>
+										<th>Custo</th>
+										<th>Preço Mínimo</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><span id="infoCod"></span></td>
+										<td><span id="infoDesc"></span></td>
+										<td><span id="infoLocal"></span></td>
+										<td><span id="infoCml"></span></td>
+										<td><span id="infoPrecoMin"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- info produtos protheus -->
+					<!-- info produtos vtex -->
+					<div id="priceVtexDiv" class="panel panel-default">
+						<div class="panel-heading">Informações Produto - VTEX</div>
+						<div class="panel-body">
+							<div id="priceBaseVtex" class="row">
+								<h3>Preço Base</h3>
+							</div>
+							<div class="row">
+								<hr>
+							</div>
+
+							<h3>Canais de Venda</h3>
+							<table class="table table-responsive">
+								<thead>
+									<tr>
+										<th>Sale Channel</th>
+										<th>Value</th>
+										<th>List Price</th>
+										<th>Quantidade Mínima</th>
+										<th>Data Inicial</th>
+										<th>Data Final</th>
+									</tr>
+								</thead>
+								<tbody id="priceVtexBody">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- info produtos vtex -->
+					<!-- info produtos anyM -->
+					<div id="priceAnyMDiv" class="panel panel-default">
+						<div class="panel-heading">Informações Produto - AnyMarket</div>
+						<div class="panel-body">
+							<h3>Canais de Venda</h3>
+							<table class="table table-responsive">
+								<thead>
+									<tr>
+										<th>Sale Channel</th>
+										<th>Price Base</th>
+										<th>Price Factor</th>
+										<th>Price</th>
+										<th>Discount Price</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody id="priceAnyMBody">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- info produtos anyM -->
+
+				</div>
+
+				<!-- Aprovação -->
+				<div id="aprovdiv" class="row" style="display:none;">
+					<div class="col-md-12" >
+						 <legend>Aprovação</legend>
+							<div id="aprovDiv" class=' row'>
+							<div class="panel-body">
+								<div class="col-md-3">
+									<div class='form-group'>
+										<label for="aprov">Aprova solicitação?</label>
+										<select class="form-control" name="aprov" id="aprov">
+											<option value="1">Aprovar</option>
+											<option value="0">Reprovar</option>
+										</select>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class='form-group' id='aprovObsdiv'>
+									<label for="aprovObs">Observações</label>
+									<textarea id="aprovObs"  class="form-control" name="aprovObs"></textarea></br>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Aprovaçõo -->
+				<!-- Aprovação Integração -->
+				<div id="valDiv" class="row" style="display:none;">
+					<div class="col-md-12" >
+						 <legend>Validação da integração</legend>
+							<div id="valIntDiv" class=' row'>
+							<div class="panel-body">
+								<div class="col-md-3">
+									<div class='form-group'>
+										<label for="valInt">Validar Intergação?</label>
+										<select class="form-control" name="valInt" id="valInt">
+											<option value="1">Sim</option>
+											<option value="0">Não</option>
+										</select>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class='form-group' id='valIntObsdiv'>
+									<label for="valIntObs">Observações</label>
+									<textarea id="valIntObs"  class="form-control" name="valIntObs"></textarea></br>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Aprovaçõo  Integração-->
+				<!-- historico -->
+				<!-- tableHistorico -->
+		<div id="historico">
+			<div id="tableHistorico" style="display: none;">
+				<table tablename="tbHistorico" id="tabela" class="table table-striped" noaddbutton="true" nodeletebutton="true">
+					<thead>
+						<tr>
+	
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="histLinha">
+							<td class="" >
+								<label for="">Usuário</label>
+								<input type="text" name="usuario" id="usuario" class="form-control usuario">
+							</td>
+							<td>
+								<label>Data</label>
+								<input type="text" name="dtHist" id="dtHist" class="form-control dtHist">
+							</td>
+							<td>
+								<label>Aprovação</label>
+								<input type="text" name="aprovHist" id="aprovHist" class="form-control aprovHist">
+							</td>
+							<td>
+								<label>Observaçães</label>
+								<input type="text" name="obsHist" id="obsHist" class="form-control obsHist">
+							</td>
+					</tr>
+					</tbody>
+					</table>
+				</div>
+				<div id="showHist" class="container" style="display: none;">
+					<legend>Histórico de aprovações</legend>
+					<div class="panel-body fs-sm-space clearfix">
+						<div class="media">
+							<div class="media-heading"  id='divHistorico'>
+								<!-- <div class="media-heading-text">
+									<h5>
+										<strong>
+											<span class="wrap-element-popover">Luan Gomes</span>
+										</strong>
+											<span>Aprovado</span>
+									</h5>
+									<h6>
+										02/10/2019 15:39:00
+									</h6>
+									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus enim at, adipisci, iste, distinctio quasi dolore minus voluptatibus beatae voluptates laborum possimus molestias architecto voluptatum sunt eum. Aliquid, labore ex.</p>
+								</div>
+								<hr> -->
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<!-- tableHistorico -->
+				<!-- historico -->
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="./datasetController.js"></script>
+<script type="text/javascript" src="./validate.js"></script>
+<script type="text/javascript" src="./historico.js"></script>
+<script type="text/javascript" src="./formControl.js"></script>
+<script type="text/javascript" src="./custom.js"></script>
+
+</html>
