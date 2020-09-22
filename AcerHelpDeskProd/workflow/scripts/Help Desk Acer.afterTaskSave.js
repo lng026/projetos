@@ -52,7 +52,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 	
 	function consultaDadosPaiFilho(fields){
 		log.info('Consulta Dados Pai X Filho');
-		var nrProcesso = getValue("WKNumProces") + "";;
+		var nrProcesso = getValue("WKNumProces") + "";
 		var cardData = hAPI.getCardData(nrProcesso);
 		var it = cardData.keySet().iterator();
 		var listaFilho = new Array();
@@ -95,7 +95,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 		var t_assunto = hAPI.getCardValue("assunto");
 		log.info("Encontro t_assunto: " + t_assunto);
 		
-		var numproc = getValue("WKNumProces") + "";;
+		var numproc = getValue("WKNumProces") + "";
 		log.info("Encontro numproc: " + numproc);
 		
 		var assunto = "A solicitação #" + numproc + " foi aberta - HelpDesk Acer";
@@ -104,7 +104,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 		var topico_ajuda = hAPI.getCardValue("usNomeTxt");
 		log.info("Encontro topico_ajuda: " + topico_ajuda);
 		
-		var processo = getValue("WKNumProces") + "";;
+		var processo = getValue("WKNumProces") + "";
 		log.info("Encontro processo: " + processo);
 
 		var campos = hAPI.getCardData(processo);
@@ -199,7 +199,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 	
 //	if (nextSequenceId == 15 && checkTransf()) {
 //		try{
-//			var numproc = getValue("WKNumProces") + "";;
+//			var numproc = getValue("WKNumProces") + "";
 //			var assunto = 'Um chamado foi transferido para você. [#'+ numproc +' - HelpDesk ACER]';
 //			//Monta mapa com parâmetros do template
 //			var parametros = new java.util.HashMap();
@@ -248,7 +248,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 //	if (nextSequenceId == 15 && checkResolvido()) {
 //		try{
 //			log.info("inicio interagiu")
-//			var numproc = getValue("WKNumProces") + "";;
+//			var numproc = getValue("WKNumProces") + "";
 //			var assunto = 'O usuário interagiu no chamado. [#'+ numproc +' - HelpDesk ACER]';
 //			//Monta mapa com parâmetros do template
 //			var parametros = new java.util.HashMap();
@@ -258,7 +258,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 //			var e_analista = new java.util.ArrayList();
 //			
 //			// Consulta o Dataset para ver quem sao os usuarios deste grupo
-//			var processo = getValue("WKNumProces") + "";;
+//			var processo = getValue("WKNumProces") + "";
 //			var campos = hAPI.getCardData(processo);
 //			var paifilhoindex = parseInt(hAPI.getCardValue('pfindex'));
 //			
@@ -327,7 +327,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 //	}
 	
 //	if (nextSequenceId == 15 && checkReopen()) {
-//		var numproc = getValue("WKNumProces") + "";;
+//		var numproc = getValue("WKNumProces") + "";
 //		var assunto = 'Um chamado foi reaberto! [#'+ numproc +' - HelpDesk ACER]';
 //		//Monta mapa com parâmetros do template
 //		var parametros = new java.util.HashMap();
@@ -370,7 +370,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 	
 	// VALIDA A SOLUCAO 
 	if (nextSequenceId == 9) {
-		var numproc = getValue("WKNumProces") + "";;
+		var numproc = getValue("WKNumProces") + "";
 		var assunto = 'Uma nova resposta foi adicionada ao chamado: #'+ numproc +' [HelpDesk ACER]';
 		var parametros = new java.util.HashMap();
 		var requisitante = hAPI.getCardValue('name');
@@ -381,7 +381,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 		destinatarios.add(idsol.toString());	 
 		
 		
-		var processo = getValue("WKNumProces") + "";;
+		var processo = getValue("WKNumProces") + "";
 		var campos = hAPI.getCardData(processo);
 		var paifilhoindex = parseInt(hAPI.getCardValue('pfindex'));
 		
@@ -434,8 +434,8 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 	}
 	
 	if (nextSequenceId == 22) {
-		var processo = getValue("WKNumProces") + "";;
-		var numproc = getValue("WKNumProces") + "";;
+		var processo = getValue("WKNumProces") + "";
+		var numproc = getValue("WKNumProces") + "";
 		var campos = hAPI.getCardData(processo);
 		var paifilhoindex = parseInt(hAPI.getCardValue('pfindex'));
 		
@@ -494,8 +494,8 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 	if (nextSequenceId == 40 && atvcampo == 9) {
 		var usres = hAPI.getCardValue('us_resolvido');
 		
-		var processo = getValue("WKNumProces") + "";;
-		var numproc = getValue("WKNumProces") + "";;
+		var processo = getValue("WKNumProces") + "";
+		var numproc = getValue("WKNumProces") + "";
 		var campos = hAPI.getCardData(processo);
 		var paifilhoindex = parseInt(hAPI.getCardValue('pfindex'));
 		
