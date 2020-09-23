@@ -1,3 +1,5 @@
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
 <div id="MyWidget_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide" data-params="MyWidget.instance()">
 <!-- form -->
 		<div id="formData">
@@ -8,6 +10,7 @@
 						<input type="hidden" name="idAtividade" id="idAtividade">
 						<input type="hidden" name="jsonAtividade" id="jsonAtividade">
 						<input type="hidden" name="jsonDadosForn" id="jsonDadosForn">
+						<input type="hidden" name="jsonComps" id="jsonComps">
 						<select class="form-control" name="selAtividade" id="selAtividade" onchange="attCategoriaProj(this)" required>
 							<option value="0">Selecione</option>
 						</select> 
@@ -113,7 +116,17 @@
 					</div>
 				</div>
 			</div>
-			
+			<div class="row"><hr></div>
+
+			<div class="row">
+				<div class="">
+						<button class="btn btn-primary btn-grid" type="button" onclick="salvarForm();">Salvar Solicitação</button>
+					</div>
+			</div>
+
+
+
+
 		</div>
 		<!-- form -->
 </div>

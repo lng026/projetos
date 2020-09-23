@@ -40,16 +40,22 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><b><span id="sumPlanejados"></span></b></td>
+                    <td id="sumPlanejados"></td>
                     <td id="sumUtil"></td>
                     <td id="sumSaldo"></td>
                 </tr>
                 </tfoot>
             </table>
         </div>
-
-
-
     </div>
 </div>
+<!-- <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><b><span id="sumPlanejados"></span></b></td>
+                    <td id="sumUtil"></td>
+                    <td id="sumSaldo"></td>
+                </tr>
+                </tfoot> -->
 

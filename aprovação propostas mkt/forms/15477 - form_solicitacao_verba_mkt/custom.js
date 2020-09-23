@@ -5,14 +5,14 @@ $(document).ready(function(){
 	setDateTime();
     preencheAtividades();
     camposObrigatorios();
-    $("#valor").mask("#,##0.00", {reverse: true});
+    regrasForm();
+    mostrarHistorico();
 });
 $(document).on("keypress", ".input-group:has(input:input, span.input-group-btn:has(button.btn)) input:input", function(e){
     if (e.which == 13){
         $(this).closest(".input-group").find("button.btn").click();
     }
 });
-
 
 function preencheAtividades(){
     var jsonAtividades = $("#jsonAtividade").val();
@@ -156,150 +156,3 @@ function gerarLinkArquivo(idDoc) {
 }
 
 
-// -------------------------------------------
-// Custom Validade
-function customValidadeBefore(numState, nextState){
-    var validate = true;
-	return validate;
-}
-function customValidadeAfter(numState, nextState){
-    var validate = true;
-    if(numState <= 4){
-		if(validaSomaComps()){
-			validate = saveComps();
-		}else{
-			validate = "A Soma de Competências difere do valor total da proposta.";
-		}
-
-	}
-	return validate;
-}
-
-
-function salvarForm() {
-    var retorno =   beforeSendValidate(0,5);
-    if(retorno == true){
-
-      var formObj = ObjFromForm();
-      var formData = {
-        "comment": "",
-        "formFields": formObj
-      }
-     var res =  fetchApi(formData);
-     res.then((res) => {
-        console.log(res);
-        if(res && res.processInstanceId){
-            var msg = `Solicitação Iniciada com sucesso: Solicitação ${res.processInstanceId}.
-                            Dados enviados para análise da nossa equipe.`;
-            toasTMsg(msg,'info');
-        }else{
-            FLUIGC.toast({
-                title: '',
-                message: "Não foi possível salvar os dados. Entre em contato com um administrador.",
-                type: 'danger'
-            });
-        }
-     }).catch((err) => {
-        console.log(err);
-     });
-    }else{
-        FLUIGC.toast({
-            title: '',
-            message: retorno,
-            type: 'danger'
-        });
-    }
-  }
-
-  async function fetchApi(data){
-    var url = '/process-management/api/v2/processes/Aprovacao_verbas_marketing/start';
-    return await fetch(url, {
-        headers : {'Content-type' : 'application/json'},
-        method: 'POST',
-        body : JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .catch(res =>res.statusText);
-}
-function fetchApiGet(){
-    var url = '/api/public/v2/processes';
-    return fetch(url, {
-        headers : {'Content-type' : 'application/json'},
-        method: 'get'
-    })
-    .then(res => res.json())
-    .catch(res =>res.statusText);
-}
-
-
-  
-
-function ObjFromForm(){
-    var aFields = ['idAtividade','selAtividade','categoria','idFornecedor','fornecedor','projeto',
-                    'descricao','status','valor','alocaFundo','prazoEstimado','invoice',
-                'observacoes','jsonComps'];
-    var aCons = {};
-    aFields.forEach(campo => {
-        aCons[campo] =$(`#${campo}`).val();
-    });
-    return aCons;
-}
-
-function cardFildListFromForm(){
-    var aFields = ['idAtividade','selAtividade','categoria','idFornecedor','fornecedor','projeto',
-                    'descricao','status','valor','alocaFundo','prazoEstimado','invoice',
-                'observacoes','jsonComps'];
-    var aCons = [];
-    aFields.forEach(campo => {
-        aCons.push(jsonCarfFieldCons(campo, $(`#${campo}`).val()));
-    });
-    return aCons;
-}
-
-// cria objeto para constraint
-function jsonCarfFieldCons(field,value){
-    return JSON.stringify({field: field,value:value});
-}
-
-
-function iniciarAtividade(constraints){
-    var dsProposta = new DatasetModel('dsStartProcess');
-    dsProposta.identificador = 'success';
-    dsProposta.addContraint('processId','Aprovacao_verbas_marketing');
-    constraints.forEach(c => {
-        dsProposta.addContraint('campo',c);
-    });
-    dsProposta.getDatasetFilter();
-    dsProposta.updatedValueEvent = res => {
-        if(res){
-            console.log(res);
-            if(res && res.processInstanceId){
-                var msg = `Solicitação Iniciada com sucesso: Solicitação ${res.processInstanceId}.
-                                Dados enviados para análise da nossa equipe.`;
-                toasTMsg(msg,'info');
-            }else{
-                FLUIGC.toast({
-                    title: '',
-                    message: "Não foi possível salvar os dados. Entre em contato com um administrador.",
-                    type: 'danger'
-                });
-            }
-        }else{
-            FLUIGC.toast({
-                title: '',
-                message: "Impossível envio dos dados. Entre em contato com um administrador.",
-                type: 'danger'
-            });
-        }
-    }
-    // ).catch(res => {
-	// 	console.log(res);
-	// }) 
-}
-function toasTMsg(m='',ty='info',tt=''){
-    FLUIGC.toast({
-        title: tt,
-        message:m,
-        type: ty
-    });
-}

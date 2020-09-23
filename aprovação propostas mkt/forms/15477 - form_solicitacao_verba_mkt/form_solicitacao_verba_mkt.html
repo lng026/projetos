@@ -1,0 +1,360 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<input type="hidden" name="numSolicitacao" id="numSolicitacao">
+	<input type="hidden" name="atvAtual" id="atvAtual">
+	<input type="hidden" name="userAtual" id="userAtual">
+	<input type="hidden" name="prazoExecucao" id="prazoExecucao">
+	<input type="hidden" name="formMode" id="formMode">
+	<input type="hidden" name="jsonComps" id="jsonComps">
+
+	<div class="container-fluid" id="allForm">
+		<div class="text-center">
+			<h1>Aprovação de propostas - Marketing</h1>
+		</div>
+		<!-- form -->
+		<div id="formData">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="atividade">Atividade(ID)</label>
+						<input type="hidden" name="idAtividade" id="idAtividade">
+						<input type="hidden" name="jsonAtividade" id="jsonAtividade">
+						<input type="hidden" name="jsonDadosForn" id="jsonDadosForn">
+						<select class="form-control" name="selAtividade" id="selAtividade" onchange="attCategoriaProj(this)" required>
+							<option value="0">Selecione</option>
+						</select> 
+						
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="categoria">Categoria</label>
+						<input type="text" name="categoria" id="categoria" class="form-control" readonly="readonly" required> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="fornecedor">Fornecedor</label>
+						<div class="input-group">
+							<input type="hidden" name="idFornecedor" id="idFornecedor">
+							<input type="text" name="fornecedor" id="fornecedor" class="form-control" >
+							<span class="input-group-btn">
+								<button class="btn btn-primary" type="button" onclick="showDsFornecedores('fornecedor','CNOME');">Ok!</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">	
+						<label for="projeto">Projeto</label>
+						<input type="text" name="projeto" id="projeto" class="form-control" required>	
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="descricao">Descrição</label>
+						<input type="text" name="descricao" id="descricao" class="form-control" required>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="status">Status</label>
+						<select class="form-control" name="status" id="status" required>
+							<option value="provisao">Provisão</option>
+							<option value="reversao">Reversão</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="valor">Valor Total</label>
+						<input type="text" name="valor" id="valor" class="form-control" mask="###9.99" required>
+					</div>
+				</div>
+			</div>
+			<div class="row"><br></div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="alocaFundo">Alocação Fundo</label>
+						<!-- <input type="text" name="alocaFundo" id="alocaFundo" class="form-control"> -->
+						<select class="form-control" name="alocaFundo" id="alocaFundo">
+							<option value="0">Selecione</option>
+							<option value="AMD">AMD</option>
+							<option value="Intel CCF">Intel CCF</option>
+							<option value="Intel MDF">Intel MDF</option>
+							<option value="Microsoft JMA">Microsoft JMA</option>
+							<option value="Microsoft JST">Microsoft JST</option>
+							<option value="Nvidia">Nvidia</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="prazoEstimado">Prazo Estimado</label>
+						<input type="text" name="prazoEstimado" id="prazoEstimado" class="form-control date" required>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="invoice">Invoice</label>
+						<input type="text" name="invoice" id="invoice" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="row"><br></div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="observacoes">Observações</label>
+						<textarea id="observacoes"   name="observacoes" class="form-control"></textarea></br>
+					</div>
+				</div>
+			</div>
+			<div class="row"><hr></div>
+			<div class="row">
+				<legend>Competências</legend>
+				<div id="compDiv">
+					<!-- competencias -->
+				</div>
+				<div id="addCompDiv" class="pull-right col-md-12">
+					<div class="pull-right">
+						<button class="btn btn-primary btn-grid" type="button" onclick="addcompetencia();">Nova Competencia</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- form -->
+		<div class="row" id="aprovacoes">
+			<!-- Analise -->
+			<div id="aprovAnalisediv" class="row" style="display:none;">
+				<div class="col-md-12" >
+					 <legend>Análise</legend>
+						<div id="aprovAnalisediv" class=' row'>
+						<div class="panel-body">
+							<div class="col-md-3">
+								<div class='form-group'>
+									<label for="aprovAnalise">Aprova solicitação?</label>
+									<select class="form-control" name="aprovAnalise" id="aprovAnalise">
+										<option value="1">Aprovar</option>
+										<option value="0">Reprovar</option>
+									</select>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<div class='form-group' id='aprovAnaliseObsdiv'>
+								<label for="aprovAnaliseObs">Observações</label>
+								<textarea id="aprovAnaliseObs"  class="form-control" name="aprovAnaliseObs"></textarea></br>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<!-- Analise -->
+			<!-- Aprovação -->
+			<div id="aprovdiv" class="row" style="display:none;">
+				<div class="col-md-12" >
+					 <legend>Aprovação da Área</legend>
+						<div id="aprovDiv" class=' row'>
+						<div class="panel-body">
+							<div class="col-md-3">
+								<div class='form-group'>
+									<label for="aprov">Aprova solicitação?</label>
+									<select class="form-control" name="aprov" id="aprov">
+										<option value="1">Aprovar</option>
+										<option value="0">Reprovar</option>
+									</select>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<div class='form-group' id='aprovObsdiv'>
+								<label for="aprovObs">Observações</label>
+								<textarea id="aprovObs"  class="form-control" name="aprovObs"></textarea></br>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<!-- Aprovaçõo -->
+				<!-- Aprovação -->
+				<div id="aprovExecdiv" class="row" style="display:none;">
+					<div class="col-md-12" >
+						 <legend>Aprovação de execução</legend>
+							<div id="aprovDiv" class=' row'>
+							<div class="panel-body">
+								<div class="col-md-3">
+									<div class='form-group'>
+										<label for="aprovExec">Aprova Execução?</label>
+										<select class="form-control" name="aprovExec" id="aprovExec">
+											<option value="1">Aprovar</option>
+											<option value="0">Reprovar</option>
+										</select>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class='form-group' id='aprovExecObsdiv'>
+									<label for="aprovExecObs">Observações</label>
+									<textarea id="aprovExecObs"  class="form-control" name="aprovExecObs"></textarea></br>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<!-- Aprovaçõo -->
+			<!-- Aprovação  pagamento-->
+			<div id="aprovPagdiv" class="row" style="display:none;">
+				<div class="col-md-12" >
+					 <legend>Aprovação de Pagamento</legend>
+						<div id="aprovDiv" class=' row'>
+						<div class="panel-body">
+							<div class="col-md-3">
+								<div class='form-group'>
+									<label for="aprovPag">Aprova pagamento?</label>
+									<select class="form-control" name="aprovPag" id="aprovPag">
+										<option value="1">Aprovar</option>
+										<option value="0">Reprovar</option>
+									</select>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<div class='form-group' id='aprovObsPagdiv'>
+								<label for="aprovPagObs">Observações</label>
+								<textarea id="aprovPagObs"  class="form-control" name="aprovPagObs"></textarea></br>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<!-- Aprovaçõo pagamento-->
+					<!-- alinhamneto -->
+					<div id="alinhaObsdiv" class="row" style="display:none;">
+						<div class="col-md-12" >
+							 <legend>Alinhamento com o Fornecedor</legend>
+						</div>
+						<div class="col-md-12">
+							<div class='form-group' id='alinhaObs'>
+								<label for="alinhaObs">Observações de alinhamento</label>
+								<textarea id="alinhaObs"  class="form-control" name="alinhaObs"></textarea></br>
+							</div>
+						</div>
+					</div>
+					<div id="arquivosForn" class="col-md-12" style="display:none;">
+						<div class="col-md-12" >
+							 <legend>Retorno do Fornecedor</legend>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">	
+								<label for="finalizarExecucao"><b>Finalização do Fornecedor:</b></label>
+								<span id="finalizarExecucao"></span>
+							</div>
+						<!-- </div>
+						<div class="col-md-4"> -->
+							<div class="form-group">	
+								<label for="fornObs"><b>Observações do Fornecedor:</b></label>
+								<span id="fornObs"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div>
+								<label><b>Arquivos</b></label>
+								<ul class="list-group" id="ulArquivos">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- alinhamneto -->
+				<!-- tableHistorico -->
+		<div id="historico">
+			<div id="tableHistorico" style="display: none;">
+				<table tablename="tbHistorico" id="tabela" class="table table-striped" noaddbutton="true" nodeletebutton="true">
+					<thead>
+						<tr>
+	
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="histLinha">
+							<td class="" >
+								<label for="">Usuário</label>
+								<input type="text" name="usuario" id="usuario" class="form-control usuario">
+							</td>
+							<td>
+								<label>Data</label>
+								<input type="text" name="dtHist" id="dtHist" class="form-control dtHist">
+							</td>
+							<td>
+								<label>Aprovação</label>
+								<input type="text" name="aprovHist" id="aprovHist" class="form-control aprovHist">
+							</td>
+							<td>
+								<label>Observaçães</label>
+								<input type="text" name="obsHist" id="obsHist" class="form-control obsHist">
+							</td>
+							<td>
+								<label>Observaçães</label>
+								<input type="text" name="descAtv" id="descAtv" class="form-control descAtv">
+							</td>
+					</tr>
+					</tbody>
+					</table>
+				</div>
+				<div id="showHist" class="container" style="display: none;">
+					<legend>Histórico de aprovações</legend>
+					<div class="panel-body fs-sm-space clearfix">
+						<div class="media">
+							<div class="media-heading"  id='divHistorico'>
+								<!-- <div class="media-heading-text">
+									<h5>
+										<strong>
+											<span class="wrap-element-popover">Luan Gomes</span>
+										</strong>
+											<span>Aprovado</span>
+									</h5>
+									<h6>
+										02/10/2019 15:39:00
+									</h6>
+									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus enim at, adipisci, iste, distinctio quasi dolore minus voluptatibus beatae voluptates laborum possimus molestias architecto voluptatum sunt eum. Aliquid, labore ex.</p>
+								</div>
+								<hr> -->
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<!-- tableHistorico -->
+				<!-- historico -->
+		</div>
+
+	</div>
+</form>
+</div>
+<script type="text/javascript" src="historico.js"></script>
+<script type="text/javascript" src="regrasForm.js"></script>
+<script type="text/javascript" src="formControl.js"></script>
+<script type="text/javascript" src="compControl.js"></script>
+<script type="text/javascript" src="validate.js"></script>
+<script type="text/javascript" src="datasetController.js"></script>
+<script type="text/javascript" src="prazos.js"></script>
+<script type="text/javascript" src="custom.js"></script>
+</body>
+</html>
