@@ -1,0 +1,86 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<input type='hidden' class='form-control' name="jsonLancamentos" id="jsonLancamentos">
+	<input type='hidden' class='form-control' name="jsonStatusSaldo" id="jsonStatusSaldo">
+	<!-- Informações gerais -->
+<div class="container-fluid">
+	<div class='row'>
+		<div class="col-12">
+			<div class="mt-3">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title">Atividade Marketing</h5>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col">
+								<div class='form-group'>
+									<label for='tipo'>Tipo:</label>
+									<input type='text' class='form-control' name="tipo" id="tipo">
+								</div>
+							</div>
+							<div class="col">
+								<div class='form-group'>
+									<label for='categoria'>Categoria:</label>
+									<input type='text' class='form-control' name="categoria" id="categoria">
+								</div>
+							</div>
+							<div class="col">
+								<div class='form-group'>
+									<label for='idAtividade'>ID:</label>
+									<input type='text' class='form-control' name="idAtividade" id="idAtividade">
+								</div>
+							</div>
+							<div class="col">
+								<div class='form-group'>
+									<label for='descricao'>Descrição:</label>
+									<input type='text' class='form-control' name="descricao" id="descricao">
+								</div>
+							</div>
+							<div class="col">
+								<div class='form-group'>
+									<label for='valorPlanejato'>Valor Planejato:</label>
+									<input type='text' class='form-control' name="valorPlanejato" id="valorPlanejato">
+								</div>
+							</div>
+							<div class="col">
+								<div class='form-group'>
+									<label for='mes'>Mês:</label>
+									<input type='text' class='form-control' name="mes" id="mes">
+								</div>
+							</div>
+							<div class="col">
+								<div class='form-group'>
+									<label for='quarter'>Quarter:</label>
+									<input type='text' class='form-control' name="quarter" id="quarter">
+								</div>
+							</div>
+							<div class="col">
+								<div class='form-group'>
+									<label for='status'>Status:</label>
+									<input type='text' class='form-control' name="status" id="status">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js" ></script>
+<script type="text/javascript" src="readCSV.js" charset="utf-8"></script>
+</body>
+</html>
