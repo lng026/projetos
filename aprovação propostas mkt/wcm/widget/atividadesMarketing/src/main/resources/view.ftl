@@ -8,7 +8,6 @@
 					<div class="card-header">
 						<h5 class="card-title">Adicionar Atividades Marketing via arquivo (.CSV)</h5>
 					</div>
-	
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-4">
@@ -34,8 +33,9 @@
 										<th>ID</th>
 										<th>Atividade</th>
 										<th>Planejado</th>
-										<th>MÃªs</th>
+										<th>Mês</th>
 										<th>Quarter</th>
+										<th>Ano</th>
 										<th>Status</th>
 									</tr>
 									</thead>
@@ -48,6 +48,7 @@
 											<td><input type='text' class='form-control' name="valorPlanejato" id="valorPlanejato"></td>
 											<td><input type='text' class='form-control' name="mes" id="mes"></td>
 											<td><input type='text' class='form-control' name="quarter" id="quarter"></td>
+											<td><input type='text' class='form-control' name="ano" id="ano"></td>
 											<td><select class='form-control' name="status" id="status"><option value="1">Ativo</option><option value="0">Inativo</option></select></td>
 											<td>
 												<button class="btn btn-default fluigicon fluigicon-minus-sign delItem"  onclick="delDesp(this)">
@@ -61,7 +62,11 @@
 						</div>
 	
 					</div>
-	
+					<div class="row">
+						<div class="text-center">
+							<button class="btn btn-primary btn-grid" type="button" onclick="saveDados();">Salvar Atividades</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -56,12 +56,13 @@ function getObjPrev(colunas){
         obj = {
             tipo:colunas[0].trim(),
             categoria: colunas[1].trim(),
-            idAtividade: colunas[2].trim(),
+            idAtividade: addZero(colunas[2].trim()),
             descricao: colunas[3].trim(),
             valorPlanejato: trataValor(colunas[4].trim()).toFixed(2),
             mes:colunas[5].trim(),
             quarter:colunas[6].trim(),
-            status:colunas[7].trim(),
+            ano:colunas[7].trim(),
+            status:colunas[8].trim(),
         };
     }
     return obj;
@@ -94,8 +95,10 @@ function getAllTrs(){
             valorPlanejato: $(e).find(".valorPlanejato").val(),
             mes:$(e).find(".mes").val(),
             quarter:$(e).find(".quarter").val(),
+            ano:$(e).find(".ano").val(),
             status:$(e).find(".status").val(),
         }
+        obj['codAtividade'] = createCodeAtv(obj.idAtividade,obj.ano,obj.mes);
         objList.push(obj);
     });
     return objList;
@@ -106,8 +109,6 @@ function getAllTrs(){
 function getTdInputhtml(id,valor){
     return `<td><input type='text' class='form-control ${id}' name="${id}" value="${valor}"></td>`;
 }
-
-
 
 function trataPercent(value){
     let p = 0;
@@ -137,4 +138,16 @@ function trataValor(value){
 // remove despesa
 var delDesp = function(el){
     fnWdkRemoveChild(el);
+}
+
+
+function addZero(n){
+    var nn;
+    if(n < 10){
+        nn = "0"+ n.toString();
+    }else{
+        nn = ""+ n.toString();
+
+    }
+    return nn;
 }

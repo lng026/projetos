@@ -199,6 +199,15 @@ getPropostas = (idAtividade) => {
     dsProposta.addContraint('userSecurityId','admin',1,false);
     return dsProposta.getDatasetSync();
 }
+getSaldoAtividade = (idAtividade) => {
+    var dsProposta = new DatasetModel('dsSaldoAtividadeMkt');
+    dsProposta.identificador ='idAtividade';
+    if(idAtividade){
+        dsProposta.addContraint('idAtividade',idAtividade,1,false);
+    }
+    dsProposta.addContraint('userSecurityId','admin',1,false);
+    return dsProposta.getDatasetSync();
+}
 
 getSumProposta = (id,propostas) =>{
     var sum = 0;
@@ -224,22 +233,35 @@ function getStatus(status,k){
     }
 
 }
-
-
 function atualizaSaldo(id){
     var atividade = getFirstAtivididade('documentid',id);
-   var propostas = getPropostas(atividade.idAtividade);
-   var sum = 0;
-   var lancamentos = [];
-   propostas.then(res => {
-        res.forEach(prop => {
-            var valor = parseFloat(prop.valor);
+    var saldo = getSaldoAtividade(atividade.idAtividade);
+    var sum = 0;
+    var lancamentos = [];
+    saldo.then(res => {
+        objRes = res[0];
+            var valor = parseFloat(objRes.saldo);
             sum = sum + valor;
-            lancamentos.push(prop.numSolicitacao);
+            lancamentos = JSON.parse(objRes.lancamentos);
+            atualizaStatusSaldo(sum,lancamentos,atividade.documentid);
         });
-        atualizaStatusSaldo(sum,lancamentos,atividade.documentid);
-   });
-}
+    }
+    
+
+// function atualizaSaldo(id){
+//     var atividade = getFirstAtivididade('documentid',id);
+//    var propostas = getPropostas(atividade.idAtividade);
+//    var sum = 0;
+//    var lancamentos = [];
+//    propostas.then(res => {
+//         res.forEach(prop => {
+//             var valor = parseFloat(prop.valor);
+//             sum = sum + valor;
+//             lancamentos.push(prop.numSolicitacao);
+//         });
+//         atualizaStatusSaldo(sum,lancamentos,atividade.documentid);
+//    });
+// }
 
 function getFirstAtivididade(campo, valor){
     return getAtividadesFiltro(campo,valor,ATIVIDADES)[0];

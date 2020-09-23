@@ -13,7 +13,6 @@ function handleFileSelect(evt) {
     }else{
         FLUIGC.toast({title: 'Por Favor:', message: 'Envie um arquivo no formato CSV (.csv)', type: 'warning'});
     }
-
 }
 
 function readfile(file){
@@ -23,7 +22,6 @@ function readfile(file){
     reader.onload = function(event){
         var csv = event.target.result;
        // console.log(csv);
-
         adicionaPrevs(csv);
     };
 }
@@ -47,7 +45,6 @@ function adicionaPrevs(data){
     $("#listaAtividades").val(JSON.stringify(objList));
 
 }
-
 
 function getObjPrev(colunas){
     let obj =  null;
