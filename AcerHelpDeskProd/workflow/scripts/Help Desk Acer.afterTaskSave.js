@@ -1,80 +1,7 @@
 function afterTaskSave(colleagueId,nextSequenceId,userList){
-	emailSolic = hAPI.getCardValue("email");	 
-	
+	emailSolic = hAPI.getCardValue("email");	
 	log.info("Envia e-mail");
 	log.info("Email solicitante: " + emailSolic);
-	 
-	var removeVirgula = function(str){
-		return str.replace(/,/g, '').trim();
-	}
-	
-	function getNomeUsuario(id){
-		var c1 = DatasetFactory.createConstraint("colleaguePK.colleagueId", id, id, ConstraintType.MUST);
-		var ds = DatasetFactory.getDataset("colleague", null, new Array(c1), null);
-		return ds.getValue(0,"colleagueName");
-	}
-	
-	// VERIFICA SE CHAMADO FOI TRANSFERIDO PARA CARREGAR TEMPLATE DE EMAIL
-	
-	function checkTransf(){
-		var transf = parseInt(hAPI.getCardValue('transferido'));
-		if (transf) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	function checkInicio(){
-		if (hAPI.getCardValue('checkinicio') == '1') {
-			return true;
-			} else {
-			return false;
-		}
-	}
-	
-	function checkReopen(){
-		if (hAPI.getCardValue('us_resolvidof') == 'sim') {
-			return true;
-			} else {
-			return false;
-		}
-	}
-	
-	function checkResolvido(){
-		var cam = hAPI.getCardValue('us_resolvido');
-		if (cam != 'vazio' && cam != 'sim') {
-			return true;
-			} else {
-			return false;
-		}
-	}
-	
-	function consultaDadosPaiFilho(fields){
-		log.info('Consulta Dados Pai X Filho');
-		var nrProcesso = getValue("WKNumProces") + "";
-		var cardData = hAPI.getCardData(nrProcesso);
-		var it = cardData.keySet().iterator();
-		var listaFilho = new Array();
-		var fieldTemp = fields[0];
-		
-		while (it.hasNext()) {
-			var key = it.next();
-			var campo = key.split("___");
-			
-			if (key.indexOf('___') >= 0 && campo[0] == fieldTemp) {
-				var idx = campo[1];
-				var row = new Object();
-				
-				for(var i=0; i<fields.length; i++){
-					var name = fields[i] + "___" + idx;
-					row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};
-				}
-				listaFilho.push(row);
-			}
-		}
-		return listaFilho;
-	}
 	
 	var atvcampo = hAPI.getCardValue('atv');
 	
@@ -196,177 +123,7 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 			log.info(e);
 		}
 	}
-	
-//	if (nextSequenceId == 15 && checkTransf()) {
-//		try{
-//			var numproc = getValue("WKNumProces") + "";
-//			var assunto = 'Um chamado foi transferido para você. [#'+ numproc +' - HelpDesk ACER]';
-//			//Monta mapa com parâmetros do template
-//			var parametros = new java.util.HashMap();
-//			//Este parâmetro é obrigatório e representa o assunto do e-mail
-//			parametros.put("subject", assunto);
-//			
-//			var e_analista = new java.util.ArrayList();
-//			
-//			// Consulta o Dataset para ver quem sao os usuarios deste grupo
-//			var field = hAPI.getCardValue("usNovoRespTxt");
-//			var grpCode = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", field, field, ConstraintType.MUST);
-//			var chavesDS = new Array( grpCode );
-//			var dsUsrGrp = DatasetFactory.getDataset("workflowColleagueRole", null, chavesDS, null);
-//			var idanalista = '';
-//			var analista = '';
-//			var tpcaj = hAPI.getCardValue('usNomeTxt');
-//			var tktData = hAPI.getCardValue('data_Chamado');
-//			var solicitante = hAPI.getCardValue('name');
-//			var assunto = hAPI.getCardValue('assunto');
-//			
-//			
-//			for(var j = 0; j < dsUsrGrp.rowsCount; j++) {
-//				idanalista = dsUsrGrp.getValue(j, "workflowColleagueRolePK.colleagueId");
-//				analista = getNomeUsuario(idanalista);
-//				parametros.put("analista", analista);
-//				parametros.put("numsol", numproc);
-//				parametros.put("topicoajuda", tpcaj);
-//				parametros.put("datachamado", tktData);
-//				parametros.put("solicitante", tpcaj);
-//				parametros.put("assunto", assunto);
-//								
-//				e_analista.add(idanalista);
-//			}
-//			
-//			log.info(parametros);
-//			
-//			notifier.notify("admin", "tkt_transferido", parametros, e_analista, "text/html");	
-//			log.info("Scolicitação: " + numproc  + " Destinatários: " + e_analista);
-//			
-//			
-//			}catch(e){
-//			log.info('CHAMADO TRANSFERIDO ERRO:' + e);
-//		}
-//	}
-//	
-//	if (nextSequenceId == 15 && checkResolvido()) {
-//		try{
-//			log.info("inicio interagiu")
-//			var numproc = getValue("WKNumProces") + "";
-//			var assunto = 'O usuário interagiu no chamado. [#'+ numproc +' - HelpDesk ACER]';
-//			//Monta mapa com parâmetros do template
-//			var parametros = new java.util.HashMap();
-//			//Este parâmetro é obrigatório e representa o assunto do e-mail
-//			parametros.put("subject", assunto);
-//			
-//			var e_analista = new java.util.ArrayList();
-//			
-//			// Consulta o Dataset para ver quem sao os usuarios deste grupo
-//			var processo = getValue("WKNumProces") + "";
-//			var campos = hAPI.getCardData(processo);
-//			var paifilhoindex = parseInt(hAPI.getCardValue('pfindex'));
-//			
-//			if (paifilhoindex < 1) {
-//				var ultimaresp = campos.get("resposta___1");
-//				log.info('ultimaresp '+ultimaresp);
-//				var nomeultimaresp = campos.get("nomeRsp___1");
-//				log.info('nomeultimaresp '+nomeultimaresp);
-//				var dataresp = campos.get("dataRsp___1");
-//				log.info('dataresp '+dataresp);
-//				
-//				} else {
-//				var paifilhoindexprox = paifilhoindex + 1;
-//				log.info('pfindexprox '+paifilhoindexprox);
-//				var ultimaresp = campos.get("resposta___" + paifilhoindexprox);
-//				log.info('ultimaresp '+ultimaresp);
-//				var nomeultimaresp = campos.get("nomeRsp___" + paifilhoindexprox);
-//				log.info('nomeultimaresp '+nomeultimaresp);
-//				var dataresp = campos.get("dataRsp___" + paifilhoindexprox);
-//				log.info('dataresp '+dataresp);
-//			}
-//			
-//			var tktData = hAPI.getCardValue('data_Chamado');
-//			var tktSolicitante = hAPI.getCardValue('name');
-//			
-//			var field = hAPI.getCardValue("usRespTxt");
-//			var grpCode = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", field, field, ConstraintType.MUST);
-//			var chavesDS = new Array( grpCode );
-//			var dsUsrGrp = DatasetFactory.getDataset("workflowColleagueRole", null, chavesDS, null);
-//			var idanalista = '';
-//			var analista = '';
-//			var tpcaj = hAPI.getCardValue('usNomeTxt');
-//			var tktData = hAPI.getCardValue('data_Chamado');
-//			var solicitante = hAPI.getCardValue('name');
-//			var assunto = hAPI.getCardValue('assunto');
-//			
-//			
-//			for(var j = 0; j < dsUsrGrp.rowsCount; j++) {
-//				idanalista = dsUsrGrp.getValue(j, "workflowColleagueRolePK.colleagueId");
-//				analista = getNomeUsuario(idanalista);
-//				parametros.put("resposta", ultimaresp);
-//				parametros.put("dataresp", dataresp);
-//				parametros.put("nomersp", nomeultimaresp);
-//				parametros.put("analista", analista);
-//				parametros.put("numsol", numproc);
-//				parametros.put("topicoajuda", tpcaj);
-//				parametros.put("datachamado", tktData);
-//				parametros.put("solicitante", tktSolicitante);
-//				parametros.put("assunto", assunto);
-//				
-//				e_analista.add(idanalista);
-//				log.info("analista adicionado: " + idanalista);
-//				log.info(parametros);
-//				
-//			}	
-//			
-//			notifier.notify("admin", "tkt_respondido", parametros, e_analista, "text/html");
-//			log.info(parametros);
-//			log.info("Scolicitação: " + numproc  + " Destinatários: " + idanalista);
-//			
-//			
-//			}catch(e){
-//			log.info("O Fluig não conseguiu enviar o e-mail de abertura de chamado para o analista");
-//			log.info('errozao:'+e);
-//		}
-//	}
-	
-//	if (nextSequenceId == 15 && checkReopen()) {
-//		var numproc = getValue("WKNumProces") + "";
-//		var assunto = 'Um chamado foi reaberto! [#'+ numproc +' - HelpDesk ACER]';
-//		//Monta mapa com parâmetros do template
-//		var parametros = new java.util.HashMap();
-//		//Este parâmetro é obrigatório e representa o assunto do e-mail
-//		parametros.put("subject", assunto);
-//		
-//		var e_analista = new java.util.ArrayList();
-//		
-//		// Consulta o Dataset para ver quem sao os usuarios deste grupo
-//		var field = hAPI.getCardValue("usRespTxt");
-//		var grpCode = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", field, field, ConstraintType.MUST);
-//		var chavesDS = new Array( grpCode );
-//		var dsUsrGrp = DatasetFactory.getDataset("workflowColleagueRole", null, chavesDS, null);
-//		var idanalista = '';
-//		var analista = '';
-//		var tpcaj = hAPI.getCardValue('usNomeTxt');
-//		var tktData = hAPI.getCardValue('data_Chamado');
-//		var solicitante = hAPI.getCardValue('name');
-//		var assunto = hAPI.getCardValue('assunto');
-//		
-//		
-//		for(var j = 0; j < dsUsrGrp.rowsCount; j++) {
-//			idanalista = dsUsrGrp.getValue(j, "workflowColleagueRolePK.colleagueId");
-//			analista = getNomeUsuario(idanalista);
-//			parametros.put("analista", analista);
-//			parametros.put("numsol", numproc);
-//			parametros.put("topicoajuda", tpcaj);
-//			parametros.put("datachamado", tktData);
-//			parametros.put("solicitante", tpcaj);
-//			parametros.put("assunto", assunto);
-//			
-//			e_analista.add();
-//			
-//		}	
-//		notifier.notify("admin", "tkt_reaberto", parametros, e_analista, "text/html");	
-//		log.info(parametros);
-//		log.info("Scolicitação: " + numproc  + " Destinatários: " + idanalista);
-//		
-//	}
+	// retirado daqui
 	
 	// VALIDA A SOLUCAO 
 	if (nextSequenceId == 9) {
@@ -555,4 +312,252 @@ function afterTaskSave(colleagueId,nextSequenceId,userList){
 		log.info(parametrosanalista);
 		log.info("Analista - Scolicitação: " + numproc  + " Destinatários: " + e_analista);
 	}
+
+	
+	//  funcoes
+	var removeVirgula = function(str){
+		return str.replace(/,/g, '').trim();
+	}
+	
+	function getNomeUsuario(id){
+		var c1 = DatasetFactory.createConstraint("colleaguePK.colleagueId", id, id, ConstraintType.MUST);
+		var ds = DatasetFactory.getDataset("colleague", null, new Array(c1), null);
+		return ds.getValue(0,"colleagueName");
+	}
+	
+	// VERIFICA SE CHAMADO FOI TRANSFERIDO PARA CARREGAR TEMPLATE DE EMAIL
+	
+	function checkTransf(){
+		var transf = parseInt(hAPI.getCardValue('transferido'));
+		if (transf) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	function checkInicio(){
+		if (hAPI.getCardValue('checkinicio') == '1') {
+			return true;
+			} else {
+			return false;
+		}
+	}
+	
+	function checkReopen(){
+		if (hAPI.getCardValue('us_resolvidof') == 'sim') {
+			return true;
+			} else {
+			return false;
+		}
+	}
+	
+	function checkResolvido(){
+		var cam = hAPI.getCardValue('us_resolvido');
+		if (cam != 'vazio' && cam != 'sim') {
+			return true;
+			} else {
+			return false;
+		}
+	}
+	
+	function consultaDadosPaiFilho(fields){
+		log.info('Consulta Dados Pai X Filho');
+		var nrProcesso = getValue("WKNumProces") + "";
+		var cardData = hAPI.getCardData(nrProcesso);
+		var it = cardData.keySet().iterator();
+		var listaFilho = new Array();
+		var fieldTemp = fields[0];
+		
+		while (it.hasNext()) {
+			var key = it.next();
+			var campo = key.split("___");
+			
+			if (key.indexOf('___') >= 0 && campo[0] == fieldTemp) {
+				var idx = campo[1];
+				var row = new Object();
+				
+				for(var i=0; i<fields.length; i++){
+					var name = fields[i] + "___" + idx;
+					row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};
+				}
+				listaFilho.push(row);
+			}
+		}
+		return listaFilho;
+	}
+	
 }
+
+
+	
+//	if (nextSequenceId == 15 && checkTransf()) {
+//		try{
+//			var numproc = getValue("WKNumProces") + "";
+//			var assunto = 'Um chamado foi transferido para você. [#'+ numproc +' - HelpDesk ACER]';
+//			//Monta mapa com parâmetros do template
+//			var parametros = new java.util.HashMap();
+//			//Este parâmetro é obrigatório e representa o assunto do e-mail
+//			parametros.put("subject", assunto);
+//			
+//			var e_analista = new java.util.ArrayList();
+//			
+//			// Consulta o Dataset para ver quem sao os usuarios deste grupo
+//			var field = hAPI.getCardValue("usNovoRespTxt");
+//			var grpCode = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", field, field, ConstraintType.MUST);
+//			var chavesDS = new Array( grpCode );
+//			var dsUsrGrp = DatasetFactory.getDataset("workflowColleagueRole", null, chavesDS, null);
+//			var idanalista = '';
+//			var analista = '';
+//			var tpcaj = hAPI.getCardValue('usNomeTxt');
+//			var tktData = hAPI.getCardValue('data_Chamado');
+//			var solicitante = hAPI.getCardValue('name');
+//			var assunto = hAPI.getCardValue('assunto');
+//			
+//			
+//			for(var j = 0; j < dsUsrGrp.rowsCount; j++) {
+//				idanalista = dsUsrGrp.getValue(j, "workflowColleagueRolePK.colleagueId");
+//				analista = getNomeUsuario(idanalista);
+//				parametros.put("analista", analista);
+//				parametros.put("numsol", numproc);
+//				parametros.put("topicoajuda", tpcaj);
+//				parametros.put("datachamado", tktData);
+//				parametros.put("solicitante", tpcaj);
+//				parametros.put("assunto", assunto);
+//								
+//				e_analista.add(idanalista);
+//			}
+//			
+//			log.info(parametros);
+//			
+//			notifier.notify("admin", "tkt_transferido", parametros, e_analista, "text/html");	
+//			log.info("Scolicitação: " + numproc  + " Destinatários: " + e_analista);
+//			
+//			
+//			}catch(e){
+//			log.info('CHAMADO TRANSFERIDO ERRO:' + e);
+//		}
+//	}
+//	
+//	if (nextSequenceId == 15 && checkResolvido()) {
+//		try{
+//			log.info("inicio interagiu")
+//			var numproc = getValue("WKNumProces") + "";
+//			var assunto = 'O usuário interagiu no chamado. [#'+ numproc +' - HelpDesk ACER]';
+//			//Monta mapa com parâmetros do template
+//			var parametros = new java.util.HashMap();
+//			//Este parâmetro é obrigatório e representa o assunto do e-mail
+//			parametros.put("subject", assunto);
+//			
+//			var e_analista = new java.util.ArrayList();
+//			
+//			// Consulta o Dataset para ver quem sao os usuarios deste grupo
+//			var processo = getValue("WKNumProces") + "";
+//			var campos = hAPI.getCardData(processo);
+//			var paifilhoindex = parseInt(hAPI.getCardValue('pfindex'));
+//			
+//			if (paifilhoindex < 1) {
+//				var ultimaresp = campos.get("resposta___1");
+//				log.info('ultimaresp '+ultimaresp);
+//				var nomeultimaresp = campos.get("nomeRsp___1");
+//				log.info('nomeultimaresp '+nomeultimaresp);
+//				var dataresp = campos.get("dataRsp___1");
+//				log.info('dataresp '+dataresp);
+//				
+//				} else {
+//				var paifilhoindexprox = paifilhoindex + 1;
+//				log.info('pfindexprox '+paifilhoindexprox);
+//				var ultimaresp = campos.get("resposta___" + paifilhoindexprox);
+//				log.info('ultimaresp '+ultimaresp);
+//				var nomeultimaresp = campos.get("nomeRsp___" + paifilhoindexprox);
+//				log.info('nomeultimaresp '+nomeultimaresp);
+//				var dataresp = campos.get("dataRsp___" + paifilhoindexprox);
+//				log.info('dataresp '+dataresp);
+//			}
+//			
+//			var tktData = hAPI.getCardValue('data_Chamado');
+//			var tktSolicitante = hAPI.getCardValue('name');
+//			
+//			var field = hAPI.getCardValue("usRespTxt");
+//			var grpCode = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", field, field, ConstraintType.MUST);
+//			var chavesDS = new Array( grpCode );
+//			var dsUsrGrp = DatasetFactory.getDataset("workflowColleagueRole", null, chavesDS, null);
+//			var idanalista = '';
+//			var analista = '';
+//			var tpcaj = hAPI.getCardValue('usNomeTxt');
+//			var tktData = hAPI.getCardValue('data_Chamado');
+//			var solicitante = hAPI.getCardValue('name');
+//			var assunto = hAPI.getCardValue('assunto');
+//			
+//			
+//			for(var j = 0; j < dsUsrGrp.rowsCount; j++) {
+//				idanalista = dsUsrGrp.getValue(j, "workflowColleagueRolePK.colleagueId");
+//				analista = getNomeUsuario(idanalista);
+//				parametros.put("resposta", ultimaresp);
+//				parametros.put("dataresp", dataresp);
+//				parametros.put("nomersp", nomeultimaresp);
+//				parametros.put("analista", analista);
+//				parametros.put("numsol", numproc);
+//				parametros.put("topicoajuda", tpcaj);
+//				parametros.put("datachamado", tktData);
+//				parametros.put("solicitante", tktSolicitante);
+//				parametros.put("assunto", assunto);
+//				
+//				e_analista.add(idanalista);
+//				log.info("analista adicionado: " + idanalista);
+//				log.info(parametros);
+//				
+//			}	
+//			
+//			notifier.notify("admin", "tkt_respondido", parametros, e_analista, "text/html");
+//			log.info(parametros);
+//			log.info("Scolicitação: " + numproc  + " Destinatários: " + idanalista);
+//			
+//			
+//			}catch(e){
+//			log.info("O Fluig não conseguiu enviar o e-mail de abertura de chamado para o analista");
+//			log.info('errozao:'+e);
+//		}
+//	}
+	
+//	if (nextSequenceId == 15 && checkReopen()) {
+//		var numproc = getValue("WKNumProces") + "";
+//		var assunto = 'Um chamado foi reaberto! [#'+ numproc +' - HelpDesk ACER]';
+//		//Monta mapa com parâmetros do template
+//		var parametros = new java.util.HashMap();
+//		//Este parâmetro é obrigatório e representa o assunto do e-mail
+//		parametros.put("subject", assunto);
+//		
+//		var e_analista = new java.util.ArrayList();
+//		
+//		// Consulta o Dataset para ver quem sao os usuarios deste grupo
+//		var field = hAPI.getCardValue("usRespTxt");
+//		var grpCode = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", field, field, ConstraintType.MUST);
+//		var chavesDS = new Array( grpCode );
+//		var dsUsrGrp = DatasetFactory.getDataset("workflowColleagueRole", null, chavesDS, null);
+//		var idanalista = '';
+//		var analista = '';
+//		var tpcaj = hAPI.getCardValue('usNomeTxt');
+//		var tktData = hAPI.getCardValue('data_Chamado');
+//		var solicitante = hAPI.getCardValue('name');
+//		var assunto = hAPI.getCardValue('assunto');
+//		
+//		
+//		for(var j = 0; j < dsUsrGrp.rowsCount; j++) {
+//			idanalista = dsUsrGrp.getValue(j, "workflowColleagueRolePK.colleagueId");
+//			analista = getNomeUsuario(idanalista);
+//			parametros.put("analista", analista);
+//			parametros.put("numsol", numproc);
+//			parametros.put("topicoajuda", tpcaj);
+//			parametros.put("datachamado", tktData);
+//			parametros.put("solicitante", tpcaj);
+//			parametros.put("assunto", assunto);
+//			
+//			e_analista.add();
+//			
+//		}	
+//		notifier.notify("admin", "tkt_reaberto", parametros, e_analista, "text/html");	
+//		log.info(parametros);
+//		log.info("Scolicitação: " + numproc  + " Destinatários: " + idanalista);
+//		
+//	}

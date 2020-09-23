@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Help Desk Acer</processId>
-      <version>29</version>
+      <version>30</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>8918</formId>
@@ -123,7 +123,7 @@
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
-      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>407</positionX>
@@ -351,7 +351,7 @@
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>29</version>
+        <version>30</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&apos;status&apos;) == &apos;aberto&apos;&#xd;
@@ -366,7 +366,7 @@
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>29</version>
+        <version>30</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&apos;status&apos;) == &apos;transferir&apos;</condition>
@@ -380,7 +380,7 @@
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
         <expressionOrder>3</expressionOrder>
-        <version>29</version>
+        <version>30</version>
         <sequence>21</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&apos;status&apos;) == &apos;notificar&apos;</condition>
@@ -394,7 +394,7 @@
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
         <expressionOrder>1</expressionOrder>
-        <version>29</version>
+        <version>30</version>
         <sequence>30</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&apos;us_resolvido&apos;) == &apos;sim&apos;</condition>
@@ -406,7 +406,7 @@
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
         <expressionOrder>2</expressionOrder>
-        <version>29</version>
+        <version>30</version>
         <sequence>30</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&apos;us_resolvido&apos;) == &apos;nao&apos;</condition>
@@ -420,7 +420,7 @@
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
         <expressionOrder>3</expressionOrder>
-        <version>29</version>
+        <version>30</version>
         <sequence>30</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -606,82 +606,9 @@
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function afterTaskSave(colleagueId,nextSequenceId,userList){&#xd;
-	emailSolic = hAPI.getCardValue(&quot;email&quot;);	 &#xd;
-	&#xd;
+	emailSolic = hAPI.getCardValue(&quot;email&quot;);	&#xd;
 	log.info(&quot;Envia e-mail&quot;);&#xd;
 	log.info(&quot;Email solicitante: &quot; + emailSolic);&#xd;
-	 &#xd;
-	var removeVirgula = function(str){&#xd;
-		return str.replace(/,/g, &apos;&apos;).trim();&#xd;
-	}&#xd;
-	&#xd;
-	function getNomeUsuario(id){&#xd;
-		var c1 = DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, id, id, ConstraintType.MUST);&#xd;
-		var ds = DatasetFactory.getDataset(&quot;colleague&quot;, null, new Array(c1), null);&#xd;
-		return ds.getValue(0,&quot;colleagueName&quot;);&#xd;
-	}&#xd;
-	&#xd;
-	// VERIFICA SE CHAMADO FOI TRANSFERIDO PARA CARREGAR TEMPLATE DE EMAIL&#xd;
-	&#xd;
-	function checkTransf(){&#xd;
-		var transf = parseInt(hAPI.getCardValue(&apos;transferido&apos;));&#xd;
-		if (transf) {&#xd;
-			return true;&#xd;
-		} else {&#xd;
-			return false;&#xd;
-		}&#xd;
-	}&#xd;
-	&#xd;
-	function checkInicio(){&#xd;
-		if (hAPI.getCardValue(&apos;checkinicio&apos;) == &apos;1&apos;) {&#xd;
-			return true;&#xd;
-			} else {&#xd;
-			return false;&#xd;
-		}&#xd;
-	}&#xd;
-	&#xd;
-	function checkReopen(){&#xd;
-		if (hAPI.getCardValue(&apos;us_resolvidof&apos;) == &apos;sim&apos;) {&#xd;
-			return true;&#xd;
-			} else {&#xd;
-			return false;&#xd;
-		}&#xd;
-	}&#xd;
-	&#xd;
-	function checkResolvido(){&#xd;
-		var cam = hAPI.getCardValue(&apos;us_resolvido&apos;);&#xd;
-		if (cam != &apos;vazio&apos; &amp;&amp; cam != &apos;sim&apos;) {&#xd;
-			return true;&#xd;
-			} else {&#xd;
-			return false;&#xd;
-		}&#xd;
-	}&#xd;
-	&#xd;
-	function consultaDadosPaiFilho(fields){&#xd;
-		log.info(&apos;Consulta Dados Pai X Filho&apos;);&#xd;
-		var nrProcesso = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
-		var cardData = hAPI.getCardData(nrProcesso);&#xd;
-		var it = cardData.keySet().iterator();&#xd;
-		var listaFilho = new Array();&#xd;
-		var fieldTemp = fields[0];&#xd;
-		&#xd;
-		while (it.hasNext()) {&#xd;
-			var key = it.next();&#xd;
-			var campo = key.split(&quot;___&quot;);&#xd;
-			&#xd;
-			if (key.indexOf(&apos;___&apos;) &gt;= 0 &amp;&amp; campo[0] == fieldTemp) {&#xd;
-				var idx = campo[1];&#xd;
-				var row = new Object();&#xd;
-				&#xd;
-				for(var i=0; i&lt;fields.length; i++){&#xd;
-					var name = fields[i] + &quot;___&quot; + idx;&#xd;
-					row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};&#xd;
-				}&#xd;
-				listaFilho.push(row);&#xd;
-			}&#xd;
-		}&#xd;
-		return listaFilho;&#xd;
-	}&#xd;
 	&#xd;
 	var atvcampo = hAPI.getCardValue(&apos;atv&apos;);&#xd;
 	&#xd;
@@ -803,177 +730,7 @@
 			log.info(e);&#xd;
 		}&#xd;
 	}&#xd;
-	&#xd;
-//	if (nextSequenceId == 15 &amp;&amp; checkTransf()) {&#xd;
-//		try{&#xd;
-//			var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
-//			var assunto = &apos;Um chamado foi transferido para você. [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
-//			//Monta mapa com parâmetros do template&#xd;
-//			var parametros = new java.util.HashMap();&#xd;
-//			//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
-//			parametros.put(&quot;subject&quot;, assunto);&#xd;
-//			&#xd;
-//			var e_analista = new java.util.ArrayList();&#xd;
-//			&#xd;
-//			// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
-//			var field = hAPI.getCardValue(&quot;usNovoRespTxt&quot;);&#xd;
-//			var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
-//			var chavesDS = new Array( grpCode );&#xd;
-//			var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
-//			var idanalista = &apos;&apos;;&#xd;
-//			var analista = &apos;&apos;;&#xd;
-//			var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
-//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
-//			var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
-//			var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
-//			&#xd;
-//			&#xd;
-//			for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
-//				idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
-//				analista = getNomeUsuario(idanalista);&#xd;
-//				parametros.put(&quot;analista&quot;, analista);&#xd;
-//				parametros.put(&quot;numsol&quot;, numproc);&#xd;
-//				parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
-//				parametros.put(&quot;datachamado&quot;, tktData);&#xd;
-//				parametros.put(&quot;solicitante&quot;, tpcaj);&#xd;
-//				parametros.put(&quot;assunto&quot;, assunto);&#xd;
-//								&#xd;
-//				e_analista.add(idanalista);&#xd;
-//			}&#xd;
-//			&#xd;
-//			log.info(parametros);&#xd;
-//			&#xd;
-//			notifier.notify(&quot;admin&quot;, &quot;tkt_transferido&quot;, parametros, e_analista, &quot;text/html&quot;);	&#xd;
-//			log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + e_analista);&#xd;
-//			&#xd;
-//			&#xd;
-//			}catch(e){&#xd;
-//			log.info(&apos;CHAMADO TRANSFERIDO ERRO:&apos; + e);&#xd;
-//		}&#xd;
-//	}&#xd;
-//	&#xd;
-//	if (nextSequenceId == 15 &amp;&amp; checkResolvido()) {&#xd;
-//		try{&#xd;
-//			log.info(&quot;inicio interagiu&quot;)&#xd;
-//			var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
-//			var assunto = &apos;O usuário interagiu no chamado. [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
-//			//Monta mapa com parâmetros do template&#xd;
-//			var parametros = new java.util.HashMap();&#xd;
-//			//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
-//			parametros.put(&quot;subject&quot;, assunto);&#xd;
-//			&#xd;
-//			var e_analista = new java.util.ArrayList();&#xd;
-//			&#xd;
-//			// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
-//			var processo = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
-//			var campos = hAPI.getCardData(processo);&#xd;
-//			var paifilhoindex = parseInt(hAPI.getCardValue(&apos;pfindex&apos;));&#xd;
-//			&#xd;
-//			if (paifilhoindex &lt; 1) {&#xd;
-//				var ultimaresp = campos.get(&quot;resposta___1&quot;);&#xd;
-//				log.info(&apos;ultimaresp &apos;+ultimaresp);&#xd;
-//				var nomeultimaresp = campos.get(&quot;nomeRsp___1&quot;);&#xd;
-//				log.info(&apos;nomeultimaresp &apos;+nomeultimaresp);&#xd;
-//				var dataresp = campos.get(&quot;dataRsp___1&quot;);&#xd;
-//				log.info(&apos;dataresp &apos;+dataresp);&#xd;
-//				&#xd;
-//				} else {&#xd;
-//				var paifilhoindexprox = paifilhoindex + 1;&#xd;
-//				log.info(&apos;pfindexprox &apos;+paifilhoindexprox);&#xd;
-//				var ultimaresp = campos.get(&quot;resposta___&quot; + paifilhoindexprox);&#xd;
-//				log.info(&apos;ultimaresp &apos;+ultimaresp);&#xd;
-//				var nomeultimaresp = campos.get(&quot;nomeRsp___&quot; + paifilhoindexprox);&#xd;
-//				log.info(&apos;nomeultimaresp &apos;+nomeultimaresp);&#xd;
-//				var dataresp = campos.get(&quot;dataRsp___&quot; + paifilhoindexprox);&#xd;
-//				log.info(&apos;dataresp &apos;+dataresp);&#xd;
-//			}&#xd;
-//			&#xd;
-//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
-//			var tktSolicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
-//			&#xd;
-//			var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
-//			var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
-//			var chavesDS = new Array( grpCode );&#xd;
-//			var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
-//			var idanalista = &apos;&apos;;&#xd;
-//			var analista = &apos;&apos;;&#xd;
-//			var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
-//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
-//			var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
-//			var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
-//			&#xd;
-//			&#xd;
-//			for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
-//				idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
-//				analista = getNomeUsuario(idanalista);&#xd;
-//				parametros.put(&quot;resposta&quot;, ultimaresp);&#xd;
-//				parametros.put(&quot;dataresp&quot;, dataresp);&#xd;
-//				parametros.put(&quot;nomersp&quot;, nomeultimaresp);&#xd;
-//				parametros.put(&quot;analista&quot;, analista);&#xd;
-//				parametros.put(&quot;numsol&quot;, numproc);&#xd;
-//				parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
-//				parametros.put(&quot;datachamado&quot;, tktData);&#xd;
-//				parametros.put(&quot;solicitante&quot;, tktSolicitante);&#xd;
-//				parametros.put(&quot;assunto&quot;, assunto);&#xd;
-//				&#xd;
-//				e_analista.add(idanalista);&#xd;
-//				log.info(&quot;analista adicionado: &quot; + idanalista);&#xd;
-//				log.info(parametros);&#xd;
-//				&#xd;
-//			}	&#xd;
-//			&#xd;
-//			notifier.notify(&quot;admin&quot;, &quot;tkt_respondido&quot;, parametros, e_analista, &quot;text/html&quot;);&#xd;
-//			log.info(parametros);&#xd;
-//			log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + idanalista);&#xd;
-//			&#xd;
-//			&#xd;
-//			}catch(e){&#xd;
-//			log.info(&quot;O Fluig não conseguiu enviar o e-mail de abertura de chamado para o analista&quot;);&#xd;
-//			log.info(&apos;errozao:&apos;+e);&#xd;
-//		}&#xd;
-//	}&#xd;
-	&#xd;
-//	if (nextSequenceId == 15 &amp;&amp; checkReopen()) {&#xd;
-//		var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
-//		var assunto = &apos;Um chamado foi reaberto! [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
-//		//Monta mapa com parâmetros do template&#xd;
-//		var parametros = new java.util.HashMap();&#xd;
-//		//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
-//		parametros.put(&quot;subject&quot;, assunto);&#xd;
-//		&#xd;
-//		var e_analista = new java.util.ArrayList();&#xd;
-//		&#xd;
-//		// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
-//		var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
-//		var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
-//		var chavesDS = new Array( grpCode );&#xd;
-//		var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
-//		var idanalista = &apos;&apos;;&#xd;
-//		var analista = &apos;&apos;;&#xd;
-//		var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
-//		var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
-//		var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
-//		var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
-//		&#xd;
-//		&#xd;
-//		for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
-//			idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
-//			analista = getNomeUsuario(idanalista);&#xd;
-//			parametros.put(&quot;analista&quot;, analista);&#xd;
-//			parametros.put(&quot;numsol&quot;, numproc);&#xd;
-//			parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
-//			parametros.put(&quot;datachamado&quot;, tktData);&#xd;
-//			parametros.put(&quot;solicitante&quot;, tpcaj);&#xd;
-//			parametros.put(&quot;assunto&quot;, assunto);&#xd;
-//			&#xd;
-//			e_analista.add();&#xd;
-//			&#xd;
-//		}	&#xd;
-//		notifier.notify(&quot;admin&quot;, &quot;tkt_reaberto&quot;, parametros, e_analista, &quot;text/html&quot;);	&#xd;
-//		log.info(parametros);&#xd;
-//		log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + idanalista);&#xd;
-//		&#xd;
-//	}&#xd;
+	// retirado daqui&#xd;
 	&#xd;
 	// VALIDA A SOLUCAO &#xd;
 	if (nextSequenceId == 9) {&#xd;
@@ -1162,7 +919,255 @@
 		log.info(parametrosanalista);&#xd;
 		log.info(&quot;Analista - Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + e_analista);&#xd;
 	}&#xd;
-}</eventDescription>
+&#xd;
+	&#xd;
+	//  funcoes&#xd;
+	var removeVirgula = function(str){&#xd;
+		return str.replace(/,/g, &apos;&apos;).trim();&#xd;
+	}&#xd;
+	&#xd;
+	function getNomeUsuario(id){&#xd;
+		var c1 = DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, id, id, ConstraintType.MUST);&#xd;
+		var ds = DatasetFactory.getDataset(&quot;colleague&quot;, null, new Array(c1), null);&#xd;
+		return ds.getValue(0,&quot;colleagueName&quot;);&#xd;
+	}&#xd;
+	&#xd;
+	// VERIFICA SE CHAMADO FOI TRANSFERIDO PARA CARREGAR TEMPLATE DE EMAIL&#xd;
+	&#xd;
+	function checkTransf(){&#xd;
+		var transf = parseInt(hAPI.getCardValue(&apos;transferido&apos;));&#xd;
+		if (transf) {&#xd;
+			return true;&#xd;
+		} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function checkInicio(){&#xd;
+		if (hAPI.getCardValue(&apos;checkinicio&apos;) == &apos;1&apos;) {&#xd;
+			return true;&#xd;
+			} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function checkReopen(){&#xd;
+		if (hAPI.getCardValue(&apos;us_resolvidof&apos;) == &apos;sim&apos;) {&#xd;
+			return true;&#xd;
+			} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function checkResolvido(){&#xd;
+		var cam = hAPI.getCardValue(&apos;us_resolvido&apos;);&#xd;
+		if (cam != &apos;vazio&apos; &amp;&amp; cam != &apos;sim&apos;) {&#xd;
+			return true;&#xd;
+			} else {&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	function consultaDadosPaiFilho(fields){&#xd;
+		log.info(&apos;Consulta Dados Pai X Filho&apos;);&#xd;
+		var nrProcesso = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
+		var cardData = hAPI.getCardData(nrProcesso);&#xd;
+		var it = cardData.keySet().iterator();&#xd;
+		var listaFilho = new Array();&#xd;
+		var fieldTemp = fields[0];&#xd;
+		&#xd;
+		while (it.hasNext()) {&#xd;
+			var key = it.next();&#xd;
+			var campo = key.split(&quot;___&quot;);&#xd;
+			&#xd;
+			if (key.indexOf(&apos;___&apos;) &gt;= 0 &amp;&amp; campo[0] == fieldTemp) {&#xd;
+				var idx = campo[1];&#xd;
+				var row = new Object();&#xd;
+				&#xd;
+				for(var i=0; i&lt;fields.length; i++){&#xd;
+					var name = fields[i] + &quot;___&quot; + idx;&#xd;
+					row[fields[i]] = {value:hAPI.getCardValue(name), idx:idx, name:name};&#xd;
+				}&#xd;
+				listaFilho.push(row);&#xd;
+			}&#xd;
+		}&#xd;
+		return listaFilho;&#xd;
+	}&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+&#xd;
+	&#xd;
+//	if (nextSequenceId == 15 &amp;&amp; checkTransf()) {&#xd;
+//		try{&#xd;
+//			var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
+//			var assunto = &apos;Um chamado foi transferido para você. [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
+//			//Monta mapa com parâmetros do template&#xd;
+//			var parametros = new java.util.HashMap();&#xd;
+//			//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+//			parametros.put(&quot;subject&quot;, assunto);&#xd;
+//			&#xd;
+//			var e_analista = new java.util.ArrayList();&#xd;
+//			&#xd;
+//			// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+//			var field = hAPI.getCardValue(&quot;usNovoRespTxt&quot;);&#xd;
+//			var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+//			var chavesDS = new Array( grpCode );&#xd;
+//			var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+//			var idanalista = &apos;&apos;;&#xd;
+//			var analista = &apos;&apos;;&#xd;
+//			var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
+//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//			var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//			var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+//			&#xd;
+//			&#xd;
+//			for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+//				idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+//				analista = getNomeUsuario(idanalista);&#xd;
+//				parametros.put(&quot;analista&quot;, analista);&#xd;
+//				parametros.put(&quot;numsol&quot;, numproc);&#xd;
+//				parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
+//				parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+//				parametros.put(&quot;solicitante&quot;, tpcaj);&#xd;
+//				parametros.put(&quot;assunto&quot;, assunto);&#xd;
+//								&#xd;
+//				e_analista.add(idanalista);&#xd;
+//			}&#xd;
+//			&#xd;
+//			log.info(parametros);&#xd;
+//			&#xd;
+//			notifier.notify(&quot;admin&quot;, &quot;tkt_transferido&quot;, parametros, e_analista, &quot;text/html&quot;);	&#xd;
+//			log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + e_analista);&#xd;
+//			&#xd;
+//			&#xd;
+//			}catch(e){&#xd;
+//			log.info(&apos;CHAMADO TRANSFERIDO ERRO:&apos; + e);&#xd;
+//		}&#xd;
+//	}&#xd;
+//	&#xd;
+//	if (nextSequenceId == 15 &amp;&amp; checkResolvido()) {&#xd;
+//		try{&#xd;
+//			log.info(&quot;inicio interagiu&quot;)&#xd;
+//			var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
+//			var assunto = &apos;O usuário interagiu no chamado. [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
+//			//Monta mapa com parâmetros do template&#xd;
+//			var parametros = new java.util.HashMap();&#xd;
+//			//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+//			parametros.put(&quot;subject&quot;, assunto);&#xd;
+//			&#xd;
+//			var e_analista = new java.util.ArrayList();&#xd;
+//			&#xd;
+//			// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+//			var processo = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
+//			var campos = hAPI.getCardData(processo);&#xd;
+//			var paifilhoindex = parseInt(hAPI.getCardValue(&apos;pfindex&apos;));&#xd;
+//			&#xd;
+//			if (paifilhoindex &lt; 1) {&#xd;
+//				var ultimaresp = campos.get(&quot;resposta___1&quot;);&#xd;
+//				log.info(&apos;ultimaresp &apos;+ultimaresp);&#xd;
+//				var nomeultimaresp = campos.get(&quot;nomeRsp___1&quot;);&#xd;
+//				log.info(&apos;nomeultimaresp &apos;+nomeultimaresp);&#xd;
+//				var dataresp = campos.get(&quot;dataRsp___1&quot;);&#xd;
+//				log.info(&apos;dataresp &apos;+dataresp);&#xd;
+//				&#xd;
+//				} else {&#xd;
+//				var paifilhoindexprox = paifilhoindex + 1;&#xd;
+//				log.info(&apos;pfindexprox &apos;+paifilhoindexprox);&#xd;
+//				var ultimaresp = campos.get(&quot;resposta___&quot; + paifilhoindexprox);&#xd;
+//				log.info(&apos;ultimaresp &apos;+ultimaresp);&#xd;
+//				var nomeultimaresp = campos.get(&quot;nomeRsp___&quot; + paifilhoindexprox);&#xd;
+//				log.info(&apos;nomeultimaresp &apos;+nomeultimaresp);&#xd;
+//				var dataresp = campos.get(&quot;dataRsp___&quot; + paifilhoindexprox);&#xd;
+//				log.info(&apos;dataresp &apos;+dataresp);&#xd;
+//			}&#xd;
+//			&#xd;
+//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//			var tktSolicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//			&#xd;
+//			var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
+//			var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+//			var chavesDS = new Array( grpCode );&#xd;
+//			var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+//			var idanalista = &apos;&apos;;&#xd;
+//			var analista = &apos;&apos;;&#xd;
+//			var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
+//			var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//			var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//			var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+//			&#xd;
+//			&#xd;
+//			for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+//				idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+//				analista = getNomeUsuario(idanalista);&#xd;
+//				parametros.put(&quot;resposta&quot;, ultimaresp);&#xd;
+//				parametros.put(&quot;dataresp&quot;, dataresp);&#xd;
+//				parametros.put(&quot;nomersp&quot;, nomeultimaresp);&#xd;
+//				parametros.put(&quot;analista&quot;, analista);&#xd;
+//				parametros.put(&quot;numsol&quot;, numproc);&#xd;
+//				parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
+//				parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+//				parametros.put(&quot;solicitante&quot;, tktSolicitante);&#xd;
+//				parametros.put(&quot;assunto&quot;, assunto);&#xd;
+//				&#xd;
+//				e_analista.add(idanalista);&#xd;
+//				log.info(&quot;analista adicionado: &quot; + idanalista);&#xd;
+//				log.info(parametros);&#xd;
+//				&#xd;
+//			}	&#xd;
+//			&#xd;
+//			notifier.notify(&quot;admin&quot;, &quot;tkt_respondido&quot;, parametros, e_analista, &quot;text/html&quot;);&#xd;
+//			log.info(parametros);&#xd;
+//			log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + idanalista);&#xd;
+//			&#xd;
+//			&#xd;
+//			}catch(e){&#xd;
+//			log.info(&quot;O Fluig não conseguiu enviar o e-mail de abertura de chamado para o analista&quot;);&#xd;
+//			log.info(&apos;errozao:&apos;+e);&#xd;
+//		}&#xd;
+//	}&#xd;
+	&#xd;
+//	if (nextSequenceId == 15 &amp;&amp; checkReopen()) {&#xd;
+//		var numproc = getValue(&quot;WKNumProces&quot;) + &quot;&quot;;&#xd;
+//		var assunto = &apos;Um chamado foi reaberto! [#&apos;+ numproc +&apos; - HelpDesk ACER]&apos;;&#xd;
+//		//Monta mapa com parâmetros do template&#xd;
+//		var parametros = new java.util.HashMap();&#xd;
+//		//Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+//		parametros.put(&quot;subject&quot;, assunto);&#xd;
+//		&#xd;
+//		var e_analista = new java.util.ArrayList();&#xd;
+//		&#xd;
+//		// Consulta o Dataset para ver quem sao os usuarios deste grupo&#xd;
+//		var field = hAPI.getCardValue(&quot;usRespTxt&quot;);&#xd;
+//		var grpCode = DatasetFactory.createConstraint(&quot;workflowColleagueRolePK.roleId&quot;, field, field, ConstraintType.MUST);&#xd;
+//		var chavesDS = new Array( grpCode );&#xd;
+//		var dsUsrGrp = DatasetFactory.getDataset(&quot;workflowColleagueRole&quot;, null, chavesDS, null);&#xd;
+//		var idanalista = &apos;&apos;;&#xd;
+//		var analista = &apos;&apos;;&#xd;
+//		var tpcaj = hAPI.getCardValue(&apos;usNomeTxt&apos;);&#xd;
+//		var tktData = hAPI.getCardValue(&apos;data_Chamado&apos;);&#xd;
+//		var solicitante = hAPI.getCardValue(&apos;name&apos;);&#xd;
+//		var assunto = hAPI.getCardValue(&apos;assunto&apos;);&#xd;
+//		&#xd;
+//		&#xd;
+//		for(var j = 0; j &lt; dsUsrGrp.rowsCount; j++) {&#xd;
+//			idanalista = dsUsrGrp.getValue(j, &quot;workflowColleagueRolePK.colleagueId&quot;);&#xd;
+//			analista = getNomeUsuario(idanalista);&#xd;
+//			parametros.put(&quot;analista&quot;, analista);&#xd;
+//			parametros.put(&quot;numsol&quot;, numproc);&#xd;
+//			parametros.put(&quot;topicoajuda&quot;, tpcaj);&#xd;
+//			parametros.put(&quot;datachamado&quot;, tktData);&#xd;
+//			parametros.put(&quot;solicitante&quot;, tpcaj);&#xd;
+//			parametros.put(&quot;assunto&quot;, assunto);&#xd;
+//			&#xd;
+//			e_analista.add();&#xd;
+//			&#xd;
+//		}	&#xd;
+//		notifier.notify(&quot;admin&quot;, &quot;tkt_reaberto&quot;, parametros, e_analista, &quot;text/html&quot;);	&#xd;
+//		log.info(parametros);&#xd;
+//		log.info(&quot;Scolicitação: &quot; + numproc  + &quot; Destinatários: &quot; + idanalista);&#xd;
+//		&#xd;
+//	}</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
@@ -1300,7 +1305,7 @@ customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atDias&quot;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
-        <version>29</version>
+        <version>30</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1311,7 +1316,7 @@ customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atDias&quot;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
-        <version>29</version>
+        <version>30</version>
         <linkSequence>44</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1322,7 +1327,7 @@ customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atDias&quot;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
-        <version>29</version>
+        <version>30</version>
         <linkSequence>44</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1333,7 +1338,7 @@ customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atDias&quot;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
-        <version>29</version>
+        <version>30</version>
         <linkSequence>47</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1344,7 +1349,7 @@ customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atDias&quot;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
-        <version>29</version>
+        <version>30</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1355,7 +1360,7 @@ customFacts[2]=java.lang.Double.parseDouble(hAPI.getCardValue(&quot;atDias&quot;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Help Desk Acer</processId>
-        <version>29</version>
+        <version>30</version>
         <linkSequence>8</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
