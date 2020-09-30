@@ -46,7 +46,7 @@ function createDataset(fields, constraints, sortFields) {
 		   var response = restService.invoke(JSON.stringify(data));
 //		   dataset.addRow(new Array(response.getResult()));
 		   var result = JSON.parse(response.getResult());
-		   if(result){
+		   if(result.items){
 			   for (var i = 0; i < result.items.length; i++) {
 				   var cliente = result.items[i];
 				   dataset.addRow(new Array(
@@ -61,6 +61,8 @@ function createDataset(fields, constraints, sortFields) {
 					   cliente.zeaidweb
 				   ));
 			   }
+		   }else{
+			   dataset.addRow(new Array(result.errorCode, result.errorMessage));
 		   }
 	   } catch (e) {
 		   dataset.addRow(new Array(e.name, e.message));
