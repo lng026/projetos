@@ -11,6 +11,7 @@
 						<input type="hidden" name="jsonAtividade" id="jsonAtividade">
 						<input type="hidden" name="jsonDadosForn" id="jsonDadosForn">
 						<input type="hidden" name="jsonComps" id="jsonComps">
+						<input type="hidden" name="valor" id="valor" required>
 						<select class="form-control" name="selAtividade" id="selAtividade" onchange="attCategoriaProj(this)" required>
 							<option value="0">Selecione</option>
 						</select> 
@@ -60,17 +61,19 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label for="valor">Valor Total</label>
-						<input type="text" name="valor" id="valor" class="form-control" mask="###9.99" required>
+						<label for="prazoEstimado">Prazo Estimado</label>
+						<input type="text" name="prazoEstimado" id="prazoEstimado" class="form-control date" required>
 					</div>
 				</div>
+				
+				
 			</div>
 			<div class="row"><br></div>
-			<div class="row">
-				<div class="col-md-4">
+			<#--  <div class="row">  -->
+				<!-- <input type="text" name="alocaFundo" id="alocaFundo" class="form-control"> -->
+				<#--  <div class="col-md-4">
 					<div class="form-group">
 						<label for="alocaFundo">Alocação Fundo</label>
-						<!-- <input type="text" name="alocaFundo" id="alocaFundo" class="form-control"> -->
 						<select class="form-control" name="alocaFundo" id="alocaFundo">
 							<option value="0">Selecione</option>
 							<option value="AMD">AMD</option>
@@ -81,21 +84,20 @@
 							<option value="Nvidia">Nvidia</option>
 						</select>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="prazoEstimado">Prazo Estimado</label>
-						<input type="text" name="prazoEstimado" id="prazoEstimado" class="form-control date" required>
-					</div>
-				</div>
-				<div class="col-md-4">
+				</div>  -->
+				<#--  <div class="col-md-4">
 					<div class="form-group">
 						<label for="invoice">Invoice</label>
 						<input type="text" name="invoice" id="invoice" class="form-control">
 					</div>
-				</div>
-			</div>
-			<div class="row"><br></div>
+				</div>  -->
+				<#--  <div class="col-md-3">
+					<div class="form-group">
+						<label for="valor">Valor Total</label>
+						<input type="text" name="valor" id="valor" class="form-control" mask="###9.99" required>
+					</div>
+				</div>  -->
+			<#--  </div>  -->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
