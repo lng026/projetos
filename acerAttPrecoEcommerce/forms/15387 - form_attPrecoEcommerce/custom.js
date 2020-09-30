@@ -78,7 +78,7 @@ function showDsProdutos(formField, dsField){
 			$("#partNumber").val(item.PRODUCTCODE);
 			var infoProd = getCustoProduto(item.PRODUCTCODE);
 			// forcar id anyMarket para teste
-			infoProd.zeaidweb = 1282485;
+			// infoProd.zeaidweb = 1282485;
 			// --------------------------
 			if(infoProd){
 				var precoMin = getMinValueProd(parseFloat(infoProd['cml']));
