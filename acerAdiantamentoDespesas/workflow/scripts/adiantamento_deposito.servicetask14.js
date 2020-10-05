@@ -43,6 +43,7 @@ function servicetask14(attempt, message) {
 		/*monta cabe�alho do padr�o do titulo*/
 		oDespesa.setCCGC(fornCgc);
 		oDespesa.setCDATAEMISSAO(trataData(emissData));
+		oDespesa.setCDATAVENCTO(trataData(emissData));
 		oDespesa.setCFORMAPGTO(cFormPagto);
 		oDespesa.setCHISTORICO(chist);
 		oDespesa.setCID(numProcess);
@@ -71,18 +72,19 @@ function servicetask14(attempt, message) {
 		var cKey = retDesp.getCCHAVE();
 		var cErro = retDesp.getCERRO();
 		var cMsg = retDesp.getCMSG();
-
+		var jsonRet = {
+				'cchave': cKey,
+				'cErro': cErro,
+				'cMsg':cMsg
+		};
+		hAPI.setCardValue("integracaoReturnJson", JSONUtil.toJSON(jsonRet));
 		//verificar respostahAPI.setTaskComments("admin", numProcess, 0, msgRetTitulo.toString());
-
-		var msgErro = "Ocorreu um erro Inserir o titulo -> ";
-		msgErro+= " cKey: " + cKey;
-		msgErro+= " - cErro: " + cErro;
-		msgErro+= " - cMsg: " + cMsg;
-		log.info('Retorno erro: '+msgErro);
+		log.info('Retorno1: '+JSONUtil.toJSON(jsonRet));
+		log.info('Retorno2: '+JSONUtil.toJSON(retDesp));
 		// tratar retorno
 		if(cErro.trim() == "N" && cKey.trim() != ""){
 			//sucesso
-			hAPI.setCardValue("cKey",cKey);
+			hAPI.setCardValue("cchave",cKey);
 			log.info("task comment adicionado");
 			var msgSuccess = "Inserido com sucesso.";
 			msgSuccess += "Chave - " + cKey;
@@ -90,10 +92,10 @@ function servicetask14(attempt, message) {
 			hAPI.setTaskComments("admin", numProcess, 0, msgSuccess);
 		}else{
 			var msgErro = "Ocorreu um erro Inserir o titulo -> ";
-			msgErro+= " cKey: " + cKey;
+			msgErro+= " Chave: " + cKey;
 			msgErro+= " - cErro: " + cErro;
 			msgErro+= " - cMsg: " + cMsg;
-			hAPI.setCardValue("msgRetorno",msgErro);
+			hAPI.setTaskComments("admin", numProcess, 0, msgErro);
 			throw msgErro;
 		}
 		//hAPI.setTaskComments(WK_Aprovador, numProcess, 0, msgErro);

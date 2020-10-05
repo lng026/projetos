@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Deposito Adiantamento de despesas</processId>
-      <version>1</version>
+      <version>8</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>15431</formId>
@@ -402,10 +402,10 @@
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>8</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
-      <condition></condition>
+      <condition>false</condition>
       <destinationSequenceId>4</destinationSequenceId>
       <conditionType>1</conditionType>
     </ConditionProcessState>
@@ -414,10 +414,10 @@
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>8</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
-      <condition></condition>
+      <condition>false</condition>
       <destinationSequenceId>14</destinationSequenceId>
       <conditionType>1</conditionType>
     </ConditionProcessState>
@@ -426,10 +426,10 @@
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>8</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
-      <condition></condition>
+      <condition>false</condition>
       <destinationSequenceId>18</destinationSequenceId>
       <conditionType>1</conditionType>
     </ConditionProcessState>
@@ -438,10 +438,10 @@
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>8</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
-      <condition></condition>
+      <condition>false</condition>
       <destinationSequenceId>21</destinationSequenceId>
       <conditionType>1</conditionType>
     </ConditionProcessState>
@@ -672,6 +672,7 @@
 		/*monta cabe�alho do padr�o do titulo*/
 		oDespesa.setCCGC(fornCgc);
 		oDespesa.setCDATAEMISSAO(trataData(emissData));
+		oDespesa.setCDATAVENCTO(trataData(emissData));
 		oDespesa.setCFORMAPGTO(cFormPagto);
 		oDespesa.setCHISTORICO(chist);
 		oDespesa.setCID(numProcess);
@@ -700,18 +701,19 @@
 		var cKey = retDesp.getCCHAVE();
 		var cErro = retDesp.getCERRO();
 		var cMsg = retDesp.getCMSG();
-
+		var jsonRet = {
+				&apos;cchave&apos;: cKey,
+				&apos;cErro&apos;: cErro,
+				&apos;cMsg&apos;:cMsg
+		};
+		hAPI.setCardValue(&quot;integracaoReturnJson&quot;, JSONUtil.toJSON(jsonRet));
 		//verificar respostahAPI.setTaskComments(&quot;admin&quot;, numProcess, 0, msgRetTitulo.toString());
-
-		var msgErro = &quot;Ocorreu um erro Inserir o titulo -&gt; &quot;;
-		msgErro+= &quot; cKey: &quot; + cKey;
-		msgErro+= &quot; - cErro: &quot; + cErro;
-		msgErro+= &quot; - cMsg: &quot; + cMsg;
-		log.info(&apos;Retorno erro: &apos;+msgErro);
+		log.info(&apos;Retorno1: &apos;+JSONUtil.toJSON(jsonRet));
+		log.info(&apos;Retorno2: &apos;+JSONUtil.toJSON(retDesp));
 		// tratar retorno
 		if(cErro.trim() == &quot;N&quot; &amp;&amp; cKey.trim() != &quot;&quot;){
 			//sucesso
-			hAPI.setCardValue(&quot;cKey&quot;,cKey);
+			hAPI.setCardValue(&quot;cchave&quot;,cKey);
 			log.info(&quot;task comment adicionado&quot;);
 			var msgSuccess = &quot;Inserido com sucesso.&quot;;
 			msgSuccess += &quot;Chave - &quot; + cKey;
@@ -719,10 +721,10 @@
 			hAPI.setTaskComments(&quot;admin&quot;, numProcess, 0, msgSuccess);
 		}else{
 			var msgErro = &quot;Ocorreu um erro Inserir o titulo -&gt; &quot;;
-			msgErro+= &quot; cKey: &quot; + cKey;
+			msgErro+= &quot; Chave: &quot; + cKey;
 			msgErro+= &quot; - cErro: &quot; + cErro;
 			msgErro+= &quot; - cMsg: &quot; + cMsg;
-			hAPI.setCardValue(&quot;msgRetorno&quot;,msgErro);
+			hAPI.setTaskComments(&quot;admin&quot;, numProcess, 0, msgErro);
 			throw msgErro;
 		}
 		//hAPI.setTaskComments(WK_Aprovador, numProcess, 0, msgErro);
@@ -872,18 +874,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
-        <version>1</version>
-        <linkSequence>8</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>167</positionX>
-      <positionY>48</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>adiantamento_deposito</processId>
-        <version>1</version>
+        <version>8</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -894,7 +885,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
-        <version>1</version>
+        <version>8</version>
         <linkSequence>13</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -905,7 +896,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
-        <version>1</version>
+        <version>8</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -916,12 +907,23 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>adiantamento_deposito</processId>
-        <version>1</version>
+        <version>8</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>1007</positionX>
       <positionY>293</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adiantamento_deposito</processId>
+        <version>8</version>
+        <linkSequence>8</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>167</positionX>
+      <positionY>48</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
