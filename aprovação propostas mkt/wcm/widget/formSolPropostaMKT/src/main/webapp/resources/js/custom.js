@@ -35,6 +35,7 @@ function getAtividades(){
     return dsRes.values;
 }
 function preencheCbAtividades(values){
+    console.log(values);
     var idAtv = $("#idAtividade").val();
     values.forEach(e => {
         var nopt = document.createElement('option');
