@@ -1,0 +1,17 @@
+application.type=widget
+application.code=acerSolTacticalRebateWcm
+application.title=solicitacaoTacticaRebate 
+application.description=Solicitação Tactica Rebate 
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=LuanGB
+developer.name=Luan Gomes
+developer.url=http://www.erpworks.com
+application.uiwidget=true
+application.mobileapp=false
+application.version=${build.version}-${build.revision}
+view.file=view.ftl
+edit.file=edit.ftl
+locale.file.base.name=acerSolTacticalRebateWcm
+application.resource.js.1=/resources/js/acerSolTacticalRebateWcm.js
+application.resource.css.2=/resources/css/acerSolTacticalRebateWcm.css
